@@ -11,7 +11,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const plotsRouter = require('./routes/plots.router'); // plots router link
-const productsRouter = require('./routes/products.router');  //products router link not (s) on products
+const productRouter = require('./routes/product.router');  //products router link 
 const productTypeRouter = require('./routes/productType.router'); //product type router link
 const unitSqRouter = require('./routes/unitsSq.router'); // units sq  router link
 
@@ -29,7 +29,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.user('/api/plots', plotsRouter);
-app.user('/api/products', productsRouter);
+app.user('/api/product', productRouter);
 app.use('/apu/productType', productTypeRouter);
 app.use('/api/unitSq', unitSqRouter);
 

@@ -13,7 +13,7 @@ const userRouter = require('./routes/user.router');
 const plotsRouter = require('./routes/plots.router'); // plots router link
 const productRouter = require('./routes/product.router');  //products router link 
 const productTypeRouter = require('./routes/productType.router'); //product type router link
-const unitSqRouter = require('./routes/unitsSq.router'); // units sq  router link
+const unitSqRouter = require('./routes/unitSq.router'); // units sq  router link
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,8 +28,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.user('/api/plots', plotsRouter);
-app.user('/api/product', productRouter);
+app.use('/api/plots', plotsRouter);
+app.use('/api/product', productRouter);
 app.use('/apu/productType', productTypeRouter);
 app.use('/api/unitSq', unitSqRouter);
 

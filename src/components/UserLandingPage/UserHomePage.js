@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UserTabNav from './UserTabNav';
 import './UserLanding.css';
+import Header from './../Header/Header';
 
 
 class UserLandingPage extends Component {
@@ -13,10 +14,10 @@ class UserLandingPage extends Component {
         return (
   <div>
     
-    <p>
+      <Header />
       <h3 className="userHeader">Thank You!!!</h3>
       <h4 className="userSubHeader">Your purchase perserved {totalArea} </h4>
-    </p>
+    
     <UserTabNav />
   </div>
 );

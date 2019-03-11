@@ -47,6 +47,7 @@ class UserTabNav extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
+            centered
             value={this.state.value}
             onChange={this.handleChange}
             indicatorColor="primary"

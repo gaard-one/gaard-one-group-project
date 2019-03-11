@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import UserInterface from './../UserInterface/UserInterface';
 
 function TabContainer({ children, dir }) {
   return (
@@ -42,30 +43,35 @@ class UserTabNav extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
+            centered
             value={this.state.value}
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth"
           >
-            <Tab label="Home" />
+            <Tab label="Land You Saved" />
             <Tab label="Saved in 2018" />
             {/* <Tab label="Item Three" /> */}
           </Tabs>
         </AppBar>
         <SwipeableViews
+
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}>Home</TabContainer>
+         {value === 0 && <UserInterface match={this.props.match} history={this.props.history}/>} 
+                {/* {value === 1 && <FitDataPage match={this.props.match} history={this.props.history}/>} */}
+          {/* <TabContainer dir={theme.direction}>Home</TabContainer>
           <TabContainer dir={theme.direction}>Saved in 2018</TabContainer>
-          {/* <TabContainer dir={theme.direction}>Item Three</TabContainer> */}
+          <TabContainer dir={theme.direction}>Item Three</TabContainer> */}
         </SwipeableViews>
       </div>
     );

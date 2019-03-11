@@ -50,6 +50,7 @@ class UserInterface extends Component {
                     <button onClick={this.scanIt}> Scan </button>
                 }
                 <br />
+                {/* maybe this.push.history */}
                 <a href={this.state.result}>{this.state.result}</a>
             </div>
         );

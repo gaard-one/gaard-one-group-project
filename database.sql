@@ -14,7 +14,7 @@ CREATE TABLE "product_type" (
 
 CREATE TABLE "product" (
 	"id" SERIAL PRIMARY KEY,
-	"date-time" DATE NOT NULL DEFAULT CURRENT_DATE,
+	"date-time" DATE NOT NULL DEFAULT 'CURRENT_DATE',
 	"claimed" BOOLEAN DEFAULT false,
 	"printed" BOOLEAN DEFAULT false,
 	"product_type_id" INTEGER REFERENCES "product_type"

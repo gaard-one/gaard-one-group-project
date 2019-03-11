@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
         return (
   <div>
-    {/* <img src="images/logo.svg" alt="gaard one logo" /> */}
+    {/* <img src="images/imagesgaard.jpeg" alt="gaard one logo" /> */}
   </div>
 );
 }

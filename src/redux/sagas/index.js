@@ -2,7 +2,7 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
-// import plotSaga from './plotSaga';
+import plotSaga from './plotSaga';
 // import productTypeSaga from './productTypeSaga';
 // import projectSaga from './projectSaga';
 // import qrSaga from './qrSaga';
@@ -21,7 +21,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    // plotSaga(),
+    plotSaga(),
     // productTypeSaga(),
     // productSaga(),
     // qrSaga(),

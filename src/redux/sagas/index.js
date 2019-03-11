@@ -23,7 +23,7 @@ export default function* rootSaga() {
     userSaga(),
     // plotSaga(),
     // productTypeSaga(),
-    // projectSaga(),
+    // productSaga(),
     // qrSaga(),
     // unitSqSaga(),
   ]);

@@ -25,9 +25,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     width: 500,
   },
-});git
+});
 
-class FullWidthTabs extends React.Component {
+class UserTabNav extends React.Component {
   state = {
     value: 0,
   };
@@ -72,9 +72,9 @@ class FullWidthTabs extends React.Component {
   }
 }
 
-FullWidthTabs.propTypes = {
+UserTabNav.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(FullWidthTabs);
+export default withStyles(styles, { withTheme: true })(UserTabNav);

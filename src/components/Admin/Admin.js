@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import AdminTabNav from './AdminTabNav';
 
 
 class Admin extends Component {
-    render() {
-        return (
-  <div>
-    <p>
-      Admin Page
+  render() {
+    return (
+      <div>
+        <p>
+          Admin Page
     </p>
-  </div>
-);
-}
+        <AdminTabNav />
+      </div>
+    );
+  }
 }
 export default Admin;

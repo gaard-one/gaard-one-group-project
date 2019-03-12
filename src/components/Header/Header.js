@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import './Header.css';
 
 
 class Header extends Component {
     render() {
         return (
-  <div>
-    {/* <img src="images/imagesgaard.jpeg" alt="gaard one logo" /> */}
+  <div className="header-main"
+  >
+  <br/>
+    <img src="/images/logo.svg" alt="gaard one"/>
+    <br/>
+    <br/>
   </div>
 );
 }

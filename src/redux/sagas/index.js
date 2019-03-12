@@ -3,7 +3,7 @@ import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import plotSaga from './plotSaga';
-// import productTypeSaga from './productTypeSaga';
+import productTypeSaga from './productTypeSaga';
 // import projectSaga from './projectSaga';
 // import qrSaga from './qrSaga';
 // import unitSqSaga from './unitSqSaga';
@@ -22,7 +22,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     plotSaga(),
-    // productTypeSaga(),
+    productTypeSaga(),
     // productSaga(),
     // qrSaga(),
     // unitSqSaga(),

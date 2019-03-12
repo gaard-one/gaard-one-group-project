@@ -5,13 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    
-});
 
 
 //This route will fill the unit square table with data, 
-//result should be ~ 260,400 inserts
+//result should be ~ 260,400 inserts for belwin
 router.get('/fishnet', (req, res) => {
     (async () => {//wraps around everything we want to 'await'
 

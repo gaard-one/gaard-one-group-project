@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
+import BaseMap from '../Map/BaseMap';
 
 class UserInterface extends Component {
 
@@ -51,6 +52,7 @@ class UserInterface extends Component {
                 }
                 <br />
                 <a href={this.state.result}>{this.state.result}</a>
+                <BaseMap />
             </div>
         );
     }

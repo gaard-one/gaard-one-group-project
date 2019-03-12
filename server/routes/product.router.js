@@ -133,43 +133,4 @@ router.post('/', (req, res) => {
     });
 });//end router post
 
-
-//Deletes a product by Id, first removes dependencies
-router.delete('/:id', (req, res) => {
-    if(req.isAuthenticated()){
-        (async () => {
-            const client = await pool.connect();
-
-            try{
-                await client.query('BEGIN');
-
-                //delete dependent rows from junction table
-                queryText = `UPDATE plot SET product_id = -1
-                                WHERE product_id = $1;`;
-                await client.query(queryText, [req.params.id]);
-
-                //delete product row itself
-                queryText = `DELETE FROM product
-                            WHERE id = $1;`;
-                await client.query(queryText, [req.params.id]);
-
-                await client.query('COMMIT');
-                res.sendStatus(200);
-
-            }catch (error) {
-                console.log('Rollback', error);
-                await client.query('ROLLBACK');
-                throw error;
-            }finally {
-                client.release();
-            }
-        })().catch((error) => {
-            console.log('CATCH', error);
-            res.sendStatus(500);
-        });
-    }else{
-        res.sendStatus(403);
-    }
-});
-
 module.exports = router;

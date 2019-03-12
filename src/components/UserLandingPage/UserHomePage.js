@@ -12,7 +12,7 @@ class UserLandingPage extends Component {
       let totalArea = 5;
 
         return (
-  <div>
+  <div className="ui-home-main">
     
       <Header />
       <h3 className="userHeader">Thank You!!!</h3>

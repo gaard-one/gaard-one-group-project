@@ -4,6 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 //fetch plot
 function* fetchPlot(action) {
     try {
+      //this will receive a product id NOT a plot id
         const response = yield axios.get(`api/plot/${action.payload}`);
     
         //sends array of rows for plot

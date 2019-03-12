@@ -2,6 +2,7 @@ import React from 'react';
 import { Map } from '@esri/react-arcgis';
 import BelwinLayer from './BelwinLayer.js';
 import QrScan from './QrScan.js';
+import { connect } from 'react-redux';
 
 class BaseMap extends React.Component {
     constructor(props) { 
@@ -14,6 +15,10 @@ class BaseMap extends React.Component {
                 basemap: 'satellite'
             }
         };
+    }
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'FETCH_PLOT'});
     }
 
     handleMapLoad(map, view) {
@@ -41,4 +46,6 @@ class BaseMap extends React.Component {
     }
 }
 
-export default BaseMap;
+const mapStateToProps = reduxStore => ({ reduxStore: reduxStore });
+
+export default connect(mapStateToProps)(BaseMap);

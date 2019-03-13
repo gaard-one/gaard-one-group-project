@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
 // import Card from '@material-ui/core/Card';
 import './UserInterface.css';
+import Button from '@material-ui/core/Button';
 
 
 //  Build out of qr scanner for in app accessibility -Tiana
@@ -53,7 +54,13 @@ class qRScanner extends Component {
                     <button onClick={this.closeIt}> Close QR Reader </button>
                     </div>
                     :
-                    <button onClick={this.scanIt}> Scan </button>
+                    <Button variant="contained"
+                     color="secondary"
+                     onClick={this.scanIt}
+                     >
+                    Scan Qr Code
+                    </Button>
+                    // <button onClick={this.scanIt}> Scan </button>
                 }
                 <br />
                 {/* maybe this.push.history */}

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
 import Card from '@material-ui/core/Card';
 import './UserInterface.css';
-// import Test from './../UserLandingPage/Test';
+import BaseMap from '../Map/BaseMap';
+
 
 class UserInterface extends Component {
 
@@ -38,7 +39,6 @@ class UserInterface extends Component {
     render() {
         return (
             <div className="ui-main-div">
-            {/* <Test /> */}
             <br/>
                 <Card className="ui-card">
                 <br />
@@ -60,6 +60,8 @@ class UserInterface extends Component {
                 <a href={this.state.result}>{this.state.result}</a>
                 </Card>
                 <br/>
+                <BaseMap />
+
             </div>
         );
     }

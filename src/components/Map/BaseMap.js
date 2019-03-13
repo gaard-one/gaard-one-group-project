@@ -30,16 +30,20 @@ class BaseMap extends React.Component {
     render() {
         return ( //Width and height MUST be explicitly stated for this to work
             <div style={{ width: '90vw', height: '90vh' }}>
-              <header>Practice Time!!</header>
+              <header>Gaard One Preserved Land</header>
                 <Map
                     dataFlow="oneWay"
                     viewProperties={this.state.viewProperties}
+                    mapProperties={{ basemap: 'satellite' }}
                     // onLoad={this.handleMapLoad}
                     // onDrag={(e) => { e.stopPropagation() }}
                     // onMouseWheel={(e) => { e.stopPropagation() }}
                 >
                   <BelwinLayer />
-                  <QrScan />
+                  {this.props.reduxStore.unitSq.map((point, i) => {
+                            return (<QrScan key={i} 
+                                        point={point}/>);
+                    })}
                 </Map> 
             </div>
         );

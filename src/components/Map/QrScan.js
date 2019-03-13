@@ -21,15 +21,15 @@ export default class QrScan extends React.Component {
                                                             SimpleMarkerSymbol]) => {
       // Create a point
       const point = new Point({
-        longitude: -92.82123,
-        latitude: 44.93727
+        longitude: this.props.point.bl_corner_lon,
+        latitude: this.props.point.bl_corner_lat
       });
 
       // Create a symbol for drawing the point
       let markerSymbol = new SimpleMarkerSymbol({
         size: 10,
         style: 'square',
-        color: [0, 255, 0],
+        color: '#647c36',
         outline: null
       });
 

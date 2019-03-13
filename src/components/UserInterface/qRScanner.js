@@ -57,6 +57,7 @@ class qRScanner extends Component {
                     <Button variant="contained"
                      color="secondary"
                      onClick={this.scanIt}
+                     centered
                      >
                     Scan Qr Code
                     </Button>

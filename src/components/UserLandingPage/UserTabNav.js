@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import UserInterface from './../UserInterface/UserInterface';
+// import SavedLand from './../UserInterface/SavedLand';
 
 function TabContainer({ children, dir }) {
   return (
@@ -43,7 +44,7 @@ class UserTabNav extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { value } = this.state;
+    // const { value } = this.state;
 
     return (
       <div className={classes.root}>
@@ -67,11 +68,12 @@ class UserTabNav extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-         {value === 0 && <UserInterface match={this.props.match} history={this.props.history}/>} 
-                {/* {value === 1 && <FitDataPage match={this.props.match} history={this.props.history}/>} */}
-          {/* <TabContainer dir={theme.direction}>Home</TabContainer>
+         {/* {value === 0 && <UserInterface match={this.props.match} history={this.props.history}/>}  */}
+         {/* {value === 1 && <SavedLand match={this.props.match} history={this.props.history}/>} */}
+          <TabContainer dir={theme.direction}><UserInterface/></TabContainer>
+          
+          {/* <SavedLand/> */}
           <TabContainer dir={theme.direction}>Saved in 2018</TabContainer>
-          <TabContainer dir={theme.direction}>Item Three</TabContainer> */}
         </SwipeableViews>
       </div>
     );

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
+import Card from '@material-ui/core/Card';
+import './UserInterface.css';
 import BaseMap from '../Map/BaseMap';
+
 
 class UserInterface extends Component {
 
@@ -35,12 +38,14 @@ class UserInterface extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ui-main-div">
+            <br/>
+                <Card className="ui-card">
                 <br />
                 {this.state.show ?
                 <div>
                     <QrReader
-                        delay={300}
+                        delay={300} 
                         onError={this.handleError}
                         onScan={this.handleScan}
                         style={{ width: '50%' }}
@@ -51,8 +56,12 @@ class UserInterface extends Component {
                     <button onClick={this.scanIt}> Scan </button>
                 }
                 <br />
+                {/* maybe this.push.history */}
                 <a href={this.state.result}>{this.state.result}</a>
+                </Card>
+                <br/>
                 <BaseMap />
+
             </div>
         );
     }

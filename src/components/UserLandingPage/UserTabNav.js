@@ -45,7 +45,6 @@ class UserTabNav extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { value } = this.state;
 
     return (
       <div className={classes.root}>
@@ -67,7 +66,7 @@ class UserTabNav extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}><UserHomePage/></TabContainer>
+          <TabContainer dir={theme.direction}><UserHomePage /></TabContainer>
           <TabContainer dir={theme.direction}>Saved in 2018</TabContainer>
         </SwipeableViews>
       </div>

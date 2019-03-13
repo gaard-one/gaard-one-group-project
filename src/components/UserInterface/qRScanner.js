@@ -51,13 +51,17 @@ class qRScanner extends Component {
                         onScan={this.handleScan}
                         style={{ width: '100%' }}
                     />
-                    <button onClick={this.closeIt}> Close QR Reader </button>
+                    <Button variant="contained"
+                     color="secondary"
+                     onClick={this.closeIt}> Close QR Reader </Button>
+                     <div className="ui-qr-return">
+                    <a href={this.state.result}>{this.state.result}</a>
+                    </div>
                     </div>
                     :
                     <Button variant="contained"
                      color="secondary"
                      onClick={this.scanIt}
-                     centered
                      >
                     Scan Qr Code
                     </Button>
@@ -65,7 +69,6 @@ class qRScanner extends Component {
                 }
                 <br />
                 {/* maybe this.push.history */}
-                <a href={this.state.result}>{this.state.result}</a>
                 {/* </Card> */}
                 <br/>
                 

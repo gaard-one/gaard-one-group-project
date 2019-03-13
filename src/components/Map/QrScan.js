@@ -14,29 +14,45 @@ export default class QrScan extends React.Component {
   }
 
   componentWillMount() {
-    loadModules(['esri/Graphic',
-                 "esri/geometry/Point",
-                 "esri/symbols/SimpleMarkerSymbol"]).then(([Graphic,
-                                                            Point, 
-                                                            SimpleMarkerSymbol]) => {
-      // Create a point
-      const point = new Point({
-        longitude: this.props.point.bl_corner_lon,
-        latitude: this.props.point.bl_corner_lat
-      });
+    loadModules(['esri/Graphic']).then(([Graphic]) => {
+      // // Create a point
+      // const point = new Point({
+      //   longitude: this.props.point.bl_corner_lon,
+      //   latitude: this.props.point.bl_corner_lat
+      // });
+
+      // Create a polygon geometry
+      const polygon = {
+        type: "polygon", // autocasts as new Polygon()
+        rings: [//points of polygon, order matters!!
+          [this.props.point.bl_corner_lon, this.props.point.bl_corner_lat],
+          [this.props.point.bl_corner_lon, this.props.point.tr_corner_lat],
+          [this.props.point.tr_corner_lon, this.props.point.tr_corner_lat],
+          [this.props.point.tr_corner_lon, this.props.point.bl_corner_lat]
+          ]
+      };
 
       // Create a symbol for drawing the point
-      let markerSymbol = new SimpleMarkerSymbol({
-        size: 10,
-        style: 'square',
+      // let markerSymbol = new SimpleMarkerSymbol({
+      //   size: 10,
+      //   style: 'square',
+      //   color: '#647c36',
+      //   outline: null
+      // });
+
+      const fillSymbol = {
+        type: "simple-fill", // autocasts as new SimpleFillSymbol()
         color: '#647c36',
-        outline: null
-      });
+        outline: { // autocasts as new SimpleLineSymbol()
+        color: '647c36',
+        width: 1
+        }
+      };
 
       // Create a graphic and add the geometry and symbol to it
       var pointGraphic = new Graphic({
-        geometry: point,
-        symbol: markerSymbol
+        geometry: polygon,
+        symbol: fillSymbol
       });
 
       this.setState({ graphic: pointGraphic });

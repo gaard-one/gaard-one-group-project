@@ -5,7 +5,7 @@ import './UserInterface.css';
 import BaseMap from '../Map/BaseMap';
 
 
-class UserInterface extends Component {
+class qRScanner extends Component {
 
 
     state = {
@@ -48,7 +48,7 @@ class UserInterface extends Component {
                         delay={300} 
                         onError={this.handleError}
                         onScan={this.handleScan}
-                        style={{ width: '50%' }}
+                        style={{ width: '100%' }}
                     />
                     <button onClick={this.closeIt}> Close QR Reader </button>
                     </div>
@@ -60,10 +60,10 @@ class UserInterface extends Component {
                 <a href={this.state.result}>{this.state.result}</a>
                 </Card>
                 <br/>
-                <BaseMap />
+                
 
             </div>
         );
     }
 }
-export default UserInterface;
+export default qRScanner;

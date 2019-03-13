@@ -6,7 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import UserInterface from './../UserInterface/UserInterface';
+import UserHomePage from '../UserLandingPage/UserHomePage';
 import SavedLand from './../UserInterface/SavedLand';
 
 function TabContainer({ children, dir }) {
@@ -70,7 +70,7 @@ class UserTabNav extends React.Component {
         >
          {/* {value === 0 && <UserInterface match={this.props.match} history={this.props.history}/>}  */}
          {/* {value === 1 && <SavedLand match={this.props.match} history={this.props.history}/>} */}
-          <TabContainer dir={theme.direction}><UserInterface/></TabContainer>
+          <TabContainer dir={theme.direction}><UserHomePage/></TabContainer>
           
           {/* <SavedLand/> */}
           <TabContainer dir={theme.direction}>Saved in 2018</TabContainer>

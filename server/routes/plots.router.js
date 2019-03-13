@@ -8,7 +8,10 @@ const router = express.Router();
 //gets unit squares associated with plot_id
 router.get('/:id', (req, res) => {
     const queryText = `SELECT * FROM "unit_squares"
-                        WHERE "plot_id" = $1;`;
+                        WHERE "plot_id" = 
+                            (SELECT id 
+                            FROM plot 
+                            WHERE product_id = $1);`;
     pool.query(queryText, [req.params.id] )
     .then((result) => {
         res.send(result.rows);

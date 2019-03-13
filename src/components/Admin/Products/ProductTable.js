@@ -24,6 +24,7 @@ class ProductTable extends Component {
                             <tr>
                                 <th>Product Name</th>
                                 <th>Price</th>
+                                <th>Description</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>

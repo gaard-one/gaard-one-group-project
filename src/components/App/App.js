@@ -8,7 +8,7 @@ import {
 
 import {connect} from 'react-redux';
 
-import Nav from '../Nav/Nav';
+// import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
@@ -21,7 +21,7 @@ import Admin from '../Admin/Admin';
 // end adding admin page
 
 import './App.css';
-import UserLandingPage from '../UserLandingPage/UserHomePage';
+import UserLandingPage from '../UserLandingPage/UserLandingPage';
 
 class App extends Component {
   componentDidMount () {

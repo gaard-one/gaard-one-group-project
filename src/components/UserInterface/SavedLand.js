@@ -4,7 +4,9 @@ class SavedLand extends Component {
 
     rebder(){
         return (
-            <div></div>
+            <div>
+                
+            </div>
         )
     }
 

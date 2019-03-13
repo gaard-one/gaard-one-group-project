@@ -8,6 +8,7 @@ class ProductForm extends Component {
                     <input></input>
                     <input></input>
                     <button>Add New Product</button>
+
                 </form>
             </div>
         )

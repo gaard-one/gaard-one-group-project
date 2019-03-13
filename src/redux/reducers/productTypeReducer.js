@@ -6,7 +6,7 @@ import { combineReducers } from 'redux';
 //all information is sent via object
 const productTypeReducer = (state = [], action) => {
     switch(action.type) {
-        case 'FETCH_PRODUCT_TYPE':
+        case 'GET_PRODUCT_TYPE':
             return action.payload;
         case 'CREATE_PRODUCT_TYPE':
             return action.payload;

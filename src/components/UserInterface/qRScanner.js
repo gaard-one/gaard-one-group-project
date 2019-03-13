@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
 import './UserInterface.css';
-import BaseMap from '../Map/BaseMap';
+import Button from '@material-ui/core/Button';
 
 
-class UserInterface extends Component {
+//  Build out of qr scanner for in app accessibility -Tiana
+class qRScanner extends Component {
 
 
     state = {
@@ -40,7 +41,7 @@ class UserInterface extends Component {
         return (
             <div className="ui-main-div">
             <br/>
-                <Card className="ui-card">
+                {/* <Card className="ui-card"> */}
                 <br />
                 {this.state.show ?
                 <div>
@@ -48,22 +49,30 @@ class UserInterface extends Component {
                         delay={300} 
                         onError={this.handleError}
                         onScan={this.handleScan}
-                        style={{ width: '50%' }}
+                        style={{ width: '100%' }}
                     />
                     <button onClick={this.closeIt}> Close QR Reader </button>
                     </div>
                     :
-                    <button onClick={this.scanIt}> Scan </button>
+                    <Button variant="contained"
+                     color="secondary"
+                     onClick={this.scanIt}
+                     centered
+                     >
+                    Scan Qr Code
+                    </Button>
+                    // <button onClick={this.scanIt}> Scan </button>
                 }
                 <br />
                 {/* maybe this.push.history */}
                 <a href={this.state.result}>{this.state.result}</a>
-                </Card>
+                {/* </Card> */}
                 <br/>
-                <BaseMap />
+                
 
             </div>
         );
     }
 }
-export default UserInterface;
+export default qRScanner;
+// end Build out of qr scanner for in app accessibility -Tiana

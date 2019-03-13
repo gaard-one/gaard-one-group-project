@@ -30,6 +30,8 @@ CREATE TABLE "unit_squares" (
 	"id" SERIAL PRIMARY KEY,
 	"bl_corner_lat" DECIMAL,
 	"bl_corner_lon" DECIMAL,
+	"tr_corner_lat" DECIMAL,
+	"tr_corner_lon" DECIMAL,
 	"plot_id" INTEGER REFERENCES "plot"
 );
 

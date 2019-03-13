@@ -38,11 +38,14 @@ router.get('/fishnet', (req, res) => {
             for(i = 0; i < widthFt; i++){
                 for(j = 0; j < heightFt; j++){
                     queryText = `INSERT INTO "unit_squares" 
-                                 ("bl_corner_lat", "bl_corner_lon")
-                                 VALUES ($1, $2);`;
+                                 ("bl_corner_lat", "bl_corner_lon",
+                                 "tr_corner_lat", "tr_corner_lon")
+                                 VALUES ($1, $2, $3, $4);`;
                     await client.query(queryText, 
                                       [(bl_lat + (lat_inc * j) ), 
-                                      (bl_lon + (lon_inc * i))]);
+                                      (bl_lon + (lon_inc * i)),
+                                      (bl_lat + (lat_inc * j) + lat_inc ), 
+                                      (bl_lon + (lon_inc * i) + lon_inc )]);
                 }
             }
 

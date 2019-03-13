@@ -46,11 +46,11 @@ submitGenerate=(event)=>{
                             placeholder="Product Type" 
                             ref="form" 
                             value={this.state.product}>
-                        {this.props.reduxStore.product.map(product => (
-                            <MenuItem key={this.props.reduxStore.productType.product.id} 
-                                      value={this.props.reduxStore.productType.product.product_name}>
-                                      {this.props.reduxStore.productType.product_name}
-                            </MenuItem>))}
+                        {/* {this.props.products.map(product => (
+                            <MenuItem key={this.props.products.product.id} 
+                                      value={this.props.products.product.product_name}>
+                                      {this.props.products.product_name}
+                            </MenuItem>))} */}
                             </Select>
                     <Input onChange={this.changeInput} type="number" name="quantity" placeholder="Quantity" ref="form" />
                     <Input type="submit" />

@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 
 //product type reducer which creates, grabs, updates, and delete product type
 //all information is sent via object
-const productTypeReducer = (state = {}, action) => {
+const productTypeReducer = (state = [], action) => {
     switch(action.type) {
         case 'FETCH_PRODUCT_TYPE':
             return action.payload;

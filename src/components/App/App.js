@@ -21,7 +21,7 @@ import Admin from '../Admin/Admin';
 // end adding admin page
 
 import './App.css';
-import UserLandingPage from '../UserLandingPage/UserHomePage';
+import UserLandingPage from '../UserLandingPage/UserLandingPage';
 
 class App extends Component {
   componentDidMount () {

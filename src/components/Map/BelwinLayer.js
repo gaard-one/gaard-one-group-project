@@ -29,9 +29,9 @@ export default class BelwinLayer extends React.Component {
             // Create a symbol for rendering the graphic
             const fillSymbol = {
                 type: "simple-fill", // autocasts as new SimpleFillSymbol()
-                color: [227, 139, 79, 0.2],
+                // color: '#90897f',
                 outline: { // autocasts as new SimpleLineSymbol()
-                color: [255, 0, 0],
+                color: '#90897f',
                 width: 1
                 }
             };

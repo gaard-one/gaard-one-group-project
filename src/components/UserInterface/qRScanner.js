@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
 import './UserInterface.css';
-import BaseMap from '../Map/BaseMap';
+
 
 //  Build out of qr scanner for in app accessibility -Tiana
 class qRScanner extends Component {
@@ -40,7 +40,7 @@ class qRScanner extends Component {
         return (
             <div className="ui-main-div">
             <br/>
-                <Card className="ui-card">
+                {/* <Card className="ui-card"> */}
                 <br />
                 {this.state.show ?
                 <div>
@@ -58,7 +58,7 @@ class qRScanner extends Component {
                 <br />
                 {/* maybe this.push.history */}
                 <a href={this.state.result}>{this.state.result}</a>
-                </Card>
+                {/* </Card> */}
                 <br/>
                 
 

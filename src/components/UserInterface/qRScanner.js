@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import './UserInterface.css';
 import BaseMap from '../Map/BaseMap';
 
-
+//  Build out of qr scanner for in app accessibility -Tiana
 class qRScanner extends Component {
 
 
@@ -67,3 +67,4 @@ class qRScanner extends Component {
     }
 }
 export default qRScanner;
+// end Build out of qr scanner for in app accessibility -Tiana

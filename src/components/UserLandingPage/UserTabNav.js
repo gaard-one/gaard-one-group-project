@@ -7,8 +7,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import UserHomePage from '../UserLandingPage/UserHomePage';
-import SavedLand from './../UserInterface/SavedLand';
+// import SavedLand from './../UserInterface/SavedLand';
 
+// updated tabs with usable pages -Tiana
 function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -59,20 +60,14 @@ class UserTabNav extends React.Component {
           >
             <Tab label="Land You Saved" />
             <Tab label="Saved in 2018" />
-            {/* <Tab label="Item Three" /> */}
           </Tabs>
         </AppBar>
         <SwipeableViews
-
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-         {/* {value === 0 && <UserInterface match={this.props.match} history={this.props.history}/>}  */}
-         {/* {value === 1 && <SavedLand match={this.props.match} history={this.props.history}/>} */}
           <TabContainer dir={theme.direction}><UserHomePage/></TabContainer>
-          
-          {/* <SavedLand/> */}
           <TabContainer dir={theme.direction}>Saved in 2018</TabContainer>
         </SwipeableViews>
       </div>
@@ -86,3 +81,4 @@ UserTabNav.propTypes = {
 };
 
 export default withStyles(styles, { withTheme: true })(UserTabNav);
+// end...updated tabs with usable pages -Tiana

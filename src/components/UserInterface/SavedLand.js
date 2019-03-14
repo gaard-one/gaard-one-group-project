@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Belwin from './../Map/BelwinLayer';
+// import PreProject from './../Map/PreProjectAllocations';
 
 // secondary tab view of land save in 2018 -Tiana
 class SavedLand extends Component {
@@ -7,7 +7,7 @@ class SavedLand extends Component {
     rebder(){
         return (
             <div>
-              <Belwin/>  
+              {/* <PreProject/>   */}
             </div>
         )
     }

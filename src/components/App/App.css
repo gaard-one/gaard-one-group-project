@@ -47,3 +47,16 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+.share-icons {
+    padding: 20px;
+}
+.share-div {
+    text-align: Center;
+    margin: 15px;
+}
+.sharethis-inline-share-buttons {
+    margin-bottom: 20px;
+}
+/* .icon-card {
+    background-color: black;
+} */

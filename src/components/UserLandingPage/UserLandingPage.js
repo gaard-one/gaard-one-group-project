@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import UserTabNav from './UserTabNav';
 import './UserLanding.css';
 import Header from '../Header/Header';
-// import UserHomePage from './../UserLandingPage/UserHomePage';
+import UserHomePage from './../UserLandingPage/UserHomePage';
+import SocialMedia from './../SocialMedia/SocialMedia';
 
 // base of user landing page view -Tiana
 class UserLandingPage extends Component {
@@ -18,8 +19,9 @@ class UserLandingPage extends Component {
         <Header />
         <h3 className="userHeader">Thank You!!!</h3>
         <h4 className="userSubHeader">Your purchase perserved {totalArea} </h4>
-
-        <UserTabNav />
+        <UserHomePage />
+        {/* <UserTabNav /> */}
+        <SocialMedia />
         
       </div>
     );

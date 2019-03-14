@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
+// import SwipeableViews from 'react-swipeable-views';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -44,11 +44,10 @@ class UserTabNav extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
-    // const { value } = this.state;
-
+    const { value } = this.state;
+    
     return (
-      <div className={classes.root}>
+      <div className="app-bar">
         <AppBar position="static" color="default">
           <Tabs
             centered
@@ -62,14 +61,16 @@ class UserTabNav extends React.Component {
             <Tab label="Saved in 2018" />
           </Tabs>
         </AppBar>
-        <SwipeableViews
+        {value === 0 && <TabContainer><UserHomePage /></TabContainer>}
+        {value === 1 && <TabContainer>Item Two</TabContainer>}
+        {/* <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}><UserHomePage /></TabContainer>
           <TabContainer dir={theme.direction}>Saved in 2018</TabContainer>
-        </SwipeableViews>
+        </SwipeableViews> */}
       </div>
     );
   }

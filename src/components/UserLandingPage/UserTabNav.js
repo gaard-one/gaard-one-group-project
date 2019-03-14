@@ -44,8 +44,8 @@ class UserTabNav extends React.Component {
   };
 
   render() {
-    // const { classes, theme } = this.props;
     const { value } = this.state;
+    
     return (
       <div className="app-bar">
         <AppBar position="static" color="default">

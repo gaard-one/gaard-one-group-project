@@ -45,6 +45,7 @@ class UserTabNav extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
+    // const { value } = this.state;
 
     return (
       <div className={classes.root}>

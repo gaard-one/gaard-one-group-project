@@ -45,7 +45,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         res.send(result.rows)
         console.log('Result.rows: ', result.rows);
     }).catch((error) => {
-        console.log('Something went wrong in GET product types', error);
+        console.log('Something went wrong in GET product', error);
         res.sendStatus(500);
     });
 });

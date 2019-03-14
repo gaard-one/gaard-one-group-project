@@ -62,7 +62,7 @@ class UserTabNav extends React.Component {
           </Tabs>
         </AppBar>
         {value === 0 && <TabContainer><UserHomePage /></TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
+        {value === 1 && <TabContainer><SavedLand /></TabContainer>}
         {/* <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}

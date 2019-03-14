@@ -4,7 +4,7 @@ import './UserLanding.css';
 import Header from '../Header/Header';
 // import UserHomePage from './../UserLandingPage/UserHomePage';
 
-
+// base of user landing page view -Tiana
 class UserLandingPage extends Component {
 
 
@@ -26,3 +26,4 @@ class UserLandingPage extends Component {
   }
 }
 export default UserLandingPage;
+//end base of user landing page view -Tiana

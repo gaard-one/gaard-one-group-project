@@ -1,17 +1,74 @@
 import React, { Component } from 'react';
+import { Input, FormControl } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 class ProductForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            product_name: '',
+            cost: '',
+            description: '',
+        }
+    }
+    
+
+    handleSubmit = () => {
+        const action = { type: 'ADD_PRODUCT_TYPE', payload: this.state}
+        this.props.dispatch(action);
+    }
+
+    handleProductName = (event) => {
+        this.setState({
+            ...this.state,
+            product_name: event.target.value,
+        })
+    }
+
+    handleCost = (event) => {
+        this.setState({
+            ...this.state,
+            cost: event.target.value,
+        })
+    }
+
+    handleDescription = (event) => {
+        this.setState({
+            ...this.state,
+            description: event.target.value,
+        })
+    }
+
     render() {
         return (
             <div>
-                <form>
-                    <input></input>
-                    <input></input>
-                    <button>Add New Product</button>
+                <FormControl margin="normal">
+                    <Input
+                        // margin="normal"
+                        autoComplete
+                        required
+                        placeholder="Product Name"
+                        onChange={this.handleProductName}></Input>
+                    <Input
+                        required
+                        autoComplete
+                        // margin="normal"
+                        placeholder="Cost"
+                        onChange={this.handleCost}></Input>
+                    <Input
+                        required
+                        autoComplete
+                        // margin="normal"
+                        placeholder="Description"
+                        rows={4}
+                        onChange={this.handleDescription}></Input>
+                    <Input type="button"
+                           onClick={this.handleSubmit}
+                           value="Add New Product" />
 
-                </form>
+                </FormControl>
             </div>
         )
     }
 }
-export default ProductForm;
+export default connect()(ProductForm);

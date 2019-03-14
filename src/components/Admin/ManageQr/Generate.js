@@ -65,7 +65,7 @@ class Generate extends Component {
 
 const mapReduxStoreToProps = reduxStore => ({
     ...reduxStore,
-    products: reduxStore.productType.productTypeReducer,
+    products: reduxStore.productType,
 });
 
 export default connect(mapReduxStoreToProps)(Generate);

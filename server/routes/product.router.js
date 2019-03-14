@@ -92,27 +92,19 @@ router.post('/', (req, res) => {
                 await client.query(queryText, [plot_id, baseUnit.id]);
 
 
-                //add the rest of the unit squares based on their 
-                //distance from the original (baseUnit)
-                //j starts at 1 because 0 corresponds to base unit
-                for(let j = 1; j < productTypeCost; j++){
-                    //find Next closet square
-                    queryText =  `SELECT *
-                                FROM unit_squares
-                                WHERE geo_distance($1,bl_corner_lon,$2,bl_corner_lat) = 
-                                (SELECT min(geo_distance($1,bl_corner_lon,$2,bl_corner_lat)) 
-                                    FROM unit_squares 
-                                    WHERE plot_id IS NULL);`;
+                    //update squares to be in the plot
+                    queryText =  `UPDATE unit_squares 
+                                  SET "plot_id" = $1 WHERE "id" IN 
+                                  (SELECT id
+                                    FROM unit_squares
+                                    WHERE plot_id IS NULL
+                                    ORDER BY geo_distance($2,bl_corner_lon,$3,bl_corner_lat) ASC
+                                    LIMIT $4);`;
                     let nextSquare = await client.query(queryText, 
-                                                        [baseUnit.bl_corner_lon,
-                                                         baseUnit.bl_corner_lat]);
-                    //update square to be in the plot
-                    queryText = `UPDATE "unit_squares" 
-                                SET "plot_id" = $1
-                                WHERE id = $2;`;
-                    await client.query(queryText, [plot_id, nextSquare.rows[0].id]);
-                }//end for loop with j
-                console.log('exit j for loop');    
+                                                        [plot_id,
+                                                         baseUnit.bl_corner_lon,
+                                                         baseUnit.bl_corner_lat,
+                                                         productTypeCost]);   
 
             }//end for loop with i
             console.log('exit i for loop');

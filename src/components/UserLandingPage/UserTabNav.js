@@ -7,7 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import UserHomePage from '../UserLandingPage/UserHomePage';
-// import SavedLand from './../UserInterface/SavedLand';
+import SavedLand from './../UserInterface/SavedLand';
 
 // updated tabs with usable pages -Tiana
 function TabContainer({ children, dir }) {
@@ -62,7 +62,7 @@ class UserTabNav extends React.Component {
           </Tabs>
         </AppBar>
         {value === 0 && <TabContainer><UserHomePage /></TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
+        {value === 1 && <TabContainer><SavedLand /></TabContainer>}
         {/* <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}

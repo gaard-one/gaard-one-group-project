@@ -3,7 +3,7 @@ import './UserLanding.css';
 import QRScanner from './../UserInterface/qRScanner';
 import BaseMap from '../Map/BaseMap';
 
-
+// Single side view of User Tab -Tiana
 class UserHomePage extends Component {
 
 
@@ -19,3 +19,4 @@ class UserHomePage extends Component {
   }
 }
 export default UserHomePage;
+// end Single side view of User Tab -Tiana

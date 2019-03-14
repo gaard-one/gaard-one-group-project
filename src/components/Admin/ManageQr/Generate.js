@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormControl, Input, InputLabel, Select, MenuItem, TextField, Button } from '@material-ui/core';
+import { FormControl, Input,  Select,  TextField,} from '@material-ui/core';
 
 
 class Generate extends Component {
@@ -15,7 +15,7 @@ class Generate extends Component {
     componentDidMount(){
         this.props.dispatch({type: 'FETCH_PRODUCT_TYPE'});
     }
-
+    // handles the change of the product type drop down menu
     changeInput = (event) => {
         console.log(event.target.name,event.target.value);
         const formName = event.target.name;
@@ -25,8 +25,9 @@ class Generate extends Component {
             [formName]: changeValue,
         })
         console.log(this.state);
-    }
+    }//end
 
+    // handles the change of the quantity
     changeQunanity=(event=>{
         console.log(event.target.value);
         const inputquanity = parseInt(event.target.value);
@@ -34,7 +35,9 @@ class Generate extends Component {
             ...this.state,
             quantity: inputquanity
         })
-    })
+    })//end
+
+    // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate=(event)=>{
         event.preventDefault();
         console.log(this.state);
@@ -42,13 +45,13 @@ class Generate extends Component {
              type: 'ADD_PRODUCT', payload: this.state
         });
         this.props.dispatch(action);
-    }
-
+    }//end
+                 // {JSON.stringify(this.props.products)}
+                // {/* {this.props.products[0] !== undefined && JSON.stringify(this.props.products[0].id)} */}
     render() {
         return (
             <div>
-                {JSON.stringify(this.props.products)}
-                {/* {this.props.products[0] !== undefined && JSON.stringify(this.props.products[0].id)} */}
+              
                 <FormControl name="GenerateQrCode" onSubmit={this.submitGenerate}>
                     {/* <InputLabel htmlFor="productType">Select Product</InputLabel> */}
                     <Select
@@ -57,7 +60,7 @@ class Generate extends Component {
                             name="productType" 
                             placeholder="Product Type" 
                             ref="form"
-                            defaultValue="" > 
+                            Value="" > 
                             <option >Select Product</option>
                         {this.props.products.map((product, i) => (
                             <option key={i} 
@@ -72,7 +75,7 @@ class Generate extends Component {
         );
     }
 }
-
+// maps redux to products
 const mapReduxStoreToProps = reduxStore => ({
     ...reduxStore,
     products: reduxStore.productType.productTypeReducer,

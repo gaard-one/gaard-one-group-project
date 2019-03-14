@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import QRCode from 'qrcode-react';
+import { connect } from 'react-redux';
+// import QRCode from 'qrcode-react';
 // import axios from './axios';
 
 
@@ -7,17 +8,21 @@ class Admin extends Component {
     constructor(props){
         super(props);
         this.state={
-            qrProductType: [],
-            qrCodesToMake: [], 
+           
         }
+    }
+
+    componentDidMount(){
+        this.props.dispatch({type:'FETCH_PRODUCT'});
     }
 
 
 
     render() {
-    
+    {JSON.stringify(this.props.reduxStore)};
     
         return (
+         
             <div>
                 <div>
                     <table>
@@ -36,4 +41,8 @@ class Admin extends Component {
         );
     }
 }
-export default Admin;
+const mapReduxStoreToProps = reduxStore => ({
+    ...reduxStore,
+});
+
+export default connect(mapReduxStoreToProps)(Admin);

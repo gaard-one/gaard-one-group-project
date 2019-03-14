@@ -46,9 +46,9 @@ router.post('/', (req, res) => {
 
         console.log('req.body is ', req.body);
 
-        const quantity = parseInt(req.body.quantity);
-        const productTypeId = parseInt(req.body.productType.productTypeId);
-        const productTypeCost = parseInt(req.body.productType.productTypeCost);
+        const quantity = Number(req.body.quantity);
+        const productTypeId = parseInt(req.body.productType.id);
+        const productTypeCost = parseInt(req.body.productType.cost);
 
         //opens a connection until it's closed later
         const client = await pool.connect();

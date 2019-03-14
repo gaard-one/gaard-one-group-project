@@ -59,6 +59,8 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
  * DELETE router template
  */
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('In router delete PT', req.params.id);
+    
     const queryText = `DELETE FROM "product_type"
                        WHERE "id" = $1;`;
     pool.query(queryText, [req.params.id])

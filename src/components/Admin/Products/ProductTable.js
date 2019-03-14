@@ -18,7 +18,8 @@ class ProductTable extends Component {
         return (
             <div>
                 <div>
-                    {JSON.stringify(this.props.productType)}
+                 {/* This is needed for id */}
+                    {/* {this.props.state.productType.productTypeReducer[0] !== undefined && JSON.stringify(this.props.state.productType.productTypeReducer[0].id)} */}
                     <table>
                         <thead>
                             <tr>

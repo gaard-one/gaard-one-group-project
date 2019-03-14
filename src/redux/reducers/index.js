@@ -5,6 +5,7 @@ import user from './userReducer';
 // import product from './productReducer';
 import productType from './productTypeReducer';
 import unitSq from './unitSqReducer';
+// import qrCode from './qrCodeReducer';
 // uncomment when being built out or else it will throw errors
 
 // rootReducer is the primary reducer for our entire project
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   // product, 
   productType,
   unitSq,
+  // qrCode,
 });
 
 export default rootReducer;

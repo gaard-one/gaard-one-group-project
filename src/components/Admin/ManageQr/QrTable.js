@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
+import QRCode from 'qrcode-react';
+// import axios from './axios';
 
 
 class Admin extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            qrProductType: [],
+            qrCodesToMake: [], 
+        }
+    }
+
+
+
     render() {
+    
+    
         return (
             <div>
                 <div>

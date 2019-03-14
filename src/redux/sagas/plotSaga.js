@@ -7,7 +7,7 @@ function* fetchPlot(action) {
       //this will receive a product id NOT a plot id
         // const response = yield axios.get(`api/plots/${action.payload}`);
         //DUMMY Line will switch when done
-        const response = yield axios.get(`api/plots/5`);
+        const response = yield axios.get(`api/plots/20`);
     
         //sends array of rows for plot
         yield put({ type: 'SET_DISPLAY_SQUARE', payload: response.data });

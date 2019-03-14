@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QRCode from 'qrcode-react';
 import { FormControl, Input, InputLabel, Select, MenuItem } from '@material-ui/core';
 
 
@@ -8,8 +7,8 @@ class Generate extends Component {
     constructor(props){
         super(props);
         this.state={
-            qrProductType: [],
-            qrCodesToMake: [], 
+            productType: [],
+            quantity: [], 
         }
     }
 
@@ -30,10 +29,11 @@ class Generate extends Component {
 
     submitGenerate=(event)=>{
         event.preventDefault();
-        console.log('Submit Click');
-    //      const action={
-    //          type:
-    //  }
+        console.log(this.state);
+         const action=({
+             type: 'ADD_PRODUCT', payload: this.state
+        });
+        this.props.dispatch(action);
     }
 
     render() {
@@ -42,20 +42,20 @@ class Generate extends Component {
                 {JSON.stringify(this.props.products)}
                 {/* {this.props.products[0] !== undefined && JSON.stringify(this.props.products[0].id)} */}
                 <FormControl name="GenerateQrCode" onSubmit={this.submitGenerate}>
-                    <InputLabel htmlFor="product-select">Select Product</InputLabel>
+                    {/* <InputLabel htmlFor="productTypeCost">Select Product</InputLabel> */}
                     <Select  
                             onChange={this.changeInput} 
-                            type="select" 
-                            name="qrProductType" 
-                            placeholder="Product Type" 
+                           
+                            name="productType" 
+                            // placeholder="Product Type" 
                             ref="form" >
                         {this.props.products.map((product, i) => (
                             <MenuItem key={i} 
-                                      value={product.cost}>
+                                      value={product}>
                                       {product.product_name} 
                             </MenuItem>))}
                     </Select>
-                    <Input onChange={this.changeInput} type="number" name="qrCodesToMake" placeholder="Quantity" ref="form" />
+                    <Input onChange={this.changeInput} type="number" name="quantity" placeholder="Quantity" ref="form" />
                     <Input type="submit" onClick={this.submitGenerate}/>
                 </FormControl>
             </div>

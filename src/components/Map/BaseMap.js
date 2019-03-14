@@ -3,6 +3,7 @@ import { Map } from '@esri/react-arcgis';
 import BelwinLayer from './BelwinLayer.js';
 import QrScan from './QrScan.js';
 import { connect } from 'react-redux';
+import PreProjectAllocations from './PreProjectAllocations.js';
 
 class BaseMap extends React.Component {
     constructor(props) { 
@@ -40,6 +41,7 @@ class BaseMap extends React.Component {
                     // onMouseWheel={(e) => { e.stopPropagation() }}
                 >
                   <BelwinLayer />
+                  <PreProjectAllocations />
                   {this.props.reduxStore.unitSq.map((point, i) => {
                             return (<QrScan key={i} 
                                         point={point}/>);

@@ -37,9 +37,11 @@ router.put('/claimed/:id', (req, res)=>{
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "product" 
-                            JOIN "product_type" 
-                            ON "product"."product_type_id" = "product_type"."id" 
-                            WHERE "claimed" = false;`;
+                        JOIN "product_type"  
+                        ON "product"."product_type_id" = "product_type"."id" 
+                        JOIN "plot"
+                        ON "plot"."product_id" = "product"."id"
+                        WHERE "claimed" = false;`;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormControl, Input,  Select,  TextField,} from '@material-ui/core';
+import { FormControl, Input,  Select,  TextField, InputLabel } from '@material-ui/core';
 
 
 class Generate extends Component {
@@ -46,15 +46,14 @@ class Generate extends Component {
         });
         this.props.dispatch(action);
     }//end
-                 // {JSON.stringify(this.props.products)}
-                // {/* {this.props.products[0] !== undefined && JSON.stringify(this.props.products[0].id)} */}
-    render() {
+              
+    render () {
         return (
             <div>
-              
-                <FormControl name="GenerateQrCode" onSubmit={this.submitGenerate}>
-                    {/* <InputLabel htmlFor="productType">Select Product</InputLabel> */}
-                    <Select
+                
+                <form name="GenerateQrCode" onSubmit={this.submitGenerate}>
+                    <InputLabel htmlFor="productType">Select Product</InputLabel> 
+                    <select
                             select label="Select"
                             onChange={this.changeInput} 
                             name="productType" 
@@ -67,10 +66,10 @@ class Generate extends Component {
                                       value={product}>
                                       {product.product_name} 
                             </option>))}
-                    </Select >
+                    </select>
                     <TextField type="number" onChange={this.changeQunanity}  name="quantity" placeholder="Quantity" min="0" ref="form" />
                     <Input type="submit" onClick={this.submitGenerate}/>
-                </FormControl>
+                </form>
             </div>
         );
     }

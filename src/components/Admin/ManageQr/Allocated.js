@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Generate from './Generate';
+
 
 class Allocated extends Component {
     render() {
@@ -8,7 +8,7 @@ class Allocated extends Component {
                 <p>
                     [insert amount] has been allocated   
                 </p>
-                <Generate />
+               
             </div>
         );
     }

@@ -1,6 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 // PUT route for product printed
 router.put('/printed/:id', (req, res)=>{
     console.log('in put route req.body', req.body);
@@ -31,11 +33,25 @@ router.put('/claimed/:id', (req, res)=>{
 })
 // end PUT route for product claimed
 /**
- * GET route template
+ * GET route template for product without a QR code
  */
-router.get('/', (req, res) => {
-    
+router.get('/', rejectUnauthenticated, (req, res) => {
+    const queryText = `SELECT * FROM "product" 
+                        JOIN "product_type"  
+                        ON "product"."product_type_id" = "product_type"."id" 
+                        JOIN "plot"
+                        ON "plot"."product_id" = "product"."id"
+                        WHERE "claimed" = false;`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows)
+        console.log('Result.rows: ', result.rows);
+    }).catch((error) => {
+        console.log('Something went wrong in GET product', error);
+        res.sendStatus(500);
+    });
 });
+//end GET route for unclaimed product
 
 /**
  * POST route template

@@ -8,7 +8,7 @@ function* fetchPlot(action) {
         const response = yield axios.get(`api/plots/${action.payload}`);
         //DUMMY Line will switch when done
 
-        const response = yield axios.get(`api/plots/4`);
+        // const response = yield axios.get(`api/plots/4`);
 
     
         //sends array of rows for plot

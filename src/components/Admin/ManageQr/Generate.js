@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormControl, Input,  Select,  TextField, InputLabel } from '@material-ui/core';
+import { FormControl,  Select,  Button, InputLabel, MenuItem, } from '@material-ui/core';
 
 
 class Generate extends Component {
     constructor(props){
         super(props);
         this.state={
-            productType: [],
+            productType: {},
             quantity: '', 
+            open: false,
         }
     }
 
     componentDidMount(){
         this.props.dispatch({type: 'FETCH_PRODUCT_TYPE'});
     }
+
     // handles the change of the product type drop down menu
     changeInput = (event) => {
         console.log(event.target.name,event.target.value);
-        const formName = event.target.name;
+        console.log(event.target)
         const changeValue = event.target.value;
         this.setState({
-            ...this.state,
-            [formName]: changeValue,
+                ...this.state,
+                productType: changeValue,
         })
-        console.log(this.state);
+       
     }//end
 
     // handles the change of the quantity
-    changeQunanity=(event=>{
+    changeQunanity = (event) => {
         console.log(event.target.value);
         const inputquanity = parseInt(event.target.value);
         this.setState({
-            ...this.state,
-            quantity: inputquanity
-        })
-    })//end
+                ...this.state,
+                quantity: inputquanity
+        });
+    };//end
 
     // submits the data to the productSaga to generate unique plots based on admin inputs
-    submitGenerate=(event)=>{
+    submitGenerate = (event) => {
         event.preventDefault();
         console.log(this.state);
          const action=({
@@ -46,32 +48,49 @@ class Generate extends Component {
         });
         this.props.dispatch(action);
     }//end
+
+    
+        handleClose = () => {
+            this.setState({ open: false });
+          };
+        
+          handleOpen = () => {
+            this.setState({ open: true });
+          };
               
-    render () {
+    render(){
         return (
-            <div>
+            
+            <form autoComplete="off">
+                <Button className={classes.button} onClick={this.handleOpen}>
+                     Open the select
+                </Button>
+                <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="demo-controlled-open-select">Select Product</InputLabel>
+                <Select
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    onOpen={this.handleOpen}
+                     value={this.state.age}
+                    onChange={this.handleChange}
+                    inputProps={{
+                    name: 'selectProduct',
+                    id: 'demo-controlled-open-select',
+                    }}
+                >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {this.props.products.map((Item, i )=>{
+                    <MenuItem key={i} value={Item}>
+                        {Item.product_name}
+                </MenuItem>})}
                 
-                <form name="GenerateQrCode" onSubmit={this.submitGenerate}>
-                    <InputLabel htmlFor="productType">Select Product</InputLabel> 
-                    <select
-                            select label="Select"
-                            onChange={this.changeInput} 
-                            name="productType" 
-                            placeholder="Product Type" 
-                            ref="form"
-                            Value="" > 
-                            <option >Select Product</option>
-                        {this.props.products.map((product, i) => (
-                            <option key={i} 
-                                      value={product}>
-                                      {product.product_name} 
-                            </option>))}
-                    </select>
-                    <TextField type="number" onChange={this.changeQunanity}  name="quantity" placeholder="Quantity" min="0" ref="form" />
-                    <Input type="submit" onClick={this.submitGenerate}/>
-                </form>
-            </div>
-        );
+              </Select>
+            </FormControl>
+          </form>
+        //    
+        )
     }
 }
 // maps redux to products

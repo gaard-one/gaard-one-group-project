@@ -62,10 +62,10 @@ class Generate extends Component {
         return (
             
             <form autoComplete="off">
-                <Button className={classes.button} onClick={this.handleOpen}>
+                <Button onClick={this.handleOpen}>
                      Open the select
                 </Button>
-                <FormControl className={classes.formControl}>
+                {/* <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="demo-controlled-open-select">Select Product</InputLabel>
                 <Select
                     open={this.state.open}
@@ -87,7 +87,7 @@ class Generate extends Component {
                 </MenuItem>})}
                 
               </Select>
-            </FormControl>
+            </FormControl> */}
           </form>
         //    
         )

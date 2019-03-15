@@ -7,6 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Allocated from './ManageQr/Allocated';
+import Generate from './ManageQr/Generate';
 import QrTable from './ManageQr/QrTable';
 import ProductTable from './Products/ProductTable';
 import ProductForm from './Products/ProductForm';
@@ -70,6 +71,7 @@ class AdminTabNav extends Component {
                 >
                     <TabContainer dir={theme.direction}>
                         <Allocated />
+                        <Generate />
                         <QrTable />
 
                     </TabContainer>

@@ -22,6 +22,9 @@ class AllocationStatChart extends Component {
         const productName = this.props.reduxStore.productType.map((product)=>{
             return product.product_name;
         });
+
+
+        
         const data = {
             datasets: [{
                 data: [

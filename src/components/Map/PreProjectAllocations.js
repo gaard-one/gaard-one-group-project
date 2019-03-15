@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { loadModules } from '@esri/react-arcgis';
- 
-export default class BelwinLayer extends React.Component {
+
+export default class PreProjectAllocations extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,17 +19,18 @@ export default class BelwinLayer extends React.Component {
             const polygon = {
                 type: "polygon", // autocasts as new Polygon()
                 rings: [//points of polygon, order matters!!
-                [-92.82123, 44.93727],//bottom left
-                [-92.81737, 44.93723],//bottom right
-                [-92.81737, 44.93633],//top right
-                [-92.82062, 44.93637]//top left
+                [-92.82123, 44.93727],//top left
+                [-92.82045, 44.937265],//top right
+                [-92.82045, 44.93637],//bottom right
+                [-92.82062, 44.93637]//bottom left
                 ]
             };
  
             // Create a symbol for rendering the graphic
             const fillSymbol = {
                 type: "simple-fill", // autocasts as new SimpleFillSymbol()
-                // color: '#90897f',
+                color: '#90897f',
+                style: 'forward-diagonal',
                 outline: { // autocasts as new SimpleLineSymbol()
                 color: '#90897f',
                 width: 1

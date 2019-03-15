@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import QrTableRow from './QrTableRow';
 
 
+
 class QrTable extends Component {
     constructor(props){
         super(props);

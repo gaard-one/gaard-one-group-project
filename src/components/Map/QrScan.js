@@ -42,7 +42,7 @@ export default class QrScan extends React.Component {
 
       const fillSymbol = {
         type: "simple-fill", // autocasts as new SimpleFillSymbol()
-        color: '#647c36',
+        // color: '#647c36',
         outline: { // autocasts as new SimpleLineSymbol()
         color: '647c36',
         width: 1

@@ -32,7 +32,7 @@ class ProductTable extends Component {
                         </thead>
                         <tbody>
                             
-                                {this.props.state.productType.productTypeReducer.map((productTypeItem, i) => {
+                                {this.props.products.map((productTypeItem, i) => {
                                     return (
                                         <ProductTableRow productTypeItem={productTypeItem} key={i} />
                                     )
@@ -47,7 +47,7 @@ class ProductTable extends Component {
 }
 
 const mapStatetoProps = (state) => ({
-    state: state,
+    products: state.productType,
 })
 
 export default connect(mapStatetoProps)(ProductTable);

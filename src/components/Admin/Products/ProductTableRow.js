@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class ProductTableRow extends Component {
+
+    handleDelete = (event) => {
+        const action = { type: 'DELETE_PRODUCT_TYPE', payload: this.props.productTypeItem };
+        this.props.dispatch(action);
+    }
+
+    
+
     render() {
         return (
             <tr>
@@ -18,11 +27,11 @@ class ProductTableRow extends Component {
                     <button>Edit</button>
                 </td>
                 <td>
-                    <button>Delete</button>
+                    <button onClick={this.handleDelete}>Delete</button>
                 </td>
             </tr>
         )
     }
 }
 
-export default ProductTableRow;
+export default connect()(ProductTableRow);

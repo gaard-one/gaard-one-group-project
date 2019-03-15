@@ -24,7 +24,7 @@ function* createProductType(action) {
 function* fetchProductType() {
     try {
         const responseFromServer = yield axios.get('/api/productType');
-        const nextAction = { type: 'GET_PRODUCT_TYPE', payload: responseFromServer.data };
+        const nextAction = { type: 'SET_PRODUCT_TYPE', payload: responseFromServer.data };
         yield put(nextAction);
     } catch (error) {
         console.log('Fetch product type request failed', error);

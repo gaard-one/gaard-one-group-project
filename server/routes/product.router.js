@@ -120,7 +120,7 @@ router.post('/', (req, res) => {
                                                         [plot_id,
                                                          baseUnit.bl_corner_lon,
                                                          baseUnit.bl_corner_lat,
-                                                         productTypeCost]);   
+                                                         (productTypeCost - 1) ]);   
 
             }//end for loop with i
             console.log('exit i for loop');

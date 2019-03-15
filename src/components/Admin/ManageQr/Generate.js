@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { FormControl, Input,  Select,  TextField, InputLabel } from '@material-ui/core';
+import { FormControl,  Select,  Button, InputLabel, MenuItem, } from '@material-ui/core';
 
 
 class Generate extends Component {
@@ -9,6 +9,7 @@ class Generate extends Component {
         this.state={
             productType: {},
             quantity: '', 
+            open: false,
         }
     }
 
@@ -48,35 +49,48 @@ class Generate extends Component {
         this.props.dispatch(action);
     }//end
 
-     displayDropDown =()=>{
-        this.props.products.map((Item, i )=>(
-            <option key={i}
-                value={Item}>
-                {Item.product_name} 
-            </option>))
-        }
+    
+        handleClose = () => {
+            this.setState({ open: false });
+          };
         
+          handleOpen = () => {
+            this.setState({ open: true });
+          };
               
     render(){
         return (
-            <div>
-                {/* {JSON.stringify(this.props.products)};
-                <form name="GenerateQrCode" onSubmit={this.submitGenerate}>
-                    <select
-                            onChange={this.changeInput} 
-                            > 
-                            <option value="">Select Product</option>
-                            {this.props.products.map((Item, i )=>{
-                                return (
-                                <option key={i} value={Item}>
-                                    {Item.product_name} 
-                                </option>)})}
-                    </select>
-                    <input type="number" onChange={this.changeQunanity}  name="quantity" placeholder="Quantity" min="0"  />
-                    <input type="submit" onClick={this.submitGenerate}/> 
-                </form>*/}
-            </div>
-        );
+            
+            <form autoComplete="off">
+                <Button className={classes.button} onClick={this.handleOpen}>
+                     Open the select
+                </Button>
+                <FormControl className={classes.formControl}>
+                    <InputLabel htmlFor="demo-controlled-open-select">Select Product</InputLabel>
+                <Select
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    onOpen={this.handleOpen}
+                     value={this.state.age}
+                    onChange={this.handleChange}
+                    inputProps={{
+                    name: 'selectProduct',
+                    id: 'demo-controlled-open-select',
+                    }}
+                >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {this.props.products.map((Item, i )=>{
+                    <MenuItem key={i} value={Item}>
+                        {Item.product_name}
+                </MenuItem>})}
+                
+              </Select>
+            </FormControl>
+          </form>
+        //    
+        )
     }
 }
 // maps redux to products

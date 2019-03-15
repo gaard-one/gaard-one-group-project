@@ -11,6 +11,8 @@ import Generate from './ManageQr/Generate';
 import QrTable from './ManageQr/QrTable';
 import ProductTable from './Products/ProductTable';
 import ProductForm from './Products/ProductForm';
+import AllocationStatChart from './AllocationStatChart/AllocationStatChart';
+
 
 
 function TabContainer({ children, dir }) {
@@ -79,7 +81,9 @@ class AdminTabNav extends Component {
                         <ProductForm />
                         <ProductTable />
                     </TabContainer>
-                    <TabContainer dir={theme.direction}>Item Three</TabContainer>
+                    <TabContainer dir={theme.direction}>
+                    <AllocationStatChart />
+                    </TabContainer>
                 </SwipeableViews>
             </div>
         );

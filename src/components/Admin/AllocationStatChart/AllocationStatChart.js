@@ -22,10 +22,17 @@ class AllocationStatChart extends Component {
         const productName = this.props.reduxStore.productType.map((product)=>{
             return product.product_name;
         });
-        const totalTshirt = this.props.reduxStore.product.reduce((accumulator, total) => {
-            return accumulator + total.cost
-        }, 0)
+        // const totalTshirt = this.props.reduxStore.product.reduce((accumulator, total) => {
+        //     return accumulator + total.cost
+        // }, 0)
 
+
+        const totalTshirt = this.props.reduxStore.product.filter((product) => {
+            return product.product_type_id === 1;
+        })
+        .reduce((accumulator, tshirt) => {
+            return accumulator + tshirt.cost;
+        }, 0)
 
         
         const data = {
@@ -44,7 +51,7 @@ class AllocationStatChart extends Component {
                     '#E7E9ED',
                     '#36A2EB'
                 ],
-                label: ['My dataset', 'test'] // for legend
+                label: 'Land Allocated' // for legend
             }],
             labels: productName,
             // labels: [

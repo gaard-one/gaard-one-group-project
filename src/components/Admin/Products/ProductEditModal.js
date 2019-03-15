@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import { Input, FormControl } from '@material-ui/core';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 
-class ProductForm extends Component {
+class ProductEditModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: this.props.id,
             product_name: '',
             cost: '',
             description: '',
         }
     }
-    
 
-    handleSubmit = () => {
-        const action = { type: 'ADD_PRODUCT_TYPE', payload: this.state}
+
+    handleUpdateSubmit = () => {
+        const action = { type: 'UPDATE_PRODUCT_TYPE', payload: this.state }
         this.props.dispatch(action);
     }
+
 
     handleProductName = (event) => {
         this.setState({
@@ -42,6 +45,7 @@ class ProductForm extends Component {
     render() {
         return (
             <div>
+                <h2>Edit</h2>
                 <FormControl margin="normal">
                     <Input
                         autoComplete
@@ -60,12 +64,15 @@ class ProductForm extends Component {
                         rows={4}
                         onChange={this.handleDescription}></Input>
                     <Input type="button"
-                           onClick={this.handleSubmit}
-                           value="Add New Product" />
+                        onClick={this.handleUpdateSubmit}
+                        value="Update Product" />
 
                 </FormControl>
+
+                <Button onClick={this.props.handleEditClose}>Close</Button>
             </div>
         )
     }
-}
-export default connect()(ProductForm);
+};
+
+export default connect()(ProductEditModal);

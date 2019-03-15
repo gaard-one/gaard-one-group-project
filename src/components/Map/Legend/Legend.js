@@ -13,13 +13,12 @@ class Legend extends React.Component {
 
     render() {
         return (
-            <div className="legend">
-                <header>Legend</header>
-                <p> Current Goal <div className="belwinBorder"></div></p>
-                <p> Land saved by You <div className="purchase"></div></p>
-                <p> Saved in put a year here <div className="savedByYear"></div></p>
-              
-            </div>
+            <fieldset className='legend'>
+                <legend>Legend</legend>
+                Saved by You: <div className="purchase"/><br/><br/>
+                Our Goal: <div className="belwinBorder"/><br/><br/>
+                Saved in 'year': <div className="savedByYear"/><br/>
+            </fieldset>
         );
     }
 }

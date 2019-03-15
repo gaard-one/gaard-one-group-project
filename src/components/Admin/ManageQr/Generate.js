@@ -62,10 +62,17 @@ class Generate extends Component {
         return (
             
             <form autoComplete="off">
+<<<<<<< HEAD
                 {/* <Button  onClick={this.handleOpen}>
                      Open the select
                 </Button>
                 <FormControl >
+=======
+                <Button onClick={this.handleOpen}>
+                     Open the select
+                </Button>
+                {/* <FormControl className={classes.formControl}>
+>>>>>>> f8d6575c03fddbb1dbca2dccbe10cdd38a831f4f
                     <InputLabel htmlFor="demo-controlled-open-select">Select Product</InputLabel>
                 <Select
                     open={this.state.open}

@@ -22,10 +22,16 @@ class AllocationStatChart extends Component {
         const productName = this.props.reduxStore.productType.map((product)=>{
             return product.product_name;
         });
+        const totalTshirt = this.props.reduxStore.product.reduce((accumulator, total) => {
+            return accumulator + total.cost
+        }, 0)
+
+
+        
         const data = {
             datasets: [{
                 data: [
-                    11,
+                    totalTshirt,
                     16,
                     7,
                     3,

@@ -1,23 +1,31 @@
 .legend{
-    height: 40vw;
+    /* height: 40vw; */
     width: 40vw;
+    border-style: ridge;
+    border-color: #90897f;
+    border-radius: 4px;
+    padding: 3px;
 }
 
 .belwinBorder{
     height: 20px;
     width: 20px;
     border-color: #90897f;
+    border-style: solid;
+    float: left;
 }
 
 .purchase{
     height: 20px;
     width: 20px;
-    border-color: #647c36;
+    background-color: #647c36;
+    float: left;
 }
 
 .savedByYear{
     width: 20px;
     height: 20px;
+    float: left;
     background: repeating-linear-gradient(
         45deg,
         transparent,

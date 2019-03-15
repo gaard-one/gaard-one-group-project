@@ -30,7 +30,7 @@ class BaseMap extends React.Component {
 
     render() {
         return ( //Width and height MUST be explicitly stated for this to work
-            <div style={{ width: '100vw', height: '80vh' }}>
+            <div style={{ width: '90vw', height: '90vw' }}>
               <header>Gaard One Preserved Land</header>
                 <Map
                     dataFlow="oneWay"

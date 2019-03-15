@@ -1,31 +1,35 @@
 .legend{
     /* height: 40vw; */
-    width: 40vw;
+    /* width: 40vw; */
+    max-width: 40vw;
     border-style: ridge;
     border-color: #90897f;
     border-radius: 4px;
-    padding: 3px;
+    padding: 5px;
 }
 
 .belwinBorder{
-    height: 20px;
-    width: 20px;
+    height: 8px;
+    width: 8px;
     border-color: #90897f;
     border-style: solid;
-    float: left;
+    /* float: left; */
+    display: inline-block;
 }
 
 .purchase{
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     background-color: #647c36;
-    float: left;
+    /* float: left; */
+    display: inline-block;
 }
 
 .savedByYear{
-    width: 20px;
-    height: 20px;
-    float: left;
+    width: 10px;
+    height: 10px;
+    /* float: right; */
+    display: inline-block;
     background: repeating-linear-gradient(
         45deg,
         transparent,

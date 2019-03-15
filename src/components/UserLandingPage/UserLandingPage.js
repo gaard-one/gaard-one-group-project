@@ -23,14 +23,14 @@ class UserLandingPage extends Component {
 
   render() {
 
-    let totalArea = 5;
+    let totalArea = this.props.squares.length;
 
     return (
       <div>
 
         <Header />
         <h3 className="userHeader">Thank You!!!</h3>
-        <h4 className="userSubHeader">Your purchase perserved {totalArea} </h4>
+        <h4 className="userSubHeader">Your purchase perserved {totalArea} square feet</h4>
         <UserHomePage />
         {/* <UserTabNav /> */}
         <SocialMedia />
@@ -39,5 +39,10 @@ class UserLandingPage extends Component {
     );
   }
 }
-export default connect()(UserLandingPage);
+
+const mapStatetoProps = (state) => ({
+  squares: state.unitSq,
+});
+
+export default connect(mapStatetoProps)(UserLandingPage);
 //end base of user landing page view -Tiana

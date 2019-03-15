@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { FormControl, Input, Select, TextField, InputLabel } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { withStyles } from '@material-ui/core/styles';
+=======
+
 
 const styles = theme => ({
     root: {
@@ -25,12 +28,15 @@ class Generate extends Component {
         this.state = {
             productType: '',
             quantity: '',
+=======
+
         }
     }
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PRODUCT_TYPE' });
     }
+
     // handles the change of the product type drop down menu
     changeInput = (event) => {
         this.setState({
@@ -47,6 +53,8 @@ class Generate extends Component {
         // console.log(this.state);
         console.log(event.target.value, 'ewwewewee')
         console.log(this.state, '!!!!!')
+=======
+
     }//end
 
     // handles the change of the quantity
@@ -58,6 +66,8 @@ class Generate extends Component {
             quantity: inputquanity
         })
     }//end
+=======
+
 
     // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate = (event) => {
@@ -97,6 +107,8 @@ class Generate extends Component {
                         </TextField>
             </form >
         );
+=======
+
     }
 }
 // maps redux to products

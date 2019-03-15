@@ -12,10 +12,10 @@ import QrTableRow from './QrTableRow';
 
 
 class QrTable extends Component {
-    constructor(props){
-        super(props);
+    // constructor(props){
+    //     super(props);
       
-    }
+    // }
 
     componentDidMount(){
         this.props.dispatch({type:'FETCH_PRODUCT'});
@@ -29,7 +29,7 @@ class QrTable extends Component {
     
         return (
          <Paper>
-             {JSON.stringify(this.props.reduxStore.product)};
+             {/* {JSON.stringify(this.props.reduxStore.product)}; */}
              <Table>
                  <TableHead>
                      <TableRow>
@@ -42,7 +42,8 @@ class QrTable extends Component {
                  </TableHead>
                  <TableBody>
                      {this.props.reduxStore.product.map((qrProduct,i)=>(
-                         <QrTableRow key={i} qrProduct={this.props.reduxStore} />
+                         <QrTableRow key={i} product={qrProduct} 
+                                            />
                          ))}
                  </TableBody>
              </Table>

@@ -18,9 +18,9 @@ class BaseMap extends React.Component {
         };
     }
 
-    componentDidMount = () => {
-        this.props.dispatch({ type: 'FETCH_PLOT'});
-    }
+    // componentDidMount = () => {
+    //     this.props.dispatch({ type: 'FETCH_PLOT'});
+    // }
 
     handleMapLoad(map, view) {
         view.ui.remove("compass");
@@ -31,6 +31,7 @@ class BaseMap extends React.Component {
     render() {
         return ( //Width and height MUST be explicitly stated for this to work
             <div style={{ width: '80vw', height: '80vh' }}>
+
               <header>Gaard One Preserved Land</header>
                 <Map
                     dataFlow="oneWay"

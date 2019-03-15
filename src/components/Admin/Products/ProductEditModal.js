@@ -15,11 +15,20 @@ class ProductEditModal extends Component {
     }
 
 
-    handleUpdateSubmit = () => {
+    handleUpdateSubmit = (event) => {
+        event.preventDefault();
         const action = { type: 'UPDATE_PRODUCT_TYPE', payload: this.state }
         this.props.dispatch(action);
+        this.handleResetForm();
     }
 
+    handleResetForm = () => {
+        this.setState({
+            product_name: '',
+            cost: '',
+            description: '',
+        });
+    }
 
     handleProductName = (event) => {
         this.setState({

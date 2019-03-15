@@ -12,8 +12,10 @@ import QrTable from './ManageQr/QrTable';
 import ProductTable from './Products/ProductTable';
 import ProductForm from './Products/ProductForm';
 import AllocationStatChart from './AllocationStatChart/AllocationStatChart';
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 
+;
 
 function TabContainer({ children, dir }) {
     return (
@@ -36,6 +38,7 @@ const styles = theme => ({
 });
 
 class AdminTabNav extends Component {
+    pdfExportComponent;
     state = {
         value: 0,
     };
@@ -47,7 +50,9 @@ class AdminTabNav extends Component {
     handleChangeIndex = index => {
         this.setState({ value: index });
     };
-
+    exportPDFWithComponent = () => {
+        this.pdfExportComponent.save();
+    }
     render() {
         const { classes, theme } = this.props;
 
@@ -74,7 +79,12 @@ class AdminTabNav extends Component {
                     <TabContainer dir={theme.direction}>
                         <Allocated />
                         <Generate />
+                        <button onClick={this.exportPDFWithComponent}>
+                            Export with component</button>
+                        <PDFExport ref={(component) => this.pdfExportComponent = component}
+                            paperSize={'Letter'}>
                         <QrTable />
+                        </PDFExport>
 
                     </TabContainer>
                     <TabContainer dir={theme.direction}>

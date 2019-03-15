@@ -18,9 +18,9 @@ class BaseMap extends React.Component {
         };
     }
 
-    componentDidMount = () => {
-        this.props.dispatch({ type: 'FETCH_PLOT'});
-    }
+    // componentDidMount = () => {
+    //     this.props.dispatch({ type: 'FETCH_PLOT'});
+    // }
 
     handleMapLoad(map, view) {
         view.ui.remove("compass");

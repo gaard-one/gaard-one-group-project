@@ -42,7 +42,7 @@ class ProductForm extends Component {
     render() {
         return (
             <div>
-                <FormControl margin="normal">
+                <FormControl onClick={this.handleSubmit} margin="normal">
                     <Input
                         autoComplete
                         required
@@ -59,9 +59,10 @@ class ProductForm extends Component {
                         placeholder="Description"
                         rows={4}
                         onChange={this.handleDescription}></Input>
-                    <Input type="button"
-                           onClick={this.handleSubmit}
-                           value="Add New Product" />
+                    <Input
+                        type="submit"
+                        value="Add New Product"
+                            />
 
                 </FormControl>
             </div>

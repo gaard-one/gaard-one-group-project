@@ -55,7 +55,7 @@ class ProductEditModal extends Component {
         return (
             <div>
                 <h2>Edit</h2>
-                <FormControl margin="normal">
+                <FormControl onClick={this.handleUpdateSubmit} margin="normal">
                     <Input
                         autoComplete
                         required
@@ -72,8 +72,8 @@ class ProductEditModal extends Component {
                         placeholder="Description"
                         rows={4}
                         onChange={this.handleDescription}></Input>
-                    <Input type="button"
-                        onClick={this.handleUpdateSubmit}
+                    <Input
+                        type="submit"
                         value="Update Product" />
 
                 </FormControl>

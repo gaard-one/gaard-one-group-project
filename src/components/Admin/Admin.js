@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AdminTabNav from './AdminTabNav';
+// import AdminTabNav from './AdminTabNav';
 
 
 class Admin extends Component {
@@ -9,7 +9,7 @@ class Admin extends Component {
         <p>
           Admin Page
     </p>
-        <AdminTabNav />
+        {/* <AdminTabNav /> */}
       </div>
     );
   }

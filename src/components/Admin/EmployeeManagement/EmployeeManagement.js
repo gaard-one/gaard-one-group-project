@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmployeeTableItem from './EmployeeTableItem.js';
+import Header from '../../Header/Header.js';
 
 class EmpoyeeManagement extends Component {
     constructor(props){
@@ -11,13 +12,14 @@ class EmpoyeeManagement extends Component {
     render() {
         return (
         <div>
+            <Header />
             <p>
             Empoyee Management Page
             </p>
 
             <table>
                 <thead>
-                    <tr><th>Name</th></tr>
+                    <tr><th>Name</th><th>Permission Level</th></tr>
                 </thead>
                 <tbody>
                     {this.props.employees.map((employee, i) => {

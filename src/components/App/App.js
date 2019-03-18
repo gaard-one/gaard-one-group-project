@@ -19,10 +19,10 @@ import InfoPage from '../InfoPage/InfoPage';
 // adding admin page
 import Admin from '../Admin/Admin';
 // end adding admin page
-import UserPage from '../UserPage/UserPage';
 
 import './App.css';
 import UserLandingPage from '../UserLandingPage/UserLandingPage';
+import EmployeeManagement from '../Admin/EmployeeManagement/EmployeeManagement';
 
 class App extends Component {
   componentDidMount () {
@@ -72,8 +72,8 @@ class App extends Component {
             component={UserLandingPage} />
             <ProtectedRoute
               exact
-              path="/user"
-              component={UserPage}
+              path="/employees"
+              component={EmployeeManagement}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

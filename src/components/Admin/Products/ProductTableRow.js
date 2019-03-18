@@ -12,8 +12,8 @@ class ProductTableRow extends Component {
         open: false,
     };
 
-    handleDelete = (event) => {
-        const action = { type: 'DELETE_PRODUCT_TYPE', payload: this.props.productTypeItem };
+    handleDeActivate = (event) => {
+        const action = { type: 'DEACTIVATE_PRODUCT_TYPE', payload: this.props.productTypeItem };
         this.props.dispatch(action);
     }
 
@@ -53,7 +53,7 @@ class ProductTableRow extends Component {
                     </Modal>
                 </td>
                 <td>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    <button onClick={this.handleDeActivate}>De-Activate</button>
                 </td>
             </tr>
         )

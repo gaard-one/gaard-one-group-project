@@ -12,7 +12,11 @@ import QrTable from './ManageQr/QrTable';
 import ProductTable from './Products/ProductTable';
 import ProductForm from './Products/ProductForm';
 import AllocationStatChart from './AllocationStatChart/AllocationStatChart';
-// import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import EmployeeManagement from './EmployeeManagement/EmployeeManagement';
+
+
+;
 
 function TabContainer({ children, dir }) {
     return (
@@ -66,6 +70,7 @@ class AdminTabNav extends Component {
                         <Tab label="Manage QR" />
                         <Tab label="Manage Products" />
                         <Tab label="Allocation Stats (stretch)" />
+                        <Tab label="Employee Management" />
                     </Tabs>
                 </AppBar>
                 <SwipeableViews
@@ -91,6 +96,9 @@ class AdminTabNav extends Component {
                     </TabContainer>
                     <TabContainer dir={theme.direction}>
                     <AllocationStatChart />
+                    </TabContainer>
+                    <TabContainer dir={theme.direction}>
+                        <EmployeeManagement />
                     </TabContainer>
                 </SwipeableViews>
             </div>

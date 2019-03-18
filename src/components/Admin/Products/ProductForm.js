@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Input, FormControl } from '@material-ui/core';
+import { Input, FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
+import ProductTable from './ProductTable'
 
 class ProductForm extends Component {
     constructor(props) {
@@ -43,28 +44,29 @@ class ProductForm extends Component {
         return (
             <div>
                 <FormControl onClick={this.handleSubmit} margin="normal">
-                    <Input
+                    <TextField
                         autoComplete
                         required
                         placeholder="Product Name"
-                        onChange={this.handleProductName}></Input>
-                    <Input
+                        onChange={this.handleProductName}></TextField>
+                    <TextField
                         required
                         autoComplete
                         placeholder="Cost"
-                        onChange={this.handleCost}></Input>
-                    <Input
+                        onChange={this.handleCost}></TextField>
+                    <TextField
                         required
                         autoComplete
                         placeholder="Description"
                         rows={4}
-                        onChange={this.handleDescription}></Input>
-                    <Input
+                        onChange={this.handleDescription}></TextField>
+                    <TextField
                         type="submit"
                         value="Add New Product"
                             />
 
                 </FormControl>
+
             </div>
         )
     }

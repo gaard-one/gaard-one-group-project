@@ -8,7 +8,7 @@ import {
 
 import {connect} from 'react-redux';
 
-import Nav from '../Nav/Nav';
+// import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
@@ -22,6 +22,7 @@ import Admin from '../Admin/Admin';
 
 import './App.css';
 import UserLandingPage from '../UserLandingPage/UserLandingPage';
+import ProductForm from '../Admin/Products/ProductForm';
 
 class App extends Component {
   componentDidMount () {
@@ -32,7 +33,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          {/* <Nav /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -63,8 +64,8 @@ class App extends Component {
             {/* end admin page route */}
             <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
+              path="/productform"
+              component={ProductForm}
             />
             <Route
             path="/UserLandingPage"

@@ -55,7 +55,7 @@ class Generate extends Component {
     }//end
 
     // handles the change of the quantity
-    changeQunantity = (event) => {
+    changeQuantity = (event) => {
         console.log(event.target.value);
         const inputquanity = parseInt(event.target.value);
         this.setState({

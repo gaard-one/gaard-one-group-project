@@ -7,9 +7,7 @@ class AllocationStatChart extends Component {
     constructor(props) {
         super(props)
 
-
     }
-
     componentDidMount() {
         this.getProductTypeName();
     }
@@ -61,26 +59,21 @@ class AllocationStatChart extends Component {
                     totalBackpack,
                     totalBattery,
                 ],
-                backgroundColor: 
+                backgroundColor:
                     '#336600',
-                    // 'red',
-                    // 'blue',
-                    // 'orange',
-                
+                // 'red',
+                // 'blue',
+                // 'orange',
+
                 borderWidth: 2,
                 borderColor: '#777',
                 hoverBorderWidth: 4,
                 hoverBorderColor: '#000',
                 label: 'Land Allocated', // for legend
-                
             }],
-            
         };
         return (
             <div>
-                <p>
-                    Chart Below
-                </p>
                 <div>
                     <Bar
                         data={data}
@@ -112,7 +105,7 @@ class AllocationStatChart extends Component {
                                         fontSize: 18,
                                     }
                                 }]
-                        }
+                            }
                         }}
                     />
                 </div>

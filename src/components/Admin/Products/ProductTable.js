@@ -16,6 +16,7 @@ class ProductTable extends Component {
 
     render() {
 
+        //filter out inactive products
         const activeProducts = this.props.products.filter( (product) => product.active);
 
         return (

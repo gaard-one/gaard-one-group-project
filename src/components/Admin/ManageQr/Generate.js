@@ -77,6 +77,9 @@ class Generate extends Component {
 
     render(){
 
+        //filter out inactive products
+        const activeProducts = this.props.products.filter( (product) => product.active);
+
         return(
             <form
                 autoComplete={false}>
@@ -93,7 +96,7 @@ class Generate extends Component {
                     fullWidth
                     autoComplete="off"
                 >
-                    {this.props.products.map((product, i) => (
+                    {activeProducts.map((product, i) => (
                         <MenuItem key={i}
                             value={product}>
                             {product.product_name}

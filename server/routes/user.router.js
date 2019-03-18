@@ -76,7 +76,7 @@ router.put('/setAdmin', rejectUnauthenticated, (req, res) => {
   }
 });
 
-//sets a user in req.body to admin
+//removes admin rights from a user
 router.put('/removeAdmin', rejectUnauthenticated, (req, res) => {
   if(req.user.admin){
     const queryText = `UPDATE "person" 
@@ -86,6 +86,24 @@ router.put('/removeAdmin', rejectUnauthenticated, (req, res) => {
     .then((result) => { res.sendStatus(200); })
     .catch((error) => { 
       console.log('Something went wrong in put removeAdmin rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
+//removes employee rights from a user
+router.put('/removeEmployee', rejectUnauthenticated, (req, res) => {
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "admin" = false,
+                           "employee" = false
+                       WHERE "id" =$1;`;
+    pool.query(queryText, [req.body.id])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put removeEmployee rights', error);
       res.sendStatus(500);
     });
   }else{

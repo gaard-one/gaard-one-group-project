@@ -27,7 +27,7 @@ class EmployeeTableItem extends Component {
         this.props.dispatch(action);
     }
 
-    handleRemoveEmployee = () => {
+    handleRemovePermissions = () => {
         const action = {
             type: 'REMOVE_EMPLOYEE',
             payload: this.props.employee,

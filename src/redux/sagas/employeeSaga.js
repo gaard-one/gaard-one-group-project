@@ -45,7 +45,7 @@ function* removeAdmin(action) {
 // remove all employee and admin rights
 function* removeEmployee(action) {
     try {
-        yield axios.put(`api/user/removeEmployee`);
+        yield axios.put(`api/user/removeEmployee`, action.payload);
         let nextAction = { type: 'FETCH_EMPLOYEES' };
         yield put(nextAction);
     } catch (error) {

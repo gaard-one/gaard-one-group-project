@@ -15,6 +15,9 @@ class ProductTable extends Component {
     }
 
     render() {
+
+        const activeProducts = this.props.products.filter( (product) => product.active);
+
         return (
             <div>
                 <div>
@@ -32,7 +35,7 @@ class ProductTable extends Component {
                         </thead>
                         <tbody>
                             
-                                {this.props.products.map((productTypeItem, i) => {
+                                {activeProducts.map((productTypeItem, i) => {
                                     return (
                                         <ProductTableRow productTypeItem={productTypeItem} key={i} />
                                     )

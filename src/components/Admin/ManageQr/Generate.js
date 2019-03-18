@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { FormControl, Input, Select, TextField, InputLabel } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 
 const styles = theme => ({
@@ -68,7 +68,7 @@ class Generate extends Component {
     // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        console.log('submit', this.state);
         const action = ({
             type: 'ADD_PRODUCT', payload: this.state
         });
@@ -76,11 +76,11 @@ class Generate extends Component {
     }//end
 
     render() {
-        
+
         return (
             <form
-            autoComplete={false}>
-            Create QR Code
+                autoComplete={false}>
+                Create QR Code
                 <TextField
                     id="select-product"
                     select
@@ -92,14 +92,14 @@ class Generate extends Component {
                     margin="normal"
                     fullWidth
                     autoComplete="off"
-                    
+
                 >
                     {this.props.products.map((product, i) => (
-                                <MenuItem key={i} 
-                                          value={product}>
-                                          {product.product_name} 
-                                </MenuItem>))}
-                        </TextField>
+                        <MenuItem key={i}
+                            value={product}>
+                            {product.product_name}
+                        </MenuItem>))}
+                </TextField>
                 <TextField
                     id="select-quanity"
                     className="quantity"
@@ -108,10 +108,14 @@ class Generate extends Component {
                     margin="normal"
                     fullWidth
                     type="number"
-                    InputProps={{ inputProps: {min:0, max:40000}}}
+                    InputProps={{ inputProps: { min: 0, max: 40000 } }}
                     autoComplete="off"
-                    />
-                    
+                />
+                <Button variant="contained" 
+                 color="primary"
+                 onClick={this.submitGenerate}>
+                    Submit
+                </Button>
             </form >
         );
 

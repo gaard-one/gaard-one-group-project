@@ -111,4 +111,22 @@ router.put('/removeEmployee', rejectUnauthenticated, (req, res) => {
   }
 });
 
+//sets employee to true for user
+router.put('/addEmployee', rejectUnauthenticated, (req, res) => {
+  console.log('sent body', req.body);
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "employee" = true
+                       WHERE "username" =$1;`;
+    pool.query(queryText, [req.body.name])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put addEmployee rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
 module.exports = router;

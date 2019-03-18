@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmployeeTableItem from './EmployeeTableItem.js';
 import Header from '../../Header/Header.js';
+import EmployeeForm from './EmployeeForm.js';
 
 class EmpoyeeManagement extends Component {
     constructor(props){
@@ -20,6 +21,8 @@ class EmpoyeeManagement extends Component {
             <p>
             Empoyee Management Page
             </p>
+
+            <EmployeeForm />
 
             <table>
                 <thead>

@@ -4,8 +4,9 @@ import axios from 'axios';
 function* employeeSaga() {
     yield takeEvery('FETCH_EMPLOYEES', fetchEmployees)
     yield takeEvery('ADD_ADMIN', addAdmin)
-    yield takeLatest('REMOVE_ADMIN', removeAdmin)
-    yield takeLatest('REMOVE_EMPLOYEE', removeEmployee)
+    yield takeEvery('REMOVE_ADMIN', removeAdmin)
+    yield takeEvery('REMOVE_EMPLOYEE', removeEmployee)
+    yield takeEvery('GIVE_EMPLOYEE', addEmployee)
 
 }
 
@@ -50,6 +51,16 @@ function* removeEmployee(action) {
         yield put(nextAction);
     } catch (error) {
         console.log('Remove all employee rights request failed', error);
+    }
+};
+
+function* addEmployee(action) {
+    try {
+        yield axios.put(`api/user/addEmployee`, action.payload);
+        let nextAction = { type: 'FETCH_EMPLOYEES' };
+        yield put(nextAction);
+    } catch (error) {
+        console.log('add employee rights request failed', error);
     }
 };
 

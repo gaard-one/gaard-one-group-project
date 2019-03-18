@@ -40,14 +40,19 @@ class Generate extends Component {
         this.setState({
             ...this.state,
             productType: event.target.value,
+
         })
         console.log(event.target.value, 'ewwewewee');
         console.log(this.state, '!!!!!');
+        });
     }//end
 
     // handles the change of the quantity
     changeQuantity = (event) => {
+
         console.log('quantity', event.target.value);
+        console.log(event.target.value);
+      
         const inputquanity = parseInt(event.target.value);
         this.setState({
             ...this.state,
@@ -71,6 +76,7 @@ class Generate extends Component {
     }//end
 
     render(){
+
         return(
             <form
                 autoComplete={false}>

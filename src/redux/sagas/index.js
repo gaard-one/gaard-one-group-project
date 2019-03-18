@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import plotSaga from './plotSaga';
 import productTypeSaga from './productTypeSaga';
 import productSaga from './productSaga';
+import employeeSaga from './employeeSaga.js';
 // import qrSaga from './qrSaga';
 // import unitSqSaga from './unitSqSaga';
 
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     plotSaga(),
     productTypeSaga(),
     productSaga(),
+    employeeSaga(),
     // qrSaga(),
     // unitSqSaga(),
   ]);

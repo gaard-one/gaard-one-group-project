@@ -2,7 +2,8 @@ CREATE TABLE "person" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
-    "admin" BOOLEAN DEFAULT false
+    "admin" BOOLEAN DEFAULT false,
+		"employee" BOOLEAN DEFAULT false
 );
 
 CREATE TABLE "product_type" (
@@ -64,3 +65,11 @@ result:= 6335.439*arc_val;
 END;$BODY$
   LANGUAGE plpgsql IMMUTABLE
   COST 100;
+
+INSERT INTO "product_type" ("product_name", "cost", "description"),
+VALUES ('One-Charge',	75,	'Power Bank + Jumper Cables'),
+('The All4One',	149,	'35L Backpack with Detachable Stool and Solar Panel'),
+('The Bright One', 49,	'Winter Hat + Headband LED Light Set'),
+('WearOne',	20,	'Short Sleeve T-Shirt' ),
+('Gift Card',	10,	'Gift Card'),
+('Gift Card + The Bright One',	74, 'Gift Card + Winter Hat + Headband LED Light Set');

@@ -10,7 +10,8 @@ CREATE TABLE "product_type" (
 	"id" SERIAL PRIMARY KEY,
 	"product_name" VARCHAR(40) UNIQUE NOT NULL,
 	"cost" INTEGER NOT NULL,
-	"description" VARCHAR(100)
+	"description" VARCHAR(100),
+	"active" BOOLEAN DEFAULT true
 );
 
 CREATE TABLE "product" (

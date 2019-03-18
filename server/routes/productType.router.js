@@ -68,13 +68,14 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 /** 
  * DELETE router template
  */
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
+router.put('/deActivate/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
     if(req.isAuthenticated() && req.user.admin){
-        console.log('In router delete PT', req.params.id);
+        console.log('In router deactivate PT', req.params.id);
         
-        const queryText = `DELETE FROM "product_type"
-                        WHERE "id" = $1;`;
+        const queryText = `UPDATE "product_type" 
+                           SET active = false
+                           WHERE "id" = $1;`;
         pool.query(queryText, [req.params.id])
         .then(() => {
             res.sendStatus(200);

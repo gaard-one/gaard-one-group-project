@@ -20,7 +20,7 @@ export default class BelwinLayer extends React.Component {
                 type: "polygon", // autocasts as new Polygon()
                 rings: [//points of polygon, order matters!!
                 [-92.82123, 44.93727],//bottom left
-                [-92.81737, 44.93723],//bottom right
+                [-92.81737, 44.93727],//bottom right
                 [-92.81737, 44.93633],//top right
                 [-92.82062, 44.93637]//top left
                 ]

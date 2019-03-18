@@ -43,7 +43,7 @@ class BaseMap extends React.Component {
                 >
                   <BelwinLayer />
                   <PreProjectAllocations />
-                  {this.props.reduxStore.unitSq.map((point, i) => {
+                  {this.props.reduxStore.unitSq.displaySquare.map((point, i) => {
                             return (<QrScan key={i} 
                                         point={point}/>);
                     })}

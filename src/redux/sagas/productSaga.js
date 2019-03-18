@@ -15,6 +15,9 @@ function* addProduct(action) {
         yield axios.post('/api/product', action.payload);
         const newAction = { type: 'FETCH_PRODUCT' };
         yield put(newAction);
+
+        //updates total allocated on DOM
+        yield put({type: 'FETCH_ALLOCATED_SQUARES'});
     } catch (error) {
         console.log('error in addProduct POST saga');
     }

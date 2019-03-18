@@ -5,6 +5,7 @@ import user from './userReducer';
 import product from './productReducer';
 import productType from './productTypeReducer';
 import unitSq from './unitSqReducer';
+import employees from './employeeReducer';
 // import qrCode from './qrCodeReducer';
 // uncomment when being built out or else it will throw errors
 
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   product, 
   productType,
   unitSq,
+  employees,
   // qrCode,
 });
 

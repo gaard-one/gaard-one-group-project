@@ -39,21 +39,19 @@ class QrTable extends Component {
                  <TableHead>
                      <TableRow>
                         <TableCell>Product</TableCell>
-                        <TableCell>Price</TableCell>
+                        <TableCell>Square Feet</TableCell>
                         <TableCell>QR Printed</TableCell>
-                        <TableCell><button onClick={this.exportPDFWithComponent}>Export PDF</button></TableCell>
-                        <TableCell>QR</TableCell>
-                        <TableCell>Delete</TableCell>
+                        <TableCell><button onClick={this.exportPDFWithComponent}>Export QR to PDF</button></TableCell>
                      </TableRow>
                  </TableHead>
                 
                  <TableBody>
-                    {/* <PDFExport ref={(component) => this.pdfExportComponent = component} 
-                            paperSize={'Letter'}>  */}
-                     {this.props.reduxStore.product.map((qrProduct,i)=>(
-                         <QrTableRow key={i} qrproduct={qrProduct} />
-                         ))}
-                      {/* </PDFExport> */}
+                    <PDFExport ref={(component) => this.pdfExportComponent = component} 
+                            paperSize={'Letter'}> 
+                            {this.props.reduxStore.product.map((qrProduct,i)=>(
+                            <QrTableRow key={i} qrproduct={qrProduct}   />
+                            ))}
+                      </PDFExport>
                  </TableBody>
                
              </Table>

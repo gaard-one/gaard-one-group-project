@@ -24,7 +24,6 @@ class QrTableRow extends Component {
                
                     <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell>
            
-               <TableCell>Delete Icon here</TableCell>
            </TableRow>
         );
     }

@@ -18,13 +18,12 @@ class QrTableRow extends Component {
         // {JSON.stringify(this.state.product.id)}
         return (
            <TableRow>
-               <TableCell>{this.props.product.product_name}</TableCell>
-               <TableCell>{this.props.product.cost}</TableCell>
-               <TableCell>{this.props.product.printed}</TableCell>
-               {/* <PDFExport ref={(component) => this.pdfExportComponent = component}
-                            paperSize={'Letter'}> */}
-               <TableCell><QRCode value={`localhost:3000/#/home/${this.props.product.id}`} /></TableCell>
-               {/* </PDFExport> */}
+               <TableCell>{this.props.qrproduct.product_name}</TableCell>
+               <TableCell>{this.props.qrproduct.cost}</TableCell>
+               <TableCell>{this.props.qrproduct.printed}</TableCell>
+               
+                    <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell>
+           
                <TableCell>Delete Icon here</TableCell>
            </TableRow>
         );

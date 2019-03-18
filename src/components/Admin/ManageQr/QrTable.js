@@ -8,10 +8,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import QrTableRow from './QrTableRow';
+// import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 
 
 class QrTable extends Component {
+    pdfExportComponent;
     // constructor(props){
     //     super(props);
       
@@ -21,7 +23,9 @@ class QrTable extends Component {
         this.props.dispatch({type:'FETCH_PRODUCT'});
     }
 
-
+    // exportPDFWithComponent = () => {
+    //     // this.pdfExportComponent.save();
+    // }
 
     render() {
        
@@ -30,20 +34,22 @@ class QrTable extends Component {
         return (
          <Paper>
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
+             
              <Table>
                  <TableHead>
                      <TableRow>
                          <TableCell>Product</TableCell>
                          <TableCell>Price</TableCell>
                          <TableCell>QR Printed</TableCell>
-                         <TableCell>QR </TableCell>
+                         {/* <TableCell><button onClick={this.exportPDFWithComponent()}>
+                            Export PDF</button></TableCell> */}
+                            <TableCell>QR</TableCell>
                          <TableCell>Delete</TableCell>
                      </TableRow>
                  </TableHead>
                  <TableBody>
                      {this.props.reduxStore.product.map((qrProduct,i)=>(
-                         <QrTableRow key={i} product={qrProduct} 
-                                            />
+                         <QrTableRow key={i} product={qrProduct} />
                          ))}
                  </TableBody>
              </Table>

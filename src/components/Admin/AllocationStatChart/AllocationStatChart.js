@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Bar,  } from 'react-chartjs-2';
 
 
 class AllocationStatChart extends Component {
-    constructor(props) {
-        super(props)
-
-
-    }
+   
 
     componentDidMount() {
         this.getProductTypeName();

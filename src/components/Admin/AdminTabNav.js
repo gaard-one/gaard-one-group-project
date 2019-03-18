@@ -80,8 +80,9 @@ class AdminTabNav extends Component {
                         <Allocated />
                         <Generate />
                         <button onClick={this.exportPDFWithComponent}>
-                            Export with component</button>
-                        <PDFExport ref={(component) => this.pdfExportComponent = component}
+                            Export with component</button> 
+                        <PDFExport ref={(component) => this.pdfExportComponent = component} 
+                            pageTemplate={'../public/Printer Template/gsp_1inch_squares.pdf'}
                             paperSize={'Letter'}>
                         <QrTable />
                         </PDFExport>

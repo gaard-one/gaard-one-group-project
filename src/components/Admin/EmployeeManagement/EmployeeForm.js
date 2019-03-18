@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './EmployeeManagement.css';
 
 class EmployeeForm extends Component{
     constructor(props){
@@ -25,8 +26,8 @@ class EmployeeForm extends Component{
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
-            <p>Give a user employee permissions here</p>
+            <form onSubmit={this.handleSubmit} className={'employeeForm'}>
+            <h4>Give a user employee permissions here</h4>
                 <input onChange={this.handleChange} type='text' 
                     value={this.state.name||''} placeholder='User Name' name='name'/> 
 

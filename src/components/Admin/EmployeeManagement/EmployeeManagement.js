@@ -18,9 +18,7 @@ class EmpoyeeManagement extends Component {
         return (
         <div>
             <Header />
-            <p>
-            Empoyee Management Page
-            </p>
+            <h2>Employee Management</h2>
 
             <EmployeeForm />
 

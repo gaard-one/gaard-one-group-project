@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 // adding admin page
 import Admin from '../Admin/Admin';
 // end adding admin page
+import UserPage from '../UserPage/UserPage';
 
 import './App.css';
 import UserLandingPage from '../UserLandingPage/UserLandingPage';
@@ -69,6 +70,11 @@ class App extends Component {
             <Route
             path="/UserLandingPage"
             component={UserLandingPage} />
+            <ProtectedRoute
+              exact
+              path="/user"
+              component={UserPage}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

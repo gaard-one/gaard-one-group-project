@@ -65,6 +65,8 @@ router.get('/fishnet', (req, res) => {
             console.log('CATCH', error);
             res.sendStatus(500);
         });
+    }else{
+        res.sendStatus(403);
     }
 });
 

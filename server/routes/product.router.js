@@ -18,6 +18,8 @@ router.put('/printed/:id', (req, res)=>{
             console.log('Error in /printed PUT query', error);
             res.sendStatus(500);
         });
+    }else{
+        res.sendStatus(403);
     }
 })
 // end PUT route for product printed
@@ -35,6 +37,8 @@ router.put('/claimed/:id', (req, res)=>{
         }).catch((error)=>{
             console.log('Error in /claimed PUT query', error);
         });
+    }else{
+        res.sendStatus(403);
     }
 })
 // end PUT route for product claimed

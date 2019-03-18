@@ -8,18 +8,15 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  * GET route template
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
-    //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
-        const queryText = `SELECT * FROM "product_type";`;
-        pool.query(queryText)
-        .then((result) => {
-            res.send(result.rows)
-            console.log('Result.rows: ', result.rows);
-        }).catch((error) => {
-            console.log('Something went wrong in GET product types', error);
-            res.sendStatus(500);
-        });
-    }
+    const queryText = `SELECT * FROM "product_type";`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows)
+        console.log('Result.rows: ', result.rows);
+    }).catch((error) => {
+        console.log('Something went wrong in GET product types', error);
+        res.sendStatus(500);
+    });
 });
 
 /**
@@ -38,6 +35,8 @@ router.post('/newproduct', rejectUnauthenticated, (req, res) => {
             console.log('Something went wrong in POST new product', error);
             res.sendStatus(500);
         });
+    }else{
+        res.sendStatus(403);
     }
 });
 
@@ -60,6 +59,8 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
             console.log('Something went wrong in PUT product type', error);
             res.sendStatus(500);
         });
+    }else{
+        res.sendStatus(403);
     }
 });
 
@@ -81,6 +82,8 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
             console.log('Something went wrong in DELETE product type', error);
             res.sendStatus(500);
         });
+    }else{
+        res.sendStatus(403);
     }
 });
 

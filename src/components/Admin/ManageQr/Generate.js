@@ -40,7 +40,7 @@ class Generate extends Component {
         this.setState({
             ...this.state,
             productType: event.target.value,
-        })
+        });
         // console.log(event.target.name, event.target.value);
         // const formName = event.target.name;
         // const changeValue = event.target.value;
@@ -55,7 +55,7 @@ class Generate extends Component {
     }//end
 
     // handles the change of the quantity
-    changeQunantity = (event) => {
+    changeQuantity = (event) => {
         console.log(event.target.value);
         const inputquanity = parseInt(event.target.value);
         this.setState({
@@ -75,9 +75,9 @@ class Generate extends Component {
         this.props.dispatch(action);
     }//end
 
-    render() {
+    render(){
 
-        return (
+        return(
             <form
                 autoComplete={false}>
                 Create QR Code
@@ -92,7 +92,6 @@ class Generate extends Component {
                     margin="normal"
                     fullWidth
                     autoComplete="off"
-
                 >
                     {this.props.products.map((product, i) => (
                         <MenuItem key={i}

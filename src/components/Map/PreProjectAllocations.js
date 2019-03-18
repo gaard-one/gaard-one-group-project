@@ -20,8 +20,8 @@ export default class PreProjectAllocations extends React.Component {
                 type: "polygon", // autocasts as new Polygon()
                 rings: [//points of polygon, order matters!!
                 [-92.82123, 44.93727],//top left
-                [-92.82045, 44.937265],//top right
-                [-92.82045, 44.93637],//bottom right
+                [-92.82045, 44.93727],//top right
+                [-92.82045, 44.9363677],//bottom right
                 [-92.82062, 44.93637]//bottom left
                 ]
             };

@@ -1,4 +1,7 @@
 .header-main {
     text-align: center;
-    background-color:beige
+    background-image: url("/images/Facebook-Cover-Photo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 175px;
 }

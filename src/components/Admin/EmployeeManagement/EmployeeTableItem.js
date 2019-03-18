@@ -19,7 +19,7 @@ class EmployeeTableItem extends Component {
         this.props.dispatch(action);
     }
 
-    handleAddAdmin = () => {
+    handleMakeAdmin = () => {
         const action = {
             type: 'ADD_ADMIN',
             payload: this.props.employee,

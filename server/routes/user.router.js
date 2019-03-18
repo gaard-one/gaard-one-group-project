@@ -59,4 +59,21 @@ router.get('/employee', rejectUnauthenticated, (req, res) => {
    });
 });
 
+//sets a user in req.body to admin
+router.put('/setAdmin', rejectUnauthenticated, (req, res) => {
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "admin" = true 
+                       WHERE "id" =$1;`;
+    pool.query(queryText, [req.body.id])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put setAdmin rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
 module.exports = router;

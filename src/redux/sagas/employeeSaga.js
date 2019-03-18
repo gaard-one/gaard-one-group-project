@@ -22,7 +22,6 @@ function* addAdmin(action) {
 
 //fetch all users with employee or admin
 function* fetchEmployees(action) {
-    console.log('yip yip');
     try {
         const responseFromServer = yield axios.get('/api/user/employee');
         const nextAction = { type: 'SET_EMPLOYEES', payload: responseFromServer.data };

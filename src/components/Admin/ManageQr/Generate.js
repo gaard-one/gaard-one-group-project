@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-
+// componenet form to generate Qr codes for products -tj
 const styles = theme => ({
     root: {
         display: 'flex',

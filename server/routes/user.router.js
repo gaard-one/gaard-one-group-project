@@ -40,4 +40,93 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+
+///////////////////////////////////////////////////////////
+///////        Gaard One stuff starts here      ///////////
+///////////////////////////////////////////////////////////
+
+// Get all users with employee or admin permissions
+router.get('/employee', rejectUnauthenticated, (req, res) => {
+
+  const queryText = `SELECT * FROM "person"
+                     WHERE "admin" = true
+                     OR "employee" = true;`;
+  pool.query(queryText)
+  .then((result) => { res.send(result.rows); })
+  .catch((error) => { 
+    console.log('Something went wrong in GET employees', error);
+    res.sendStatus(500);
+   });
+});
+
+//sets a user in req.body to admin
+router.put('/setAdmin', rejectUnauthenticated, (req, res) => {
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "admin" = true 
+                       WHERE "id" =$1;`;
+    pool.query(queryText, [req.body.id])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put setAdmin rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
+//removes admin rights from a user
+router.put('/removeAdmin', rejectUnauthenticated, (req, res) => {
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "admin" = false 
+                       WHERE "id" =$1;`;
+    pool.query(queryText, [req.body.id])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put removeAdmin rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
+//removes employee rights from a user
+router.put('/removeEmployee', rejectUnauthenticated, (req, res) => {
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "admin" = false,
+                           "employee" = false
+                       WHERE "id" =$1;`;
+    pool.query(queryText, [req.body.id])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put removeEmployee rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
+//sets employee to true for user
+router.put('/addEmployee', rejectUnauthenticated, (req, res) => {
+  console.log('sent body', req.body);
+  if(req.user.admin){
+    const queryText = `UPDATE "person" 
+                       SET "employee" = true
+                       WHERE "username" =$1;`;
+    pool.query(queryText, [req.body.name])
+    .then((result) => { res.sendStatus(200); })
+    .catch((error) => { 
+      console.log('Something went wrong in put addEmployee rights', error);
+      res.sendStatus(500);
+    });
+  }else{
+    res.sendStatus(403);
+  }
+});
+
 module.exports = router;

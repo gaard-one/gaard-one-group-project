@@ -20,7 +20,7 @@ const displaySquare = (state=[], action) => {
     }
   }
 
-  const squareTotal = (state={}, action) => {
+  const squareTotal = (state=0, action) => {
     switch (action.type) {
       case 'SET_TOTAL_SQUARES':
         return action.payload[0].count;

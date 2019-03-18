@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { FormControl, Input, Select, TextField, InputLabel } from '@material-ui/core';
+import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 
 const styles = theme => ({
@@ -55,7 +55,7 @@ class Generate extends Component {
     }//end
 
     // handles the change of the quantity
-    changeQunanity = (event) => {
+    changeQunantity = (event) => {
         console.log(event.target.value);
         const inputquanity = parseInt(event.target.value);
         this.setState({
@@ -68,7 +68,7 @@ class Generate extends Component {
     // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        console.log('submit', this.state);
         const action = ({
             type: 'ADD_PRODUCT', payload: this.state
         });
@@ -76,32 +76,46 @@ class Generate extends Component {
     }//end
 
     render() {
-        // const { classes } = this.props;
+
         return (
-            <form
-            autoComplete={false}>
+            <FormControl className="form-control">
+                Create QR Code
                 <TextField
                     id="select-product"
                     select
-                    label="Select"
+                    label=""
                     className="input"
                     value={this.state.productType}
                     onChange={this.changeInput}
                     helperText="product"
                     margin="normal"
-                    // SelectProps={{
-                    //     MenuProps: {
+                    fullWidth
+                    autoComplete="off"
 
-                    //     }
-                    // }}
                 >
                     {this.props.products.map((product, i) => (
-                                <MenuItem key={i} 
-                                          value={product}>
-                                          {product.product_name} 
-                                </MenuItem>))}
-                        </TextField>
-            </form >
+                        <MenuItem key={i}
+                            value={product}>
+                            {product.product_name}
+                        </MenuItem>))}
+                </TextField>
+                <TextField
+                    id="select-quanity"
+                    className="quantity"
+                    onChange={this.changeQuantity}
+                    helperText="quantity"
+                    margin="normal"
+                    fullWidth
+                    type="number"
+                    InputProps={{ inputProps: { min: 0, max: 40000 } }}
+                    autoComplete="off"
+                />
+                <Button variant="contained" 
+                 color="primary"
+                 onClick={this.submitGenerate}>
+                    Submit
+                </Button>
+            </FormControl>
         );
 
     }

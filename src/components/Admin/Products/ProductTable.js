@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductTableRow from './ProductTableRow';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 
 class ProductTable extends Component {
@@ -17,20 +23,20 @@ class ProductTable extends Component {
     render() {
         return (
             <div>
-                <div>
+                <Paper>
                  {/* This is needed for id */}
                     {/* {this.props.state.productType.productTypeReducer[0] !== undefined && JSON.stringify(this.props.state.productType.productTypeReducer[0].id)} */}
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Description</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Product Name</TableCell>
+                                <TableCell>Price</TableCell>
+                                <TableCell>Description</TableCell>
+                                <TableCell>Edit</TableCell>
+                                <TableCell>Delete</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
                             
                                 {this.props.products.map((productTypeItem, i) => {
                                     return (
@@ -38,9 +44,9 @@ class ProductTable extends Component {
                                     )
                                 })}
 
-                        </tbody>
-                    </table>
-                </div>
+                        </TableBody>
+                    </Table>
+                </Paper>
             </div>
         );
     }

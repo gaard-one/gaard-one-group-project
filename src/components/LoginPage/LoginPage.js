@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../Header/Header';
 
 class LoginPage extends Component {
   state = {
@@ -32,6 +33,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+        <Header />
         {this.props.errors.loginMessage && (
           <h2
             className="alert"

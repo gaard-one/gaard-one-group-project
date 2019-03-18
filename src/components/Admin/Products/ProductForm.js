@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 import { Input, FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
-import ProductTable from './ProductTable'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const styles = theme => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2,
+    },
+});
+
+
 
 class ProductForm extends Component {
     constructor(props) {
@@ -43,32 +61,34 @@ class ProductForm extends Component {
     render() {
         return (
             <div>
-                <FormControl onClick={this.handleSubmit} margin="normal">
+                <FormControl margin="normal" className="form-control">
                     <TextField
                         autoComplete
                         required
-                        placeholder="Product Name"
+                        helperText="Product Name"
                         onChange={this.handleProductName}></TextField>
                     <TextField
                         required
                         autoComplete
-                        placeholder="Cost"
+                        helperText="Cost"
                         onChange={this.handleCost}></TextField>
                     <TextField
                         required
                         autoComplete
-                        placeholder="Description"
+                        helperText="Description"
                         rows={4}
                         onChange={this.handleDescription}></TextField>
-                    <TextField
-                        type="submit"
-                        value="Add New Product"
-                            />
-
+                    <Button 
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleSubmit}>
+                    Add New Product
+                        </Button>
+    
                 </FormControl>
 
             </div>
         )
     }
 }
-export default connect()(ProductForm);
+export default connect()(withStyles(styles)(ProductForm));

@@ -60,3 +60,8 @@ input {
 /* .icon-card {
     background-color: black;
 } */
+
+.form-control {
+    height: 500px;
+    width: 500px;
+}

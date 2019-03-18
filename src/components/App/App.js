@@ -22,7 +22,7 @@ import Admin from '../Admin/Admin';
 
 import './App.css';
 import UserLandingPage from '../UserLandingPage/UserLandingPage';
-import ProductForm from '../Admin/Products/ProductForm';
+import EmployeeManagement from '../Admin/EmployeeManagement/EmployeeManagement';
 
 class App extends Component {
   componentDidMount () {
@@ -62,14 +62,19 @@ class App extends Component {
               component={Admin}
             />
             {/* end admin page route */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/productform"
               component={ProductForm}
-            />
+            /> */}
             <Route
             path="/UserLandingPage"
             component={UserLandingPage} />
+            <ProtectedRoute
+              exact
+              path="/employees"
+              component={EmployeeManagement}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

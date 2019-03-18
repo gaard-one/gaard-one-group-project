@@ -45,7 +45,7 @@ class Generate extends Component {
         })
         console.log(event.target.value, 'ewwewewee');
         console.log(this.state, '!!!!!');
-        };
+        
     }//end
 
     // handles the change of the quantity

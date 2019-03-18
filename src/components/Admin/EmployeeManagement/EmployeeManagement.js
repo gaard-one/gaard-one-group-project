@@ -17,7 +17,7 @@ class EmpoyeeManagement extends Component {
     render() {
         return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <h2>Employee Management</h2>
 
             <EmployeeForm />

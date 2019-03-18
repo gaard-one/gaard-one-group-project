@@ -55,7 +55,7 @@ class Generate extends Component {
     }//end
 
     // handles the change of the quantity
-    changeQunanity = (event) => {
+    changeQunantity = (event) => {
         console.log(event.target.value);
         const inputquanity = parseInt(event.target.value);
         this.setState({
@@ -76,24 +76,23 @@ class Generate extends Component {
     }//end
 
     render() {
-        // const { classes } = this.props;
+        
         return (
             <form
             autoComplete={false}>
+            Create QR Code
                 <TextField
                     id="select-product"
                     select
-                    label="Select"
+                    label=""
                     className="input"
                     value={this.state.productType}
                     onChange={this.changeInput}
                     helperText="product"
                     margin="normal"
-                    // SelectProps={{
-                    //     MenuProps: {
-
-                    //     }
-                    // }}
+                    fullWidth
+                    autoComplete="off"
+                    
                 >
                     {this.props.products.map((product, i) => (
                                 <MenuItem key={i} 
@@ -101,6 +100,18 @@ class Generate extends Component {
                                           {product.product_name} 
                                 </MenuItem>))}
                         </TextField>
+                <TextField
+                    id="select-quanity"
+                    className="quantity"
+                    onChange={this.changeQuantity}
+                    helperText="quantity"
+                    margin="normal"
+                    fullWidth
+                    type="number"
+                    InputProps={{ inputProps: {min:0, max:40000}}}
+                    autoComplete="off"
+                    />
+                    
             </form >
         );
 

@@ -40,4 +40,23 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+
+///////////////////////////////////////////////////////////
+///////        Gaard One stuff starts here      ///////////
+///////////////////////////////////////////////////////////
+
+// Get all users with employee or admin permissions
+router.get('/employee', rejectUnauthenticated, (req, res) => {
+
+  const queryText = `SELECT * FROM "person"
+                     WHERE "admin" = true
+                     OR "employee" = true;`;
+  pool.query(queryText)
+  .then((result) => { res.send(result.rows); })
+  .catch((error) => { 
+    console.log('Something went wrong in GET employees', error);
+    res.sendStatus(500);
+   });
+});
+
 module.exports = router;

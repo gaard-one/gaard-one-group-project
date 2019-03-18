@@ -9,6 +9,10 @@ class EmpoyeeManagement extends Component {
 
     }
 
+    componentDidMount = () => {
+        this.props.dispatch({type: 'FETCH_EMPLOYEES'});
+    }
+
     render() {
         return (
         <div>

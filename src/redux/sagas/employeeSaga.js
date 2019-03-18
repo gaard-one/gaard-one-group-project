@@ -1,7 +1,7 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* productTypeSaga() {
+function* employeeSaga() {
     yield takeEvery('FETCH_EMPLOYEES', fetchEmployees)
     yield takeEvery('ADD_ADMIN', addAdmin)
     yield takeLatest('REMOVE_ADMIN', removeAdmin)
@@ -22,6 +22,7 @@ function* addAdmin(action) {
 
 //fetch all users with employee or admin
 function* fetchEmployees(action) {
+    console.log('yip yip');
     try {
         const responseFromServer = yield axios.get('/api/user/employee');
         const nextAction = { type: 'SET_EMPLOYEES', payload: responseFromServer.data };
@@ -53,4 +54,4 @@ function* removeEmployee(action) {
     }
 };
 
-export default productTypeSaga;
+export default employeeSaga;

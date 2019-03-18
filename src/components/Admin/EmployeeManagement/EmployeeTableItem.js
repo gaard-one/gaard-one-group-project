@@ -38,7 +38,7 @@ class EmployeeTableItem extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.employee.name}</td>
+                <td>{this.props.employee.username}</td>
                 {this.permissionLevel()}
                 <td><button onClick={this.handleRemoveAdmin}>Remove Admin Permissions</button></td>
                 <td><button onClick={this.handleMakeAdmin}>Make Admin</button></td>

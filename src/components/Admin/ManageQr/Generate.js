@@ -5,7 +5,6 @@ import { FormControl, Input, Select, TextField, InputLabel } from '@material-ui/
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { withStyles } from '@material-ui/core/styles';
-=======
 
 
 const styles = theme => ({
@@ -28,7 +27,6 @@ class Generate extends Component {
         this.state = {
             productType: '',
             quantity: '',
-=======
 
         }
     }
@@ -53,7 +51,6 @@ class Generate extends Component {
         // console.log(this.state);
         console.log(event.target.value, 'ewwewewee')
         console.log(this.state, '!!!!!')
-=======
 
     }//end
 
@@ -66,7 +63,6 @@ class Generate extends Component {
             quantity: inputquanity
         })
     }//end
-=======
 
 
     // submits the data to the productSaga to generate unique plots based on admin inputs
@@ -107,7 +103,6 @@ class Generate extends Component {
                         </TextField>
             </form >
         );
-=======
 
     }
 }
@@ -118,53 +113,3 @@ const mapReduxStoreToProps = reduxStore => ({
 });
 
 export default connect(mapReduxStoreToProps)(withStyles(styles)(Generate));
-// <select
-                    //         select label="Select"
-                    //         onChange={this.changeInput} 
-                    //         name="productType" 
-                    //         placeholder="Product Type" 
-                    //         ref="form"
-                    //         Value="" > 
-                    //         <option >Select Product</option>
-                    //     {this.props.products.map((product, i) => (
-                    //         <option key={i} 
-                    //                   value={product}>
-                    //                   {product.product_name} 
-                    //         </option>))}
-                    // </select>
-
-        //             <form className={classes.root} autocomplete="off">
-        //     <FormControl variant="outlined">
-        // //    This {JSON.stringify(this.props.products)}
-        //     <InputLabel
-        //       ref={ref => {
-        //         this.InputLabelRef = ref;
-        //       }}
-        //       htmlFor="outlined-age-simple"
-        //     >
-        //       Product Type
-        //     </InputLabel>
-        //     <Select
-        //       value={this.state.productType}
-        //       onChange={this.changeInput}
-        //       input={
-        //         <OutlinedInput
-        //           labelWidth={this.state.labelWidth}
-        //           name="Product Type"
-        //           id="outlined-age-simple"
-        //           className={classes.formControl}
-        //         />
-        //       }
-        //     >
-        //       <MenuItem value="">
-        //         <em>None</em>
-        //       </MenuItem>
-        //       {this.props.products.map((item, i) => (
-        //                 <MenuItem key={i} 
-        //                           value={item}>
-        //                           {item.product_name} 
-        //                 </MenuItem>))}
-
-        //     </Select>
-        //   </FormControl> 
-        //   </form>

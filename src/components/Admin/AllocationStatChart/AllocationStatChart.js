@@ -32,23 +32,40 @@ class AllocationStatChart extends Component {
         })
         .reduce((accumulator, tshirt) => {
             return accumulator + tshirt.cost;
-        }, 0)
+        }, 0);
 
-        
+        const totalHat = this.props.reduxStore.product.filter((product)=>{
+            return product.product_type_id === 2;
+        })
+        .reduce((accumulator, hat)=>{
+            return accumulator + hat.cost;
+        }, 0);
+
+        const totalBackpack = this.props.reduxStore.product.filter((product)=>{
+            return product.product_type_id === 3;
+        })
+        .reduce((accumulator, backpack)=>{
+            return accumulator + backpack.cost;
+        }, 0);
+        const totalBattery = this.props.reduxStore.product.filter((product) => {
+            return product.product_type_id === 4;
+        })
+            .reduce((accumulator, battery) => {
+                return accumulator + battery.cost;
+            }, 0);
         const data = {
             datasets: [{
                 data: [
                     totalTshirt,
-                    16,
-                    7,
-                    3,
-                    14
+                    totalHat,
+                    totalBackpack,
+                    totalBattery,
                 ],
                 backgroundColor: [
-                    '#FF6384',
-                    '#4BC0C0',
-                    '#FFCE56',
-                    '#E7E9ED',
+                    'red',
+                    'green',
+                    'blue',
+                    'orange',
                     '#36A2EB'
                 ],
                 label: 'Land Allocated' // for legend

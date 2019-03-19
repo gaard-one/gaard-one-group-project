@@ -5,7 +5,7 @@ function* productTypeSaga() {
     yield takeEvery('FETCH_PRODUCT_TYPE', fetchProductType)
     yield takeEvery('ADD_PRODUCT_TYPE', createProductType)
     yield takeLatest('UPDATE_PRODUCT_TYPE', updateProductType)
-    yield takeLatest('DELETE_PRODUCT_TYPE', deleteProductType)
+    yield takeLatest('DEACTIVATE_PRODUCT_TYPE', deActivateProductType)
 
 }
 
@@ -44,16 +44,16 @@ function* updateProductType(action) {
     }
 };
 
-//delete product type
-function* deleteProductType(action) {
+//deActivate product type
+function* deActivateProductType(action) {
     let PTID = action.payload.id;
-    console.log('in deleteProductType payload', action.payload);
+    console.log('in deActivateProductType payload', action.payload);
     try {
-        yield axios.delete(`api/productType/${PTID}`);
+        yield axios.put(`api/productType/deActivate/${PTID}`);
         let nextAction = { type: 'FETCH_PRODUCT_TYPE' };
         yield put(nextAction);
     } catch (error) {
-        console.log('Delete product type request failed', error);
+        console.log('DeActivate product type request failed', error);
     }
 };
 

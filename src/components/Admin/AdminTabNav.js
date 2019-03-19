@@ -39,7 +39,7 @@ const styles = theme => ({
 });
 
 class AdminTabNav extends Component {
-    pdfExportComponent;
+    // pdfExportComponent;
     state = {
         value: 0,
     };
@@ -51,9 +51,9 @@ class AdminTabNav extends Component {
     handleChangeIndex = index => {
         this.setState({ value: index });
     };
-    exportPDFWithComponent = () => {
-        this.pdfExportComponent.save();
-    }
+    // exportPDFWithComponent = () => {
+    //     this.pdfExportComponent.save();
+    // }
     render() {
         const { classes, theme } = this.props;
 
@@ -81,12 +81,13 @@ class AdminTabNav extends Component {
                     <TabContainer dir={theme.direction}>
                         <Allocated />
                         <Generate />
-                        <button onClick={this.exportPDFWithComponent}>
-                            Export with component</button>
-                        <PDFExport ref={(component) => this.pdfExportComponent = component}
-                            paperSize={'Letter'}>
+                        {/* <button onClick={this.exportPDFWithComponent}>
+                            Export PDF</button> 
+                        <PDFExport ref={(component) => this.pdfExportComponent = component} 
+                            pageTemplate={'../public/Printer Template/gsp_1inch_squares.pdf'}> */}
+                            
                         <QrTable />
-                        </PDFExport>
+                        {/* </PDFExport> */}
 
                     </TabContainer>
                     <TabContainer dir={theme.direction}>

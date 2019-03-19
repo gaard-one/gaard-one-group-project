@@ -58,7 +58,7 @@ class Legend extends React.Component {
 
 const mapReduxStoreToProps = reduxStore => ({
     ...reduxStore,
-    unitSq: reduxStore.unitSq,
+    unitSq: reduxStore.unitSq.displaySquare,
 });
 
 export default connect(mapReduxStoreToProps)(Legend);

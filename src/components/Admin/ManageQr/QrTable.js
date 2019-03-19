@@ -8,24 +8,24 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import QrTableRow from './QrTableRow';
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 
 
 class QrTable extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            isAllSelected: false,
-            
-        }
+    pdfExportComponent;
+    // constructor(props){
+    //     super(props);
       
-    }
+    
 
     componentDidMount(){
         this.props.dispatch({type:'FETCH_PRODUCT'});
     }
 
-
+    exportPDFWithComponent = () => {
+        this.pdfExportComponent.save();
+    }
 
     render() {
        
@@ -34,25 +34,26 @@ class QrTable extends Component {
         return (
          <Paper>
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
+             
              <Table>
                  <TableHead>
                      <TableRow>
-                         <TableCell>Product</TableCell>
-                         <TableCell>Price</TableCell>
-                         <TableCell>QR Printed</TableCell>
-                         <TableCell>QR </TableCell>
-                            <TableCell>Archive 
-                                <input type='checkbox'></input>
-                                </TableCell>
-                         <TableCell>Delete</TableCell>
+                        <TableCell>Product</TableCell>
+                        <TableCell>Square Feet</TableCell>
+                        <TableCell>QR Printed</TableCell>
+                        <TableCell><button onClick={this.exportPDFWithComponent}>Export QR to PDF</button></TableCell>
                      </TableRow>
                  </TableHead>
+                
                  <TableBody>
-                     {this.props.reduxStore.product.map((qrProduct,i)=>(
-                         <QrTableRow key={i} product={qrProduct} 
-                                            />
-                         ))}
+                    <PDFExport ref={(component) => this.pdfExportComponent = component} 
+                            paperSize={'Letter'}> 
+                            {this.props.reduxStore.product.map((qrProduct,i)=>(
+                            <QrTableRow key={i} qrproduct={qrProduct}   />
+                            ))}
+                      </PDFExport>
                  </TableBody>
+               
              </Table>
          </Paper>
         );

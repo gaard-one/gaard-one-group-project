@@ -7,7 +7,7 @@ import productTypeSaga from './productTypeSaga';
 import productSaga from './productSaga';
 import employeeSaga from './employeeSaga.js';
 // import qrSaga from './qrSaga';
-// import unitSqSaga from './unitSqSaga';
+import unitSqSaga from './unitSqSaga';
 
 
 // rootSaga is the primary saga.
@@ -27,6 +27,6 @@ export default function* rootSaga() {
     productSaga(),
     employeeSaga(),
     // qrSaga(),
-    // unitSqSaga(),
+    unitSqSaga(),
   ]);
 }

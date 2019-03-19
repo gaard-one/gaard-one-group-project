@@ -51,7 +51,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                         ON "product"."product_type_id" = "product_type"."id" 
                         JOIN "plot"
                         ON "plot"."product_id" = "product"."id"
-                        WHERE "printed" = false;`;
+                        ;`;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows)

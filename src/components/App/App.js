@@ -62,11 +62,11 @@ class App extends Component {
               component={Admin}
             />
             {/* end admin page route */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
-            />
+              path="/productform"
+              component={ProductForm}
+            /> */}
             <Route
             path="/UserLandingPage"
             component={UserLandingPage} />

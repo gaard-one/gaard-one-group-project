@@ -7,6 +7,7 @@ import { PDFExport, } from '@progress/kendo-react-pdf';
 
 
 
+
 class QrTableRow extends Component {
     constructor(props){
         super(props);

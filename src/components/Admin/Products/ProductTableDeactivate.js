@@ -12,58 +12,48 @@ import Edit from '@material-ui/icons/Edit'
 
 
 
-class ProductTableRow extends Component {
+class DeactivatedProductTableRow extends Component {
 
     state = {
         open: false,
     };
 
-    handleDeActivate = (event) => {
-        const action = { type: 'DEACTIVATE_PRODUCT_TYPE', payload: this.props.productTypeItem };
+
+    handleReActivate = (event) => {
+        const action = { type: 'REACTIVATE_PRODUCT_TYPE', payload: this.props.deactProducts };
         this.props.dispatch(action);
-    }
+    };
 
-    handleEditOpen = () => {
-        this.setState({
-            open: true,
-        });
-        
-    }
 
-    handleEditClose = () => {
-        this.setState({
-            open: false,
-        });
-    }
-    
 
     render() {
         return (
             <TableRow>
                 <TableCell>
-                    {this.props.productTypeItem.product_name}
+                    {this.props.deactProducts.product_name}
                 </TableCell>
                 <TableCell>
-                    {this.props.productTypeItem.cost}
+                    {this.props.deactProducts.cost}
                 </TableCell>
                 <TableCell>
-                    {this.props.productTypeItem.description}
+                    {this.props.deactProducts.description}
                 </TableCell>
                 <TableCell>
                     <Edit className="edit-product-type" onClick={this.handleEditOpen}>Edit</Edit>
                     <Modal open={this.state.open} onClose={this.handleEditClose} className="bg-modal">
                         <div className="modal-content">
-                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.productTypeItem.id} />
+                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.deactProducts.id} />
                         </div>
 
                     </Modal>
                 </TableCell>
                 <TableCell>
-                    <Button onClick={this.handleDeActivate}>De-Activate</Button>
+                    <Button onClick={this.handleReActivate} >Re-Activate</Button>
                 </TableCell>
             </TableRow>
         )
     }
 }
 
-export default connect()(ProductTableRow);
+
+export default connect()(DeactivatedProductTableRow);

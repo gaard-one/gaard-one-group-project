@@ -66,7 +66,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 
 
 /** 
- * DELETE router template
+ * DEACTIVATE router template
  */
 router.put('/deActivate/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
@@ -80,12 +80,53 @@ router.put('/deActivate/:id', rejectUnauthenticated, (req, res) => {
         .then(() => {
             res.sendStatus(200);
         }).catch((error) => {
-            console.log('Something went wrong in DELETE product type', error);
+            console.log('Something went wrong in DEACTIVATE product type', error);
             res.sendStatus(500);
         });
     }else{
         res.sendStatus(403);
     }
 });
+
+
+/**
+ * REACTIVATE router template
+ */
+router.put('/reActivate/:id', rejectUnauthenticated, (req, res) => {
+    //User must be authenticated and have admin rights
+    if (req.isAuthenticated() && req.user.admin) {
+        console.log('In router reactivate PT', req.params.id);
+
+        const queryText = `UPDATE "product_type" 
+                           SET active = true
+                           WHERE "id" = $1;`;
+        pool.query(queryText, [req.params.id])
+            .then(() => {
+                res.sendStatus(200);
+            }).catch((error) => {
+                console.log('Something went wrong in REACTIVATE product type', error);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
+});
+
+/**
+ * GET deactivated items router template
+ */
+router.get('/deActivate/', rejectUnauthenticated, (req, res) => {
+    const queryText = `SELECT * FROM "product_type"
+                       WHERE "active" = false;`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows)
+        console.log('deActivated', result.rows);
+    
+    }).catch((error) => {
+        console.log('Something went wrong in GET deActivate', error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;

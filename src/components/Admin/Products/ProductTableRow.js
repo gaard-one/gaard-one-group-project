@@ -5,6 +5,9 @@ import './ProductEditModal.css';
 import ProductEditModal from './ProductEditModal';
 import { TableRow, TableCell } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Delete from '@material-ui/icons/Delete'
+import Edit from '@material-ui/icons/Edit'
+
 
 
 
@@ -47,16 +50,16 @@ class ProductTableRow extends Component {
                     {this.props.productTypeItem.description}
                 </TableCell>
                 <TableCell>
-                    <Button className="edit-product-type" onClick={this.handleEditOpen}>Edit</Button>
+                    <Edit className="edit-product-type" onClick={this.handleEditOpen}>Edit</Edit>
                     <Modal open={this.state.open} onClose={this.handleEditClose} className="bg-modal">
                         <div className="modal-content">
                             <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.productTypeItem.id} />
                         </div>
-                    
+
                     </Modal>
                 </TableCell>
                 <TableCell>
-                    <Button onClick={this.handleDelete}>Delete</Button>
+                    <Delete onClick={this.handleDelete}></Delete>
                 </TableCell>
             </TableRow>
         )

@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-
+// componenet form to generate Qr codes for products -tj
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -26,12 +26,12 @@ class Generate extends Component {
         super(props);
         this.state = {
             productType: '',
-            quantity: '',
+            quantity:'',
 
         }
     }
 
-    componentDidMount() {
+    componentDidMount(){
         this.props.dispatch({ type: 'FETCH_PRODUCT_TYPE' });
     }
 
@@ -40,27 +40,23 @@ class Generate extends Component {
         this.setState({
             ...this.state,
             productType: event.target.value,
-        })
-        // console.log(event.target.name, event.target.value);
-        // const formName = event.target.name;
-        // const changeValue = event.target.value;
-        // this.setState({
-        //     ...this.state,
-        //     formName: changeValue,
-        // })
-        // console.log(this.state);
-        console.log(event.target.value, 'ewwewewee')
-        console.log(this.state, '!!!!!')
 
+        })
+        console.log(event.target.value, 'ewwewewee');
+        console.log(this.state, '!!!!!');
+        
     }//end
 
     // handles the change of the quantity
     changeQuantity = (event) => {
+
+        console.log('quantity', event.target.value);
         console.log(event.target.value);
+      
         const inputquanity = parseInt(event.target.value);
         this.setState({
             ...this.state,
-            quantity: inputquanity
+            quantity: inputquanity,
         })
     }//end
 
@@ -73,9 +69,13 @@ class Generate extends Component {
             type: 'ADD_PRODUCT', payload: this.state
         });
         this.props.dispatch(action);
+        this.setState({
+            productType: '',
+            quantity: '',
+        });
     }//end
 
-    render() {
+    render(){
 
         return (
             <FormControl className="form-control">
@@ -90,14 +90,13 @@ class Generate extends Component {
                     helperText="product"
                     margin="normal"
                     fullWidth
-                    autoComplete="off"
-
                 >
                     {this.props.products.map((product, i) => (
                         <MenuItem key={i}
                             value={product}>
                             {product.product_name}
                         </MenuItem>))}
+
                 </TextField>
                 <TextField
                     id="select-quanity"
@@ -108,7 +107,7 @@ class Generate extends Component {
                     fullWidth
                     type="number"
                     InputProps={{ inputProps: { min: 0, max: 40000 } }}
-                    autoComplete="off"
+                    value={this.state.quantity}
                 />
                 <Button variant="contained" 
                  color="primary"

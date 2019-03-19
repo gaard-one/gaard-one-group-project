@@ -30,11 +30,20 @@ class ProductForm extends Component {
             description: '',
         }
     }
+
+    handleResetForm = () => {
+        this.setState({
+            product_name: '',
+            cost: '',
+            description: '',
+        });
+    }
     
 
     handleSubmit = () => {
         const action = { type: 'ADD_PRODUCT_TYPE', payload: this.state}
         this.props.dispatch(action);
+        this.handleResetForm();
     }
 
     handleProductName = (event) => {
@@ -57,24 +66,21 @@ class ProductForm extends Component {
             description: event.target.value,
         })
     }
-
+e
     render() {
         return (
             <div>
                 <FormControl margin="normal" className="form-control">
                     <TextField
-                        autoComplete
                         required
                         helperText="Product Name"
                         onChange={this.handleProductName}></TextField>
                     <TextField
                         required
-                        autoComplete
                         helperText="Cost"
                         onChange={this.handleCost}></TextField>
                     <TextField
                         required
-                        autoComplete
                         helperText="Description"
                         rows={4}
                         onChange={this.handleDescription}></TextField>

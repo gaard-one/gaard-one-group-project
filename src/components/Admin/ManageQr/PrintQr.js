@@ -4,6 +4,7 @@ import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 import Button from '@material-ui/core/Button';
 import QRCode from 'qrcode-react';
 import './PrintQr.css';
+const API_KEY = process.env.API_KEY;
 
 
 
@@ -17,29 +18,21 @@ class PrintQr extends Component {
 
     exportPDFWithComponent = () => {
         this.pdfExportComponent.save();
+        this.props.history.push('/admin')
     }
-
-    //view 
-    // qrPrintDiv() {
-    //     {this.props.reduxStore.product.map((qrProduct,i)=>(
-    //         <div class="qrPrint">
-    //             <QRCode value={`localhost:3000/#/home/${this.props.qrproduct}`}  />
-    //             {this.props.qrproduct.product_name}
-    //         </div> ))
-    //     }
-    // }
-    
 
     render() {
         return (
             
-            <div>
-                <Button onClick={this.exportPDFWithComponent}>Export PDF</Button>
+            <div> 
+                <Button variant="contained" color="primary"onClick={this.exportPDFWithComponent} className="Button" >Export PDF</Button>
+                <Button variant="contained" color="primary"onClick={() => window.print()} className="Button" >PRINT</Button>
+               
                 <div class="labelPageTemplate">
                 <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
                         {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <div class="qrPrint">
-                            <QRCode value={`localhost:3000/#/home/${qrProduct.id}`}  />
+                            <QRCode value={`${API_KEY}${qrProduct.id}`}  size={75} />
                                <p>{qrProduct.product_name}</p> 
                             </div> ))} 
                 </PDFExport>

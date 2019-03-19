@@ -76,7 +76,7 @@ class AdminTabNav extends Component {
                     <TabContainer dir={theme.direction}>
                         <Allocated />
                         <Generate />
-                        <QrTable history={this.props.history}/>
+                        <QrTable />
                        
 
                     </TabContainer>

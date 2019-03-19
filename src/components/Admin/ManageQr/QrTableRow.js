@@ -17,6 +17,7 @@ class QrTableRow extends Component {
                <TableCell>{this.props.product.cost}</TableCell>
                <TableCell>{this.props.product.printed}</TableCell>
                <TableCell><QRCode value={`localhost:3000/#/home/${this.props.product.id}`} /></TableCell>
+                <TableCell><input type='checkbox'></input></TableCell>
                <TableCell>Delete Icon here</TableCell>
            </TableRow>
         );

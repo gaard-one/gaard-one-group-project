@@ -12,10 +12,14 @@ import QrTableRow from './QrTableRow';
 
 
 class QrTable extends Component {
-    // constructor(props){
-    //     super(props);
+    constructor(props){
+        super(props);
+        this.state = {
+            isAllSelected: false,
+            
+        }
       
-    // }
+    }
 
     componentDidMount(){
         this.props.dispatch({type:'FETCH_PRODUCT'});
@@ -37,6 +41,9 @@ class QrTable extends Component {
                          <TableCell>Price</TableCell>
                          <TableCell>QR Printed</TableCell>
                          <TableCell>QR </TableCell>
+                            <TableCell>Archive 
+                                <input type='checkbox'></input>
+                                </TableCell>
                          <TableCell>Delete</TableCell>
                      </TableRow>
                  </TableHead>

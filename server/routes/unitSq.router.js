@@ -5,7 +5,30 @@ const router = express.Router();
 /**
  * GET route template
  */
+ //gets unit squares allocated
+router.get('/allocated', (req, res) => {
+    const queryText = `SELECT * FROM "unit_squares"
+                        WHERE "plot_id" IS NOT NULL;`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('error in get unit squares allocated', error);
+        res.sendStatus(500);
+    });
+});
 
+//gets unit squares total
+router.get('/total', (req, res) => {
+    const queryText = `SELECT count(*) FROM "unit_squares";`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('error in get unit squares allocated', error);
+        res.sendStatus(500);
+    });
+});
 
 //This route will fill the unit square table with data, 
 //result should be ~ 260,400 inserts for belwin

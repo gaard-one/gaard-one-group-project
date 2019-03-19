@@ -12,7 +12,7 @@ class ProductEditModal extends Component {
         super(props);
         this.state = {
             id: this.props.id,
-            product_name: '',
+            product_name: this.props.product_name,
             cost: '',
             description: '',
         }
@@ -24,6 +24,7 @@ class ProductEditModal extends Component {
         event.preventDefault();
         const action = { type: 'UPDATE_PRODUCT_TYPE', payload: this.state }
         this.props.dispatch(action);
+        this.props.handleEditClose();
     }
 
 
@@ -55,7 +56,8 @@ class ProductEditModal extends Component {
                 <FormControl className="form-control" margin="normal">
                     <TextField
                         required
-                        helperText="Product Name"
+                        // placeholder="Product Name"
+                        value={this.state}
                         onChange={this.handleProductName}></TextField>
                     <TextField
                         required

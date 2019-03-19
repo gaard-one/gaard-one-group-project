@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import { FormControl,  Select,  Button, InputLabel, MenuItem, } from '@material-ui/core';
 
 import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -77,8 +78,12 @@ class Generate extends Component {
 
     render(){
 
-        return (
-            <FormControl className="form-control">
+        //filter out inactive products
+        const activeProducts = this.props.products.filter( (product) => product.active);
+
+        return(
+            <FormControl
+                autoComplete={false}>
                 Create QR Code
                 <TextField
                     id="select-product"
@@ -91,7 +96,7 @@ class Generate extends Component {
                     margin="normal"
                     fullWidth
                 >
-                    {this.props.products.map((product, i) => (
+                    {activeProducts.map((product, i) => (
                         <MenuItem key={i}
                             value={product}>
                             {product.product_name}

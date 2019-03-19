@@ -22,7 +22,7 @@ class QrTableRow extends Component {
                <TableCell>{this.props.qrproduct.cost}</TableCell>
                <TableCell>{this.props.qrproduct.printed}</TableCell>
                
-                    <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell>
+                    <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`}  /></TableCell>
            
            </TableRow>
         );

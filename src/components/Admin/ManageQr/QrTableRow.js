@@ -13,7 +13,8 @@ class QrTableRow extends Component {
         this.state = {
             printed: this.props.qrproduct.printed
         }
-    }
+    } 
+
     archiveQr = (id) => {
         const action = { type: 'UPDATE_PRODUCT_PRINTED', payload: id}
         this.props.dispatch(action)
@@ -32,7 +33,7 @@ class QrTableRow extends Component {
              showRow = <TableRow><TableCell><button onClick={ () => { this.archiveQr(this.props.qrproduct) } }>Archive</button></TableCell>
                 <TableCell>{this.props.qrproduct.product_name}</TableCell>
                 <TableCell>{this.props.qrproduct.cost}</TableCell>
-                <TableCell>{this.props.qrproduct.printed}</TableCell>
+                <TableCell> {'' + this.props.qrproduct.printed}</TableCell>
                  <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell></TableRow>
         }
         // {JSON.stringify(this.state.product.id)}

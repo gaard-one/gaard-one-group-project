@@ -28,8 +28,9 @@ class QrTable extends Component {
     }
 
     render() {
-
-        // 
+        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+            return product.printed === false;
+        })
 
         return (
             <Paper>
@@ -49,7 +50,7 @@ class QrTable extends Component {
                     <TableBody>
                         <PDFExport ref={(component) => this.pdfExportComponent = component}
                             paperSize={'Letter'}>
-                            {this.props.reduxStore.product.map((qrProduct, i) => (
+                            {qrRowsUnprinted.map((qrProduct, i) => (
                                 <QrTableRow key={i} qrproduct={qrProduct} />
                             ))}
                         </PDFExport>

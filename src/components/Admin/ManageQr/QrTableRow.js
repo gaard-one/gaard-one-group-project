@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import QRCode from 'qrcode-react';
 import { TableCell, TableRow } from '@material-ui/core/';
 import { PDFExport, } from '@progress/kendo-react-pdf';
@@ -14,6 +14,10 @@ class QrTableRow extends Component {
             printed: this.props.qrproduct.printed
         }
     }
+    archiveQr = (id) => {
+        const action = { type: 'UPDATE_PRODUCT_PRINTED', payload: id}
+        this.props.dispatch(action)
+    }
     //  pdfExportComponent;
 
     //  exportPDFWithComponent = () => {
@@ -21,10 +25,11 @@ class QrTableRow extends Component {
     // }
 
     render() {
+        console.log('in qrproduct', this.props.qrproduct)
         const printedQr = this.state.printed;
         let showRow;
         if (printedQr === false){
-             showRow = <TableRow><TableCell><button></button></TableCell>
+             showRow = <TableRow><TableCell><button onClick={ () => { this.archiveQr(this.props.qrproduct) } }>Archive</button></TableCell>
                 <TableCell>{this.props.qrproduct.product_name}</TableCell>
                 <TableCell>{this.props.qrproduct.cost}</TableCell>
                 <TableCell>{this.props.qrproduct.printed}</TableCell>
@@ -37,5 +42,6 @@ class QrTableRow extends Component {
         );
     }
 }
+const mapReduxStoreToProps = reduxStore => ({ reduxStore });
 
-export default QrTableRow;
+export default connect(mapReduxStoreToProps)(QrTableRow);

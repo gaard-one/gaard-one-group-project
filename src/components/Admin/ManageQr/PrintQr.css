@@ -1,21 +1,36 @@
 
 @media print {
-
    
-    
+    .Button{
+        display: none !important;
+    }
+
+    .labelPageTemplate{
+        /* display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-basis: 100%; */
+        /* align-content: center !important; */
+    }
     
 
     @page{
         size: 8.5in 11in portrait;
         margin: 2cm;
-        display: none;
-        
+        width: 100%;
     }
   
      .qrPrint {
-        
+         size: 1in 1in !important;
+        /* width: 1in !important;
+        height: 1in !important; */
         display: inline-block;
-        padding: .04in;
+        padding-left: 0.182in !important;
+        padding-right: 0.182in !important;
+        padding-top: 0.095in !important;
+        padding-bottom: 0.095in !important;
+        margin: 0in !important;
+        font-size:5pt;
      }
      
     

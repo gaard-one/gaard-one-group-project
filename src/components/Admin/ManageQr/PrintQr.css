@@ -1,18 +1,26 @@
 
 @media print {
 
+   
+    
+    
+
     @page{
-        size: 8.5in 11in portrait
+        size: 8.5in 11in portrait;
+        margin: 2cm;
+        display: none;
+        
     }
-    .labelPageTemplate {
-        width: 2550;
-        height: 3300; 
-     }
-     
-     
+  
      .qrPrint {
-         
+        
+        display: inline-block;
+        padding: .04in;
      }
      
+    
+
+    
 
 }
+

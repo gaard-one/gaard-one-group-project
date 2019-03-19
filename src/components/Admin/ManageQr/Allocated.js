@@ -9,7 +9,7 @@ class Allocated extends Component {
             allSq: [],
          };
     }
-
+//use redux
     componentDidMount = () => {
         this.props.dispatch({ type: 'FETCH_ALLOCATED_SQUARES' });
         this.setState({

@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import QRCode from 'qrcode-react';
 import { TableCell, TableRow } from '@material-ui/core/';
 import { PDFExport, } from '@progress/kendo-react-pdf';
-
-
-
-
+const API_KEY = process.env.API_KEY;
 
 class QrTableRow extends Component {
     constructor(props){
@@ -36,7 +33,7 @@ class QrTableRow extends Component {
     }
 
     render() {
-        console.log('in qrproduct', this.props.qrproduct)
+        // console.log('in qrproduct', this.props.qrproduct)
         const printedQr = this.state.printed;
         let showRow;
         if (printedQr === false){
@@ -44,7 +41,7 @@ class QrTableRow extends Component {
                 <TableCell>{this.props.qrproduct.product_name}</TableCell>
                 <TableCell>{this.props.qrproduct.cost}</TableCell>
                 <TableCell> {'' + this.props.qrproduct.printed}</TableCell>
-                 <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell></TableRow>
+                <TableCell></TableCell></TableRow>
         }
         // {JSON.stringify(this.state.product.id)}
         return (

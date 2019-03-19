@@ -10,7 +10,7 @@ class Admin extends Component {
         <p>
           Admin Page
         </p>
-        <AdminTabNav />
+        <AdminTabNav history={this.props.history}/>
 
         <LogOutButton className="log-in" />
       </div>

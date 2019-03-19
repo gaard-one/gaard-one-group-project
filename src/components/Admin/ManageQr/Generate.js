@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { FormControl,  Select,  Button, InputLabel, MenuItem, } from '@material-ui/core';
 
-import { TextField } from '@material-ui/core';
+import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -78,8 +78,11 @@ class Generate extends Component {
 
     render(){
 
+        //filter out inactive products
+        const activeProducts = this.props.products.filter( (product) => product.active);
+
         return(
-            <form
+            <FormControl
                 autoComplete={false}>
                 Create QR Code
                 <TextField
@@ -92,9 +95,8 @@ class Generate extends Component {
                     helperText="product"
                     margin="normal"
                     fullWidth
-                    autoComplete="off"
                 >
-                    {this.props.products.map((product, i) => (
+                    {activeProducts.map((product, i) => (
                         <MenuItem key={i}
                             value={product}>
                             {product.product_name}
@@ -110,7 +112,6 @@ class Generate extends Component {
                     fullWidth
                     type="number"
                     InputProps={{ inputProps: { min: 0, max: 40000 } }}
-                    autoComplete="off"
                     value={this.state.quantity}
                 />
                 <Button variant="contained" 
@@ -118,7 +119,7 @@ class Generate extends Component {
                  onClick={this.submitGenerate}>
                     Submit
                 </Button>
-            </form >
+            </FormControl>
         );
 
     }

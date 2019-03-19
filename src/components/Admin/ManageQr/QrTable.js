@@ -8,8 +8,10 @@ class QrTable extends Component {
    
   
 
-    componentDidMount(){
-        this.props.dispatch({type:'FETCH_PRODUCT'});
+
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
     
     confirmPrint=()=>{
@@ -17,9 +19,10 @@ class QrTable extends Component {
     }
    
     render() {
-       
-    // 
-    
+        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+            return product.printed === false;
+        })
+
         return (
         <div>
         <Button variant="contained" color="primary" className="exportPdf" onClick={this.confirmPrint} >Export QR to PDF</Button>
@@ -52,5 +55,5 @@ class QrTable extends Component {
         );
     }
 }
-const mapReduxStoreToProps = reduxStore => ({reduxStore});
+const mapReduxStoreToProps = reduxStore => ({ reduxStore });
 export default connect(mapReduxStoreToProps)(QrTable);

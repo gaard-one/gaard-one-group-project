@@ -11,7 +11,7 @@
 .modal-content {
     margin-block-start: 10%;
     width: 500px;
-    height: 300px;
+    height: 400px;
     background-color: white;
     border-radius: 10px;
     position: absolute;
@@ -22,3 +22,10 @@
 
 }
 
+.modal-button {
+    margin: 6px 0;
+    padding: 0 26px;
+    width: 40%;
+    display: inline-block !important;
+    flex-direction: row;
+}

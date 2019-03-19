@@ -34,7 +34,7 @@ function* fetchProduct() {
 }
 //update printed 
 function* updateProductPrinted(action) {
-    let productPrinted = action.payload.id;
+    let productPrinted = action.payload.product_id;
     console.log('in updateProductPrinted payload', productPrinted);
     console.log('in updateProductPrinted action', action.payload);
     try {

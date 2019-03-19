@@ -16,11 +16,11 @@ class QrTable extends Component {
     pdfExportComponent;
     // constructor(props){
     //     super(props);
-      
-    // }
 
-    componentDidMount(){
-        this.props.dispatch({type:'FETCH_PRODUCT'});
+
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
 
     exportPDFWithComponent = () => {
@@ -28,36 +28,38 @@ class QrTable extends Component {
     }
 
     render() {
-       
-    // 
-    
+        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+            return product.printed === false;
+        })
+
         return (
-         <Paper>
-             {/* {JSON.stringify(this.props.reduxStore.product)}; */}
-             
-             <Table>
-                 <TableHead>
-                     <TableRow>
-                        <TableCell>Product</TableCell>
-                        <TableCell>Square Feet</TableCell>
-                        <TableCell>QR Printed</TableCell>
-                        <TableCell><button onClick={this.exportPDFWithComponent}>Export QR to PDF</button></TableCell>
-                     </TableRow>
-                 </TableHead>
-                
-                 <TableBody>
-                    <PDFExport ref={(component) => this.pdfExportComponent = component} 
-                            paperSize={'Letter'}> 
-                            {this.props.reduxStore.product.map((qrProduct,i)=>(
-                            <QrTableRow key={i} qrproduct={qrProduct}   />
+            <Paper>
+                {/* {JSON.stringify(this.props.reduxStore.product)}; */}
+
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Archive</TableCell>
+                            <TableCell>Product</TableCell>
+                            <TableCell>Square Feet</TableCell>
+                            <TableCell>QR Printed</TableCell>
+                            <TableCell><button onClick={this.exportPDFWithComponent}>Export QR to PDF</button></TableCell>
+                        </TableRow>
+                    </TableHead>
+
+                    <TableBody>
+                        <PDFExport ref={(component) => this.pdfExportComponent = component}
+                            paperSize={'Letter'}>
+                            {qrRowsUnprinted.map((qrProduct, i) => (
+                                <QrTableRow key={i} qrproduct={qrProduct} />
                             ))}
-                      </PDFExport>
-                 </TableBody>
-               
-             </Table>
-         </Paper>
+                        </PDFExport>
+                    </TableBody>
+
+                </Table>
+            </Paper>
         );
     }
 }
-const mapReduxStoreToProps = reduxStore => ({reduxStore});
+const mapReduxStoreToProps = reduxStore => ({ reduxStore });
 export default connect(mapReduxStoreToProps)(QrTable);

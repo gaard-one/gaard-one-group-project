@@ -5,7 +5,9 @@ function* productTypeSaga() {
     yield takeEvery('FETCH_PRODUCT_TYPE', fetchProductType)
     yield takeEvery('ADD_PRODUCT_TYPE', createProductType)
     yield takeLatest('UPDATE_PRODUCT_TYPE', updateProductType)
-    yield takeLatest('DELETE_PRODUCT_TYPE', deleteProductType)
+    yield takeLatest('DEACTIVATE_PRODUCT_TYPE', deActivateProductType)
+    yield takeLatest('REACTIVATE_PRODUCT_TYPE', reActivateProductType)
+    yield takeLatest('FETCH_DEACTIVATED_PRODUCT_TYPE', fetchDeactivatedProductType)
 
 }
 
@@ -44,16 +46,40 @@ function* updateProductType(action) {
     }
 };
 
-//delete product type
-function* deleteProductType(action) {
+//deActivate product type
+function* deActivateProductType(action) {
     let PTID = action.payload.id;
-    console.log('in deleteProductType payload', action.payload);
+    console.log('in deActivateProductType payload', action.payload);
     try {
-        yield axios.delete(`api/productType/${PTID}`);
+        yield axios.put(`api/productType/deActivate/${PTID}`);
         let nextAction = { type: 'FETCH_PRODUCT_TYPE' };
         yield put(nextAction);
     } catch (error) {
-        console.log('Delete product type request failed', error);
+        console.log('DeActivate product type request failed', error);
+    }
+};
+
+function* reActivateProductType(action) {
+    let PTID = action.payload.id;
+    console.log('in deActivateProductType payload', action.payload);
+    try {
+        yield axios.put(`api/productType/reActivate/${PTID}`);
+        let nextAction = { type: 'FETCH_PRODUCT_TYPE' };
+        yield put(nextAction);
+    } catch (error) {
+        console.log('ReActivate product type request failed', error);
+    }
+};
+
+//get deActivated product type
+function* fetchDeactivatedProductType() {
+    try {
+        const responseFromServer = yield axios.get('/api/productType/deActivate');
+        const nextAction = { type: 'SET_PRODUCT_TYPE', payload: responseFromServer.data };
+        yield put(nextAction);
+    } catch (error) {
+        console.log('Fetch deactivated product type request failed', error);
+        
     }
 };
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserTabNav from './UserTabNav';
+// import UserTabNav from './UserTabNav';
 import './UserLanding.css';
 import Header from '../Header/Header';
 import UserHomePage from './../UserLandingPage/UserHomePage';
@@ -8,9 +8,8 @@ import { connect } from 'react-redux';
 
 // base of user landing page view -Tiana
 class UserLandingPage extends Component {
-  constructor(props){
-    super(props);
-  }
+  
+  
 
   componentDidMount = () => {
     this.props.dispatch({ type: 'FETCH_PLOT',

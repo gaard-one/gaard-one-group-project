@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import { FormControl,  Select,  Button, InputLabel, MenuItem, } from '@material-ui/core';
 
-import { FormControl, Input, Select, TextField, InputLabel } from '@material-ui/core';
+import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-
+// componenet form to generate Qr codes for products -tj
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -26,12 +27,12 @@ class Generate extends Component {
         super(props);
         this.state = {
             productType: '',
-            quantity: '',
+            quantity:'',
 
         }
     }
 
-    componentDidMount() {
+    componentDidMount(){
         this.props.dispatch({ type: 'FETCH_PRODUCT_TYPE' });
     }
 
@@ -40,27 +41,23 @@ class Generate extends Component {
         this.setState({
             ...this.state,
             productType: event.target.value,
-        })
-        // console.log(event.target.name, event.target.value);
-        // const formName = event.target.name;
-        // const changeValue = event.target.value;
-        // this.setState({
-        //     ...this.state,
-        //     formName: changeValue,
-        // })
-        // console.log(this.state);
-        console.log(event.target.value, 'ewwewewee')
-        console.log(this.state, '!!!!!')
 
+        })
+        console.log(event.target.value, 'ewwewewee');
+        console.log(this.state, '!!!!!');
+        
     }//end
 
     // handles the change of the quantity
-    changeQunanity = (event) => {
+    changeQuantity = (event) => {
+
+        console.log('quantity', event.target.value);
         console.log(event.target.value);
+      
         const inputquanity = parseInt(event.target.value);
         this.setState({
             ...this.state,
-            quantity: inputquanity
+            quantity: inputquanity,
         })
     }//end
 
@@ -68,40 +65,61 @@ class Generate extends Component {
     // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate = (event) => {
         event.preventDefault();
-        console.log(this.state);
+        console.log('submit', this.state);
         const action = ({
             type: 'ADD_PRODUCT', payload: this.state
         });
         this.props.dispatch(action);
+        this.setState({
+            productType: '',
+            quantity: '',
+        });
     }//end
 
-    render() {
-        // const { classes } = this.props;
-        return (
-            <form
-            autoComplete={false}>
+    render(){
+
+        //filter out inactive products
+        const activeProducts = this.props.products.filter( (product) => product.active);
+
+        return(
+            <FormControl
+                autoComplete={false}>
+                Create QR Code
                 <TextField
                     id="select-product"
                     select
-                    label="Select"
+                    label=""
                     className="input"
                     value={this.state.productType}
                     onChange={this.changeInput}
                     helperText="product"
                     margin="normal"
-                    // SelectProps={{
-                    //     MenuProps: {
-
-                    //     }
-                    // }}
+                    fullWidth
                 >
-                    {this.props.products.map((product, i) => (
-                                <MenuItem key={i} 
-                                          value={product}>
-                                          {product.product_name} 
-                                </MenuItem>))}
-                        </TextField>
-            </form >
+                    {activeProducts.map((product, i) => (
+                        <MenuItem key={i}
+                            value={product}>
+                            {product.product_name}
+                        </MenuItem>))}
+
+                </TextField>
+                <TextField
+                    id="select-quanity"
+                    className="quantity"
+                    onChange={this.changeQuantity}
+                    helperText="quantity"
+                    margin="normal"
+                    fullWidth
+                    type="number"
+                    InputProps={{ inputProps: { min: 0, max: 40000 } }}
+                    value={this.state.quantity}
+                />
+                <Button variant="contained" 
+                 color="primary"
+                 onClick={this.submitGenerate}>
+                    Submit
+                </Button>
+            </FormControl>
         );
 
     }

@@ -19,9 +19,13 @@ import InfoPage from '../InfoPage/InfoPage';
 // adding admin page
 import Admin from '../Admin/Admin';
 // end adding admin page
+//importPrintQr
+import PrintQr from '../Admin/ManageQr/PrintQr';
+//end import
 
 import './App.css';
 import UserLandingPage from '../UserLandingPage/UserLandingPage';
+import EmployeeManagement from '../Admin/EmployeeManagement/EmployeeManagement';
 
 class App extends Component {
   componentDidMount () {
@@ -61,14 +65,23 @@ class App extends Component {
               component={Admin}
             />
             {/* end admin page route */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
-            />
+              path="/productform"
+              component={ProductForm}
+            /> */}
             <Route
             path="/UserLandingPage"
             component={UserLandingPage} />
+            <ProtectedRoute
+              exact
+              path="/employees"
+              component={EmployeeManagement}
+            />
+            <ProtectedRoute
+            path="/PrintQr"
+            component={PrintQr}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

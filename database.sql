@@ -2,14 +2,16 @@ CREATE TABLE "person" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL,
-    "admin" BOOLEAN DEFAULT false
+    "admin" BOOLEAN DEFAULT false,
+		"employee" BOOLEAN DEFAULT false
 );
 
 CREATE TABLE "product_type" (
 	"id" SERIAL PRIMARY KEY,
 	"product_name" VARCHAR(40) UNIQUE NOT NULL,
 	"cost" INTEGER NOT NULL,
-	"description" VARCHAR(100)
+	"description" VARCHAR(100),
+	"active" BOOLEAN DEFAULT true
 );
 
 CREATE TABLE "product" (
@@ -65,8 +67,9 @@ END;$BODY$
   LANGUAGE plpgsql IMMUTABLE
   COST 100;
 
-INSERT INTO "product_type" ("product_name", "cost", "description"),
-VALUES ('One-Charge',	75,	'Power Bank + Jumper Cables'),
+INSERT INTO "product_type" ("product_name", "cost", "description")
+VALUES 
+('One-Charge',	75,	'Power Bank + Jumper Cables'),
 ('The All4One',	149,	'35L Backpack with Detachable Stool and Solar Panel'),
 ('The Bright One', 49,	'Winter Hat + Headband LED Light Set'),
 ('WearOne',	20,	'Short Sleeve T-Shirt' ),

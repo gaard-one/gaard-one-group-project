@@ -15,6 +15,9 @@ function* addProduct(action) {
         yield axios.post('/api/product', action.payload);
         const newAction = { type: 'FETCH_PRODUCT' };
         yield put(newAction);
+
+        //updates total allocated on DOM
+        yield put({type: 'FETCH_ALLOCATED_SQUARES'});
     } catch (error) {
         console.log('error in addProduct POST saga');
     }
@@ -31,7 +34,7 @@ function* fetchProduct() {
 }
 //update printed 
 function* updateProductPrinted(action) {
-    let productPrinted = action.payload.id;
+    let productPrinted = action.payload.product_id;
     console.log('in updateProductPrinted payload', productPrinted);
     console.log('in updateProductPrinted action', action.payload);
     try {

@@ -25,6 +25,15 @@ class QrTableRow extends Component {
     //     this.pdfExportComponent.save();
     // }
 
+    printedLogic = () => {
+        if(this.props.qrproduct.printed){
+            return <TableCell>Printed</TableCell>
+        }else{
+            return <TableCell> Not Printed</TableCell>
+
+        }
+    }
+
     render() {
         console.log('in qrproduct', this.props.qrproduct)
         const printedQr = this.state.printed;
@@ -39,7 +48,6 @@ class QrTableRow extends Component {
         // {JSON.stringify(this.state.product.id)}
         return (
             <div>{showRow}</div>
-            
         );
     }
 }

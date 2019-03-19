@@ -50,8 +50,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                         JOIN "product_type"  
                         ON "product"."product_type_id" = "product_type"."id" 
                         JOIN "plot"
-                        ON "plot"."product_id" = "product"."id"
-                        ;`;
+                        ON "plot"."product_id" = "product"."id";`;
+
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows)

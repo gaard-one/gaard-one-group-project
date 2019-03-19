@@ -40,8 +40,8 @@ class Allocated extends Component {
         return (
             <div>
                 <p>
-                    {this.state.allSq} has been allocated out of {this.state.totSq},
-                    or {((this.state.allSq/this.state.totSq)*100)}%
+                    {this.state.allSq} has been allocated out of {this.state.totSq} square ft,
+                    or { ((this.state.allSq/this.state.totSq)*100).toFixed(2) }%
                 </p>
                
             </div>

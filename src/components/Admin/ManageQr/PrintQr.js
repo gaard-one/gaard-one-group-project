@@ -1,50 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, GridColumn, GridToolbar } from '@progress/kendo-react-grid';
-import { GridPDFExport } from '@progress/kendo-react-pdf';
+import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import Button from '@material-ui/core/Button';
+import QRCode from 'qrcode-react';
+import './PrintQr.css';
 
 
 
 class PrintQr extends Component {
-    gridPDFExport;
-
-    constructor(props) {
-        super(props);
-
-        this.state = { pdfExportRequested: false };
-    }
-
-
+    pdfExportComponent;
+    
     componentDidMount(){
         this.props.dispatch({type:'FETCH_PRODUCT'});
+        
     }
 
-    render() {
-        const grid = (
-            <Grid data={this.props.qrpoducts} style={{ height: '490px' }} >
-                <GridToolbar>
-                    <button
-                        title="Export PDF"
-                        className="k-button k-primary"
-                        onClick={this.exportPDF}
-                        disabled={this.state.pdfExportRequested}
-                    >
-                        Export PDF
-                    </button>
-                </GridToolbar>
-                <GridColumn field="product_name" title="Product" />
-                <GridColumn field="cost" title="Price" />
-                
-                
-            </Grid>
-        );
-        return (
-            <div>
-               <div className="qrCodePrint">
+    exportPDFWithComponent = () => {
+        this.pdfExportComponent.save();
+    }
 
-                
-                </div> 
+    //view 
+    // qrPrintDiv() {
+    //     {this.props.reduxStore.product.map((qrProduct,i)=>(
+    //         <div class="qrPrint">
+    //             <QRCode value={`localhost:3000/#/home/${this.props.qrproduct}`}  />
+    //             {this.props.qrproduct.product_name}
+    //         </div> ))
+    //     }
+    // }
+    
+
+    render() {
+        return (
+            
+            <div>
+                <Button onClick={this.exportPDFWithComponent}>Export PDF</Button>
+                <div class="labelPageTemplate">
+                <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
+                        {this.props.reduxStore.product.map((qrProduct,i)=>(
+                            <div class="qrPrint">
+                            <QRCode value={`localhost:3000/#/home/${qrProduct.id}`}  />
+                               <p>{qrProduct.product_name}</p> 
+                            </div> ))} 
+                </PDFExport>
+                </div>
             </div>
+            
         );
     }
 }

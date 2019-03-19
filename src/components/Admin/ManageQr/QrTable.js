@@ -1,30 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import QRCode from 'qrcode-react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Button} from '@material-ui/core';
+import { withRouter } from "react-router";
 import QrTableRow from './QrTableRow';
-import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
-
 
 
 class QrTable extends Component {
 
 
-    componentDidMount(){
-        this.props.dispatch({type:'FETCH_PRODUCT'});
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
 
 
     render() {
-       
-    // 
-    
+        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+            return product.printed === false;
+        })
+
         return (
+        <div>
+        <Button variant="contained" color="primary" className="exportPdf" onClick={this.confirmPrint} >Export QR to PDF</Button>
+        <br />
+
          <Paper>
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
              
@@ -34,20 +32,23 @@ class QrTable extends Component {
                         <TableCell>Product</TableCell>
                         <TableCell>Square Feet</TableCell>
                         <TableCell>QR Printed</TableCell>
-                        <TableCell><button onClick={this.exportPDFWithComponent}>Export QR to PDF</button></TableCell>
+                        <TableCell>Qr Code</TableCell>
                      </TableRow>
                  </TableHead>
                 
                  <TableBody>
+                    
                             {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <QrTableRow key={i} qrproduct={qrProduct}   />
                             ))}
+                     
                  </TableBody>
                
              </Table>
          </Paper>
+         </div>
         );
     }
 }
-const mapReduxStoreToProps = reduxStore => ({reduxStore});
-export default connect(mapReduxStoreToProps)(QrTable);
+const mapReduxStoreToProps = reduxStore => ({ reduxStore });
+export default withRouter(connect(mapReduxStoreToProps)(QrTable));

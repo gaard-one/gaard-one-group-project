@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import EmployeeTableItem from './EmployeeTableItem.js';
 import Header from '../../Header/Header.js';
 import EmployeeForm from './EmployeeForm.js';
+import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 
 class EmpoyeeManagement extends Component {
     constructor(props){
@@ -22,17 +23,20 @@ class EmpoyeeManagement extends Component {
 
             <EmployeeForm />
 
-            <table>
-                <thead>
-                    <tr><th>Name</th><th>Permission Level</th></tr>
-                </thead>
-                <tbody>
+            <Table>
+                <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Permission Level</TableCell>
+                        </TableRow>
+                </TableHead>
+                <TableBody>
                     {this.props.employees.map((employee, i) => {
                             return (<EmployeeTableItem key={i} 
                                         employee={employee} history={this.props.history}/>);
                     })}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
         </div>
         );
     }

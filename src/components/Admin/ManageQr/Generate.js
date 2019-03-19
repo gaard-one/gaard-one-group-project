@@ -75,14 +75,15 @@ class Generate extends Component {
             quantity: '',
         });
     }//end
-
-    render(){
+    
+render(){
 
         //filter out inactive products
         const activeProducts = this.props.products.filter( (product) => product.active);
 
         return(
             <FormControl
+                className="form-control"
                 autoComplete={false}>
                 Create QR Code
                 <TextField

@@ -12,10 +12,20 @@ class ProductEditModal extends Component {
         super(props);
         this.state = {
             id: this.props.id,
-            product_name: this.props.product_name,
+            product_name: '',
             cost: '',
             description: '',
         }
+    }
+
+    componentDidMount = () => {
+        this.setState({
+            product_name: this.props.products.product_name,
+            cost: this.props.products.cost,
+            description: this.props.products.description,
+        })
+        console.log('Component mounted');
+        
     }
     
 
@@ -56,24 +66,26 @@ class ProductEditModal extends Component {
                 <FormControl className="form-control" margin="normal">
                     <TextField
                         required
-                        // placeholder="Product Name"
-                        value={this.state}
+                        helperText="Product Name"
+                        value={this.state.product_name||''}
+                        type="text"
                         onChange={this.handleProductName}></TextField>
                     <TextField
                         required
                         helperText="Cost"
+                        value={this.state.cost||''}
                         onChange={this.handleCost}></TextField>
                     <TextField
                         required
                         helperText="Description"
                         rows={4}
+                        value={this.state.description||''}
                         onChange={this.handleDescription}></TextField>
                     <Button
                         variant="contained"
                         className="modal-button"
                         color="primary"
-                        style={{ display: 'inline-block' }}
-                        onClick={this.handleSubmit}>
+                        onClick={this.handleUpdateSubmit}>
                         Add New Product
                         </Button>
                     <Button 

@@ -13,19 +13,12 @@ import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 
 class QrTable extends Component {
-    pdfExportComponent;
-    // constructor(props){
-    //     super(props);
-      
-    // }
+
 
     componentDidMount(){
         this.props.dispatch({type:'FETCH_PRODUCT'});
     }
 
-    exportPDFWithComponent = () => {
-        this.pdfExportComponent.save();
-    }
 
     render() {
        
@@ -46,12 +39,9 @@ class QrTable extends Component {
                  </TableHead>
                 
                  <TableBody>
-                    <PDFExport ref={(component) => this.pdfExportComponent = component} 
-                            paperSize={'Letter'}> 
                             {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <QrTableRow key={i} qrproduct={qrProduct}   />
                             ))}
-                      </PDFExport>
                  </TableBody>
                
              </Table>

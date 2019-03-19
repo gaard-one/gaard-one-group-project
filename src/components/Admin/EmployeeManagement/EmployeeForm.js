@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './EmployeeManagement.css';
+import { FormControl, TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 class EmployeeForm extends Component{
     constructor(props){
@@ -26,14 +28,14 @@ class EmployeeForm extends Component{
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit} className={'employeeForm'}>
+            <FormControl onSubmit={this.handleSubmit} className={'employeeForm'}>
             <h4>Give a user employee permissions here</h4>
-                <input onChange={this.handleChange} type='text' 
+                <TextField onChange={this.handleChange} type='text' 
                     value={this.state.name||''} placeholder='User Name' name='name'/> 
 
 
-                <button type='submit' value='Submit'>Submit</button>
-            </form>
+                <Button type='submit' value='Submit'>Submit</Button>
+            </FormControl>
         );
     }
 }

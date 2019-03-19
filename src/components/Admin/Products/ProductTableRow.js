@@ -53,7 +53,7 @@ class ProductTableRow extends Component {
                     <Edit className="edit-product-type" onClick={this.handleEditOpen}>Edit</Edit>
                     <Modal open={this.state.open} onClose={this.handleEditClose} className="bg-modal">
                         <div className="modal-content">
-                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.productTypeItem.id} />
+                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.productTypeItem.id} products={this.props.productTypeItem}/>
                         </div>
 
                     </Modal>

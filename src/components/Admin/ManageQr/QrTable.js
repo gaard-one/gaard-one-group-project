@@ -4,20 +4,15 @@ import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Button} from '@
 import { withRouter } from "react-router";
 import QrTableRow from './QrTableRow';
 
-class QrTable extends Component {
-   
-  
 
+class QrTable extends Component {
 
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
-    
-    confirmPrint=()=>{
-        this.props.history.push('/PrintQr');
-    }
-   
+
+
     render() {
         const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
             return product.printed === false;

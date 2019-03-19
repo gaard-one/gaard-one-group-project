@@ -48,7 +48,13 @@ class QrTableRow extends Component {
         }
         // {JSON.stringify(this.state.product.id)}
         return (
-            <div>{showRow}</div>
+           <TableRow>
+               <TableCell>{this.props.qrproduct.product_name}</TableCell>
+               <TableCell>{this.props.qrproduct.cost}</TableCell>
+               {this.printedLogic()}
+                <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell>
+           
+           </TableRow>
         );
     }
 }

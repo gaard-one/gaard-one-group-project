@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { TableRow, TableCell } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+    
 
 class EmployeeTableItem extends Component {
 
@@ -37,14 +40,19 @@ class EmployeeTableItem extends Component {
 
     render() {
         return (
-            <tr>
-                <td>{this.props.employee.username}</td>
+            <TableRow>
+                <TableCell>{this.props.employee.username}</TableCell>
                 {this.permissionLevel()}
-                <td><button onClick={this.handleRemoveAdmin}>Remove Admin Permissions</button></td>
-                <td><button onClick={this.handleMakeAdmin}>Make Admin</button></td>
-                <td><button onClick={this.handleRemovePermissions}>Remove all Employee Permissions
-                    </button></td>
-            </tr>
+                <TableCell>
+                    <Button onClick={this.handleRemoveAdmin}>Remove Admin Permissions</Button>
+                </TableCell>
+                <TableCell>
+                    <Button onClick={this.handleMakeAdmin}>Make Admin</Button>
+                </TableCell>
+                <TableCell>
+                    <Button onClick={this.handleRemovePermissions}>Remove all Employee Permissions</Button>
+                </TableCell>
+            </TableRow>
         );
     }
 }

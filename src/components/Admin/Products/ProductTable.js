@@ -39,6 +39,7 @@ class ProductTable extends Component {
 
         return (
             <div>
+                <h2>Current Products</h2>
                 <Paper>
                  {/* This is needed for id */}
                     {/* {this.props.state.productType.productTypeReducer[0] !== undefined && JSON.stringify(this.props.state.productType.productTypeReducer[0].id)} */}
@@ -64,7 +65,8 @@ class ProductTable extends Component {
                     </Table>
                 </Paper>
                 <br></br>
-
+                <br></br>
+                <h2>Archived Products</h2>
                 <Paper>
                     {/* This is needed for id */}
                     {/* {this.props.state.productType.productTypeReducer[0] !== undefined && JSON.stringify(this.props.state.productType.productTypeReducer[0].id)} */}
@@ -75,7 +77,7 @@ class ProductTable extends Component {
                                 <TableCell>Price</TableCell>
                                 <TableCell>Description</TableCell>
                                 <TableCell>Edit</TableCell>
-                                <TableCell>De-Activate</TableCell>
+                                <TableCell>Re-Activate</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

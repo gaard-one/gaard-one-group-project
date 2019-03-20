@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmployeeTableItem from './EmployeeTableItem.js';
-import Header from '../../Header/Header.js';
+// import Header from '../../Header/Header.js';
 import EmployeeForm from './EmployeeForm.js';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 
 class EmpoyeeManagement extends Component {
-    constructor(props){
-        super(props);
-
-    }
+   
 
     componentDidMount = () => {
         this.props.dispatch({type: 'FETCH_EMPLOYEES'});

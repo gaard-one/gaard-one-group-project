@@ -23,27 +23,27 @@ class AllocationStatChart extends Component {
         // once filtered, we have an array with only tshirts objects now
         // we use reduce() to add the cost property of all tshirts and start the total at 0 
         const totalTshirt = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 1;
+            return product.product_type_id === 4;
         })
             .reduce((accumulator, tshirt) => {
                 return accumulator + tshirt.cost;
             }, 0);
 
         const totalHat = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 2;
+            return product.product_type_id === 3;
         })
             .reduce((accumulator, hat) => {
                 return accumulator + hat.cost;
             }, 0);
 
         const totalBackpack = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 3;
+            return product.product_type_id === 2;
         })
             .reduce((accumulator, backpack) => {
                 return accumulator + backpack.cost;
             }, 0);
         const totalBattery = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 4;
+            return product.product_type_id === 1;
         })
             .reduce((accumulator, battery) => {
                 return accumulator + battery.cost;

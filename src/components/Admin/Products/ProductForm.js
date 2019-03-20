@@ -66,7 +66,7 @@ class ProductForm extends Component {
             description: event.target.value,
         })
     }
-e
+
     render() {
         return (
             <div>

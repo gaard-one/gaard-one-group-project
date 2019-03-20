@@ -5,39 +5,13 @@ import './Legend.css';
 class Legend extends React.Component {
     constructor(props) { 
         super(props); 
-        this.state = {
-           showLocation: false,
-           location: [],
-        };
-    }
-
-    componentDidMount = () => {
-        if(this.props.unitSq.length > 0){
-            let firstSq = this.props.unitSq[0];
-            this.setState({
-                showLocation: true,
-                location: [firstSq.bl_corner_lat, firstSq.bl_corner_lon],
-            });
-        }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        const prevSq = prevProps.unitSq;
-        const sQ = this.props.unitSq;
-        if (sQ !== [] && prevSq !== sQ) {
-            let firstSq = this.props.unitSq[0];
-            this.setState({
-                showLocation: true,
-                location: [firstSq.bl_corner_lat, firstSq.bl_corner_lon],
-            });
-        }
     }
 
     renderLocation = () => {
-        if(this.state.showLocation){
+        if(this.props.unitSq.length > 0){
             return(
-                <p>Your Location: Latitude: {this.state.location[0]} <br />
-                   Longitude: {this.state.location[1]}</p>
+                <p>Your Location: Latitude: {this.props.unitSq[0].bl_corner_lat} <br />
+                   Longitude: {this.props.unitSq[0].bl_corner_lon}</p>
             )
         }
     }
@@ -57,7 +31,6 @@ class Legend extends React.Component {
 }
 
 const mapReduxStoreToProps = reduxStore => ({
-    ...reduxStore,
     unitSq: reduxStore.unitSq.displaySquare,
 });
 

@@ -14,11 +14,15 @@ import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 class QrTable extends Component {
     pdfExportComponent;
-    // constructor(props){
-    //     super(props);
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '',
+            qrRows: this.props.reduxStore.product
+        }
 
 
-
+    }
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
@@ -27,19 +31,56 @@ class QrTable extends Component {
         this.pdfExportComponent.save();
     }
 
-    render() {
-        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
-            return product.printed === false;
-        })
+    tableViewChange = (event) => {
+        console.log('in tableviewchange', this.state)
+        if (event.target.value == '1') {
+            this.setState({
+                value: event.target.value
+            })
+        } else if (event.target.value == '2') {
+            this.setState({
+                value: event.target.value
+            })
+        } else if (event.target.value == '3') {
+            this.setState({
+                value: event.target.value
+            })
+        }
+    }
 
+    render() {
+        // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+        //     return product.printed === false;
+        // let qrRows = this.props.reduxStore.product;
+        // if (this.state.value == '1') {
+        //     return qrRows;
+        // } else if (this.state.value == '2') {
+        //     qrRows = this.props.reduxStore.product.filter((product) => {
+        //         return product.printed === true;
+        //     })
+        // } else if (this.state.value == '3') {
+        //     qrRows = this.props.reduxStore.product.filter((product) => {
+        //         return product.printed === false;
+        //     })
+        // } else {
+        //     qrRows = this.props.reduxStore.product
+        //     return qrRows;
+        // }
+    
+        // })
         return (
             <Paper>
-                {/* {JSON.stringify(this.props.reduxStore.product)}; */}
+                {JSON.stringify(this.state)};
 
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Archive</TableCell>
+                            <TableCell><select onChange={this.tableViewChange} value={this.state.value}>
+                                <option value=''>Select Table View</option>
+                                <option value='1'>Show all QR codes</option>
+                                <option value='2'>Show printed QR codes</option>
+                                <option value='3'>Show unprinted QR codes</option>
+                            </select></TableCell>
                             <TableCell>Product</TableCell>
                             <TableCell>Square Feet</TableCell>
                             <TableCell>QR Printed</TableCell>
@@ -48,12 +89,10 @@ class QrTable extends Component {
                     </TableHead>
 
                     <TableBody>
-                        <PDFExport ref={(component) => this.pdfExportComponent = component}
-                            paperSize={'Letter'}>
-                            {qrRowsUnprinted.map((qrProduct, i) => (
+                        {this.state.qrRows.map((qrProduct, i) => (
                                 <QrTableRow key={i} qrproduct={qrProduct} />
                             ))}
-                        </PDFExport>
+
                     </TableBody>
 
                 </Table>

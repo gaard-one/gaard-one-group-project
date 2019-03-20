@@ -16,9 +16,12 @@ class QrTable extends Component {
     pdfExportComponent;
     constructor(props) {
         super(props);
+        // const qrRowsUnprinted = this.props.reduxStore.product.map((product) => {
+        //     return product;
+        // })
         this.state = {
-            value: '',
-            qrRows: this.props.reduxStore.product
+            value: '1',
+            // qrRows: this.props.reduxStore
         }
 
 
@@ -48,9 +51,29 @@ class QrTable extends Component {
         }
     }
 
+    showTable = () => {
+        let qrRows = this.props.reduxStore.product;
+        if (this.state.value == '1') {
+            return qrRows.map((qrProduct, i) => (
+                <QrTableRow key={i} qrproduct={qrProduct} />
+            ));
+        } else if (this.state.value == '2') {
+            const printedProducts = qrRows.filter((product) => product.printed);
+            return printedProducts.map((qrProduct, i)=>(
+                <QrTableRow key={i} qrproduct={qrProduct} />
+            ))
+        } else if (this.state.value == '3') {
+            const printedProducts = qrRows.filter((product) => !product.printed);
+            return printedProducts.map((qrProduct, i) => (
+                <QrTableRow key={i} qrproduct={qrProduct} />
+            ))
+        }
+    }
+
     render() {
         // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
         //     return product.printed === false;
+
         // let qrRows = this.props.reduxStore.product;
         // if (this.state.value == '1') {
         //     return qrRows;
@@ -63,20 +86,22 @@ class QrTable extends Component {
         //         return product.printed === false;
         //     })
         // } else {
-        //     qrRows = this.props.reduxStore.product
         //     return qrRows;
         // }
-    
         // })
+        // const qrRowsPrinted = this.props.reduxStore.product.filter((product) => {
+        //     return product.printed === true;
+        // })
+
         return (
             <Paper>
-                {JSON.stringify(this.state)};
+                {/* {JSON.stringify(this.state)}; */}
 
                 <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell><select onChange={this.tableViewChange} value={this.state.value}>
-                                <option value=''>Select Table View</option>
+                                {/* <option value='1'>Select Table View</option> */}
                                 <option value='1'>Show all QR codes</option>
                                 <option value='2'>Show printed QR codes</option>
                                 <option value='3'>Show unprinted QR codes</option>
@@ -89,9 +114,7 @@ class QrTable extends Component {
                     </TableHead>
 
                     <TableBody>
-                        {this.state.qrRows.map((qrProduct, i) => (
-                                <QrTableRow key={i} qrproduct={qrProduct} />
-                            ))}
+                        {this.showTable()}
 
                     </TableBody>
 

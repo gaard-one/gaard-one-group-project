@@ -32,8 +32,8 @@ class PrintQr extends Component {
                 <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
                         {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <div class="qrPrint">
-                            <QRCode value={`${API_KEY}${qrProduct.id}`}  size={60} />
-                               <p>{qrProduct.product_name}</p> 
+                            <QRCode value={`${API_KEY}${qrProduct.id}`}  size={55} className="labelQr"/>
+                               <p className="labelName">{qrProduct.product_name}</p> 
                             </div> ))} 
                 </PDFExport>
                 </div>

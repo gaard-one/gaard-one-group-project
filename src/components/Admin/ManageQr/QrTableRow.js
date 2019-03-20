@@ -53,7 +53,7 @@ class QrTableRow extends Component {
 
 
                 {this.printedLogic()}
-
+            </TableRow>
         );
     }
 }

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
+import { PDFExport,  } from '@progress/kendo-react-pdf';
 import Button from '@material-ui/core/Button';
 import QRCode from 'qrcode-react';
 import './PrintQr.css';
-const API_KEY = 'localhost:3000/#/home/';
 
-
+/*
+***  Change the base URL to the domain name used
+*/
+const BASE_URL = 'https://polar-eyrie-86048.herokuapp.com/#/home/';
+/*
+***
+*/
 
 class PrintQr extends Component {
     pdfExportComponent;
@@ -18,7 +23,7 @@ class PrintQr extends Component {
 
     exportPDFWithComponent = () => {
         this.pdfExportComponent.save();
-        this.props.history.push('/admin')
+        // this.props.history.push('/admin')
     }
     
     render() {
@@ -33,7 +38,7 @@ class PrintQr extends Component {
                 <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
                         {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <div class="qrPrint">
-                            <QRCode value={`${API_KEY}${qrProduct.id}`}  size={55} className="labelQr"/>
+                            <QRCode value={`${BASE_URL}${qrProduct.id}`}  size={55} className="labelQr"/>
                                <p className="labelName">{qrProduct.product_name}</p> 
                             </div> ))} 
                 </PDFExport>

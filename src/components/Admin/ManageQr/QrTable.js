@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Button} from '@material-ui/core';
 import { withRouter } from "react-router";
 import QrTableRow from './QrTableRow';
+import './PrintQr.css';
 
 class QrTable extends Component {
    
@@ -21,7 +22,7 @@ class QrTable extends Component {
 
         return (
         <div>
-        <Button variant="contained" color="primary" className="exportPdf" onClick={this.confirmPrint} >Export QR to PDF</Button>
+        <Button variant="contained" color={('#647c36')} className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
         <br />
 
          <Paper>

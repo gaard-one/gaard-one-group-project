@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QRCode from 'qrcode-react';
 import { TableCell, TableRow } from '@material-ui/core/';
-import { PDFExport, } from '@progress/kendo-react-pdf';
-const API_KEY = process.env.API_KEY;
+// import { PDFExport, } from '@progress/kendo-react-pdf';
+
+// use this line for display of the Qr Code in the table
+// import QRCode from 'qrcode-react';
 
 class QrTableRow extends Component {
     constructor(props){

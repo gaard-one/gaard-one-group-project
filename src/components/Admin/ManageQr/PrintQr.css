@@ -2,23 +2,27 @@
 @media print {
 
    
+    .Button{
+        display: none !important;
+    }
     
-    
-
     @page{
         size: 8.5in 11in portrait;
         margin: 2cm;
-        display: none;
+        display: none !important;
         
     }
   
      .qrPrint {
         
         display: inline-block;
-        padding: .04in;
+        padding: .1in;
+        margin-left: .005in;
      }
      
-    
+     .labelPageTemplate {
+        align-content: left !important;
+    }
 
     
 

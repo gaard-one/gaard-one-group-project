@@ -9,8 +9,8 @@
 }
 
 .belwinBorder{
-    height: 8px;
-    width: 8px;
+    height: 12px;
+    width: 25px;
     border-color: #90897f;
     border-style: solid;
     /* float: left; */
@@ -18,17 +18,19 @@
 }
 
 .purchase{
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 25px;
     background-color: #647c36;
-    /* float: left; */
+    border-style: solid;
+    border-width: 1px;
     display: inline-block;
 }
 
 .savedByYear{
-    width: 10px;
-    height: 10px;
-    /* float: right; */
+    width: 25px;
+    height: 12px;
+    border-style: solid;
+    border-width: 1px;
     display: inline-block;
     background: repeating-linear-gradient(
         45deg,

@@ -1,30 +1,46 @@
 
 @media print {
-
    
     .Button{
         display: none !important;
     }
+
+    .labelPageTemplate{
+        /* display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-basis: 100%; */
+        /* align-content: center !important; */
+    }
     
+
     @page{
         size: 8.5in 11in portrait;
-        margin: 2cm;
-        display: none !important;
-        
+        margin: 1.3cm;
+        width: 100%;
     }
   
      .qrPrint {
-        
+         size: 1in 1in !important;
+        /* width: 1in !important;
+        height: 1in !important; */
         display: inline-block;
-        padding: .1in;
-        margin-left: .005in;
+        padding-left: 0.24in !important;
+        padding-right: 0.24in !important;
+        padding-top: 0.221in !important;
+        padding-bottom: 0.221in !important;
+        margin: 0in !important;
+        font-size:5pt;
      }
-     
-     .labelPageTemplate {
-        align-content: left !important;
-    }
-
-    
 
 }
 
+.labelName{
+    padding: 0in !important;
+    margin: 0in !important;
+}
+
+.labelQr{
+    padding: 0in !important;
+    margin: 0in !important;
+}

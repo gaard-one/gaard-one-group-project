@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Button} from '@material-ui/core';
-
+import { withRouter } from "react-router";
 import QrTableRow from './QrTableRow';
 
 class QrTable extends Component {
@@ -47,4 +47,4 @@ class QrTable extends Component {
     }
 }
 const mapReduxStoreToProps = reduxStore => ({ reduxStore });
-export default connect(mapReduxStoreToProps)(QrTable);
+export default withRouter(connect(mapReduxStoreToProps)(QrTable));

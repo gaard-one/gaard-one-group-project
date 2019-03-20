@@ -26,6 +26,9 @@ class QrTable extends Component {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
 
+    confirmPrint = () => {
+        this.props.history.push('/PrintQr');
+    }
 
     tableViewChange = (event) => {
         console.log('in tableviewchange', this.state)

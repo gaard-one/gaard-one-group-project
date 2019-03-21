@@ -1,11 +1,14 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+const Swal = require('sweetalert2');
 
 function* productTypeSaga() {
     yield takeEvery('FETCH_PRODUCT_TYPE', fetchProductType)
     yield takeEvery('ADD_PRODUCT_TYPE', createProductType)
     yield takeLatest('UPDATE_PRODUCT_TYPE', updateProductType)
-    yield takeLatest('DELETE_PRODUCT_TYPE', deleteProductType)
+    yield takeLatest('DEACTIVATE_PRODUCT_TYPE', deActivateProductType)
+    yield takeLatest('REACTIVATE_PRODUCT_TYPE', reActivateProductType)
+    yield takeLatest('FETCH_DEACTIVATED_PRODUCT_TYPE', fetchDeactivatedProductType)
 
 }
 
@@ -15,8 +18,17 @@ function* createProductType(action) {
         yield axios.post('/api/productType/newproduct', action.payload);
         const newAction = { type: 'FETCH_PRODUCT_TYPE' };
         yield put(newAction);
+        Swal.fire({
+            title: 'New Product Added!',
+            type: 'success',
+        })
     } catch (error) {
-        console.log('Create product type request failed', error);
+        Swal.fire({
+            title: 'Unable To Add New Product',
+            text: 'Please try again.',
+            type: 'error',
+        })
+        // alert('Create product type request failed', error);
     }
 };
 
@@ -27,7 +39,7 @@ function* fetchProductType() {
         const nextAction = { type: 'SET_PRODUCT_TYPE', payload: responseFromServer.data };
         yield put(nextAction);
     } catch (error) {
-        console.log('Fetch product type request failed', error);
+        alert('Fetch product type request failed', error);
     }
 };
 
@@ -44,16 +56,40 @@ function* updateProductType(action) {
     }
 };
 
-//delete product type
-function* deleteProductType(action) {
+//deActivate product type
+function* deActivateProductType(action) {
     let PTID = action.payload.id;
-    console.log('in deleteProductType payload', action.payload);
+    console.log('in deActivateProductType payload', action.payload);
     try {
-        yield axios.delete(`api/productType/${PTID}`);
+        yield axios.put(`api/productType/deActivate/${PTID}`);
         let nextAction = { type: 'FETCH_PRODUCT_TYPE' };
         yield put(nextAction);
     } catch (error) {
-        console.log('Delete product type request failed', error);
+        console.log('DeActivate product type request failed', error);
+    }
+};
+
+function* reActivateProductType(action) {
+    let PTID = action.payload.id;
+    console.log('in deActivateProductType payload', action.payload);
+    try {
+        yield axios.put(`api/productType/reActivate/${PTID}`);
+        let nextAction = { type: 'FETCH_PRODUCT_TYPE' };
+        yield put(nextAction);
+    } catch (error) {
+        console.log('ReActivate product type request failed', error);
+    }
+};
+
+//get deActivated product type
+function* fetchDeactivatedProductType() {
+    try {
+        const responseFromServer = yield axios.get('/api/productType/deActivate');
+        const nextAction = { type: 'SET_PRODUCT_TYPE', payload: responseFromServer.data };
+        yield put(nextAction);
+    } catch (error) {
+        console.log('Fetch deactivated product type request failed', error);
+        
     }
 };
 

@@ -8,7 +8,7 @@ class Header extends Component {
   <div className="header-main"
   >
   <br/>
-    <img src="/images/logo.svg" alt="gaard one"/>
+    {/* <img src="/images/logo.svg" alt="gaard one"/> */}
     <br/>
     <br/>
   </div>

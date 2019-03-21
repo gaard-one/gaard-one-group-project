@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
-import { Input, FormControl } from '@material-ui/core';
+import { FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const styles = theme => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    formControl: {
+        margin: theme.spacing.unit,
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2,
+    },
+});
+
+
 
 class ProductForm extends Component {
     constructor(props) {
@@ -11,7 +30,23 @@ class ProductForm extends Component {
             description: '',
         }
     }
+
+    // handleResetForm = () => {
+    //     this.setState({
+    //         product_name: '',
+    //         cost: '',
+    //         description: '',
+    //     });
+    // }
     
+    handleSubmitAndSwal = () => {
+        this.handleSubmit();
+    }
+
+    // handleSweetAlert = () => {
+    //     if(this.props.products.length === )
+    // }
+
 
     handleSubmit = () => {
         const action = { type: 'ADD_PRODUCT_TYPE', payload: this.state}
@@ -40,32 +75,41 @@ class ProductForm extends Component {
     }
 
     render() {
+
+
+
         return (
             <div>
-                <FormControl margin="normal">
-                    <Input
-                        autoComplete
+                <FormControl margin="normal" className="form-control">
+                    <TextField
                         required
-                        placeholder="Product Name"
-                        onChange={this.handleProductName}></Input>
-                    <Input
+                        helperText="Product Name"
+                        onChange={this.handleProductName}></TextField>
+                    <TextField
                         required
-                        autoComplete
-                        placeholder="Cost"
-                        onChange={this.handleCost}></Input>
-                    <Input
+                        helperText="Cost"
+                        onChange={this.handleCost}></TextField>
+                    <TextField
                         required
-                        autoComplete
-                        placeholder="Description"
+                        helperText="Description"
                         rows={4}
-                        onChange={this.handleDescription}></Input>
-                    <Input type="button"
-                           onClick={this.handleSubmit}
-                           value="Add New Product" />
-
+                        onChange={this.handleDescription}></TextField>
+                    <Button 
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleSubmitAndSwal}>
+                    Add New Product
+                        </Button>
+    
                 </FormControl>
+
             </div>
         )
     }
 }
-export default connect()(ProductForm);
+
+const mapStatetoProps = (state) => ({
+    products: state.productType,
+})
+
+export default connect(mapStatetoProps)(withStyles(styles)(ProductForm));

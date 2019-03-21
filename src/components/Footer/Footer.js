@@ -8,6 +8,7 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
+    {/* <img src="/images/gaardoneBirds.png" alt="gaard one"/> */}
     &copy; Prime Digital Academy
   </footer>
 );

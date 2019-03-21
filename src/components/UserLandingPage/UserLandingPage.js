@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserTabNav from './UserTabNav';
+// import UserTabNav from './UserTabNav';
 import './UserLanding.css';
 import Header from '../Header/Header';
 import UserHomePage from './../UserLandingPage/UserHomePage';
@@ -8,9 +8,8 @@ import { connect } from 'react-redux';
 
 // base of user landing page view -Tiana
 class UserLandingPage extends Component {
-  constructor(props){
-    super(props);
-  }
+  
+  
 
   componentDidMount = () => {
     this.props.dispatch({ type: 'FETCH_PLOT',
@@ -30,7 +29,7 @@ class UserLandingPage extends Component {
 
         <Header />
         <h3 className="userHeader">Thank You!!!</h3>
-        <h4 className="userSubHeader">Your purchase perserved {totalArea} square feet</h4>
+        <h4 className="userSubHeader">Your purchase preserved {totalArea} square feet</h4>
         <UserHomePage />
         {/* <UserTabNav /> */}
         <SocialMedia />
@@ -41,7 +40,7 @@ class UserLandingPage extends Component {
 }
 
 const mapStatetoProps = (state) => ({
-  squares: state.unitSq,
+  squares: state.unitSq.displaySquare,
 });
 
 export default connect(mapStatetoProps)(UserLandingPage);

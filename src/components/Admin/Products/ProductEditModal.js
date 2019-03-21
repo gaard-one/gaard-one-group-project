@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { Input, FormControl } from '@material-ui/core';
+import {  FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import './ProductEditModal';
+
+
 
 class ProductEditModal extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -14,10 +18,23 @@ class ProductEditModal extends Component {
         }
     }
 
+    componentDidMount = () => {
+        this.setState({
+            product_name: this.props.products.product_name,
+            cost: this.props.products.cost,
+            description: this.props.products.description,
+        })
+        console.log('Component mounted');
+        
+    }
+    
 
-    handleUpdateSubmit = () => {
+
+    handleUpdateSubmit = (event) => {
+        event.preventDefault();
         const action = { type: 'UPDATE_PRODUCT_TYPE', payload: this.state }
         this.props.dispatch(action);
+        this.props.handleEditClose();
     }
 
 
@@ -46,33 +63,39 @@ class ProductEditModal extends Component {
         return (
             <div>
                 <h2>Edit</h2>
-                <FormControl margin="normal">
-                    <Input
-                        autoComplete
+                <FormControl className="form-control" margin="normal">
+                    <TextField
                         required
-                        placeholder="Product Name"
-                        onChange={this.handleProductName}></Input>
-                    <Input
+                        helperText="Product Name"
+                        value={this.state.product_name||''}
+                        type="text"
+                        onChange={this.handleProductName}></TextField>
+                    <TextField
                         required
-                        autoComplete
-                        placeholder="Cost"
-                        onChange={this.handleCost}></Input>
-                    <Input
+                        helperText="Cost"
+                        value={this.state.cost||''}
+                        onChange={this.handleCost}></TextField>
+                    <TextField
                         required
-                        autoComplete
-                        placeholder="Description"
+                        helperText="Description"
                         rows={4}
-                        onChange={this.handleDescription}></Input>
-                    <Input type="button"
-                        onClick={this.handleUpdateSubmit}
-                        value="Update Product" />
-
+                        value={this.state.description||''}
+                        onChange={this.handleDescription}></TextField>
+                    <Button
+                        variant="contained"
+                        className="modal-button"
+                        color="primary"
+                        onClick={this.handleUpdateSubmit}>
+                        Add New Product
+                        </Button>
+                    <Button 
+                        className="modal-button"
+                        onClick={this.props.handleEditClose}>Close</Button>
                 </FormControl>
-
-                <Button onClick={this.props.handleEditClose}>Close</Button>
             </div>
         )
     }
 };
+
 
 export default connect()(ProductEditModal);

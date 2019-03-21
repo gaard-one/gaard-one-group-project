@@ -1,0 +1,60 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { TableRow, TableCell } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+    
+
+class EmployeeTableItem extends Component {
+
+    permissionLevel = () => {
+        if(this.props.employee.admin){
+            return <td>Admin</td>
+        }else if(this.props.employee.employee){
+            return <td>Employee</td>
+        }
+    }
+
+    handleRemoveAdmin = () => {
+        const action = {
+            type: 'REMOVE_ADMIN',
+            payload: this.props.employee,
+          }
+        this.props.dispatch(action);
+    }
+
+    handleMakeAdmin = () => {
+        const action = {
+            type: 'ADD_ADMIN',
+            payload: this.props.employee,
+          }
+        this.props.dispatch(action);
+    }
+
+    handleRemovePermissions = () => {
+        const action = {
+            type: 'REMOVE_EMPLOYEE',
+            payload: this.props.employee,
+          }
+        this.props.dispatch(action);
+    }
+
+    render() {
+        return (
+            <TableRow>
+                <TableCell>{this.props.employee.username}</TableCell>
+                {this.permissionLevel()}
+                <TableCell>
+                    <Button onClick={this.handleRemoveAdmin}>Remove Admin Permissions</Button>
+                </TableCell>
+                <TableCell>
+                    <Button onClick={this.handleMakeAdmin}>Make Admin</Button>
+                </TableCell>
+                <TableCell>
+                    <Button onClick={this.handleRemovePermissions}>Remove all Employee Permissions</Button>
+                </TableCell>
+            </TableRow>
+        );
+    }
+}
+
+export default connect()(EmployeeTableItem);

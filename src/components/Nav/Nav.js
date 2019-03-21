@@ -6,8 +6,8 @@ import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
+    <Link to="/admin">
+      <h2 className="nav-title">Gaard One</h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
@@ -19,9 +19,9 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info">
-            Info Page
-          </Link>
+          {/* <Link className="nav-link" to="/productform">
+            Product Form
+          </Link> */}
           <LogOutButton className="nav-link"/>
         </>
       )}

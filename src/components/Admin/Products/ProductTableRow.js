@@ -3,6 +3,12 @@ import { connect } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 import './ProductEditModal.css';
 import ProductEditModal from './ProductEditModal';
+import { TableRow, TableCell } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+// import Delete from '@material-ui/icons/Delete'
+import Edit from '@material-ui/icons/Edit'
+
+
 
 
 
@@ -12,8 +18,8 @@ class ProductTableRow extends Component {
         open: false,
     };
 
-    handleDelete = (event) => {
-        const action = { type: 'DELETE_PRODUCT_TYPE', payload: this.props.productTypeItem };
+    handleDeActivate = (event) => {
+        const action = { type: 'DEACTIVATE_PRODUCT_TYPE', payload: this.props.productTypeItem };
         this.props.dispatch(action);
     }
 
@@ -33,29 +39,29 @@ class ProductTableRow extends Component {
 
     render() {
         return (
-            <tr>
-                <td>
+            <TableRow>
+                <TableCell>
                     {this.props.productTypeItem.product_name}
-                </td>
-                <td>
+                </TableCell>
+                <TableCell>
                     {this.props.productTypeItem.cost}
-                </td>
-                <td>
+                </TableCell>
+                <TableCell>
                     {this.props.productTypeItem.description}
-                </td>
-                <td>
-                    <button className="edit-product-type" onClick={this.handleEditOpen}>Edit</button>
+                </TableCell>
+                <TableCell>
+                    <Edit className="edit-product-type" onClick={this.handleEditOpen}>Edit</Edit>
                     <Modal open={this.state.open} onClose={this.handleEditClose} className="bg-modal">
                         <div className="modal-content">
-                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.productTypeItem.id} />
+                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.productTypeItem.id} products={this.props.productTypeItem}/>
                         </div>
-                    
+
                     </Modal>
-                </td>
-                <td>
-                    <button onClick={this.handleDelete}>Delete</button>
-                </td>
-            </tr>
+                </TableCell>
+                <TableCell>
+                    <Button onClick={this.handleDeActivate}>De-Activate</Button>
+                </TableCell>
+            </TableRow>
         )
     }
 }

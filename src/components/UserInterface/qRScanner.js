@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
 import QrReader from 'react-qr-reader';
-// import Card from '@material-ui/core/Card';
+import { withRouter } from "react-router";
 import './UserInterface.css';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 
 //  Build out of qr scanner for in app accessibility -Tiana
 class qRScanner extends Component {
-
-
-    state = {
-        result: 'No result',
-        show: false,
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_PLOT' });
+        
+      }
+    constructor (props){
+        super(props)
+        if(this.props.match.params.id){
+            this.state={
+                result: this.props.match.params.id, 
+                show: false,
+            }
+        }else{
+            this.state = {
+            result: 'No result',
+            show: false,
+        }}
     }
+
+
+    
 
     handleScan = data => {
         if (data) {
+            let urlParts = data.split('/')
+            let productId = urlParts[ urlParts.length -1 ]
             this.setState({
-                result: data
+                result: productId
             })
+            this.closeIt();
+            // this.props.history.push(`/home`, {id: data})
         }
+        console.log('oh gosh')
+        // this.props.history.push(`home/${this.state.result}`);
+        //  this.props.history.push(`home/${this.state.result}`);
     }
     handleError = err => {
         console.error(err)
@@ -40,6 +62,7 @@ class qRScanner extends Component {
     render() {
         return (
             <div className="ui-main-div">
+            {/* {JSON.stringify(this.state)} */}
             <br/>
                 {/* <Card className="ui-card"> */}
                 <br />
@@ -55,7 +78,12 @@ class qRScanner extends Component {
                      color="secondary"
                      onClick={this.closeIt}> Close QR Reader </Button>
                      <div className="ui-qr-return">
-                    <a href={this.state.result}>{this.state.result}</a>
+                     {/* {this.props.plots.map(plot =>
+                    <QRScanner key={plot.id} history={this.props.history} client={plot}/>
+                  )} */}
+                     {/* {this.props.history.push(`home/${this.state.result}`)}; */}
+                     <a href={this.state.result}>{this.state.result}</a>
+                     
                     </div>
                     </div>
                     :
@@ -77,5 +105,9 @@ class qRScanner extends Component {
         );
     }
 }
-export default qRScanner;
+
+const mapReduxStoreToProps = reduxStore => ({
+    plot: reduxStore.unitSq.displaySquare,
+  });
+  export default withRouter(connect(mapReduxStoreToProps)(qRScanner));
 // end Build out of qr scanner for in app accessibility -Tiana

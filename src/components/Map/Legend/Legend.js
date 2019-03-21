@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import './Legend.css';
 
 class Legend extends React.Component {
-    constructor(props) { 
-        super(props); 
-    }
+    
 
     renderLocation = () => {
         if(this.props.unitSq.length > 0){

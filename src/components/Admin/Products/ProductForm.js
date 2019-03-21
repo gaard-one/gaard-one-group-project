@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, FormControl, TextField } from '@material-ui/core';
+import { FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -31,19 +31,26 @@ class ProductForm extends Component {
         }
     }
 
-    handleResetForm = () => {
-        this.setState({
-            product_name: '',
-            cost: '',
-            description: '',
-        });
-    }
+    // handleResetForm = () => {
+    //     this.setState({
+    //         product_name: '',
+    //         cost: '',
+    //         description: '',
+    //     });
+    // }
     
+    handleSubmitAndSwal = () => {
+        this.handleSubmit();
+    }
+
+    // handleSweetAlert = () => {
+    //     if(this.props.products.length === )
+    // }
+
 
     handleSubmit = () => {
         const action = { type: 'ADD_PRODUCT_TYPE', payload: this.state}
         this.props.dispatch(action);
-        this.handleResetForm();
     }
 
     handleProductName = (event) => {
@@ -66,8 +73,11 @@ class ProductForm extends Component {
             description: event.target.value,
         })
     }
-e
+
     render() {
+
+
+
         return (
             <div>
                 <FormControl margin="normal" className="form-control">
@@ -87,7 +97,7 @@ e
                     <Button 
                         variant="contained"
                         color="primary"
-                        onClick={this.handleSubmit}>
+                        onClick={this.handleSubmitAndSwal}>
                     Add New Product
                         </Button>
     
@@ -97,4 +107,9 @@ e
         )
     }
 }
-export default connect()(withStyles(styles)(ProductForm));
+
+const mapStatetoProps = (state) => ({
+    products: state.productType,
+})
+
+export default connect(mapStatetoProps)(withStyles(styles)(ProductForm));

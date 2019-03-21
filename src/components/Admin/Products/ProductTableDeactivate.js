@@ -24,6 +24,16 @@ class DeactivatedProductTableRow extends Component {
         this.props.dispatch(action);
     };
 
+    handleEditOpen = () => {
+        alert('Please re-activate item to edit.');
+
+    }
+
+    handleEditClose = () => {
+        this.setState({
+            open: false,
+        });
+    }
 
 
     render() {
@@ -39,13 +49,9 @@ class DeactivatedProductTableRow extends Component {
                     {this.props.deactProducts.description}
                 </TableCell>
                 <TableCell>
-                    <Edit className="edit-product-type" onClick={this.handleEditOpen}>Edit</Edit>
-                    <Modal open={this.state.open} onClose={this.handleEditClose} className="bg-modal">
-                        <div className="modal-content">
-                            <ProductEditModal handleEditClose={this.handleEditClose} id={this.props.deactProducts.id} />
-                        </div>
-
-                    </Modal>
+                    <Edit disabled 
+                          className="edit-product-type" 
+                          onClick={this.handleEditOpen}>Edit</Edit>
                 </TableCell>
                 <TableCell>
                     <Button onClick={this.handleReActivate} >Re-Activate</Button>

@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Allocated extends Component {
-    constructor(props){
-        super(props);
-    }
-
+    
+//use redux
     componentDidMount = () => {
         this.props.dispatch({ type: 'FETCH_ALLOCATED_SQUARES' });
     }

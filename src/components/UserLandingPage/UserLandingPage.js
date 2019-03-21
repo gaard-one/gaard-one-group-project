@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import UserTabNav from './UserTabNav';
 import './UserLanding.css';
 import Header from '../Header/Header';
-// / import UserHomePage from './../UserLandingPage/UserHomePage';
 import SocialMedia from './../SocialMedia/SocialMedia';
 import QRScanner from './../UserInterface/qRScanner';
 import BaseMap from '../Map/BaseMap';
@@ -27,6 +25,7 @@ class UserLandingPage extends Component {
 
   render() {
 
+
     let totalArea = this.props.squares.length;
     return (
       <div>
@@ -39,6 +38,7 @@ class UserLandingPage extends Component {
         <BaseMap />
         <br/>
         <Legend />
+
         <SocialMedia />
         </div>
         </div>

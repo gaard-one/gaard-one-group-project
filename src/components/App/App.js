@@ -61,6 +61,12 @@ class App extends Component {
               path="/home/:id"
               component={UserLandingPage}
             />
+
+            <Route
+              exact //!Commented out for ability to add params into url
+              path="/1/:id"
+              component={UserLandingPage}
+            />
             
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

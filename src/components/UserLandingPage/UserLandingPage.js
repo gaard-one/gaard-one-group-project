@@ -22,14 +22,23 @@ class UserLandingPage extends Component {
 
   render() {
 
-    let totalArea = this.props.squares.length;
-
+    // let totalArea = this.props.squares.length;
+    // let outPut;
+    //     if (this.props.reduxStore.unitSq === false) {
+    //         outPut = (<p>Welcome to Gaard One land </p>
+    //     } else if (this.props.reduxStore.feedbackReducer === true) {
+    //         outPut = (<Button variant="contained"
+    //             onClick={this.updateFinish}
+    //             color="primary" >
+    //             Submit
+    //                  </Button>)
     return (
       <div>
 
         <Header />
-        <h3 className="userHeader">Thank You!!!</h3>
-        <h4 className="userSubHeader">Your purchase perserved {totalArea} square feet</h4>
+        {/* {outPut} */}
+        {/* <h3 className="userHeader">Thank You!!!</h3>
+        <h4 className="userSubHeader">Your purchase perserved {totalArea} square feet</h4> */}
         <UserHomePage />
         {/* <UserTabNav /> */}
         <SocialMedia />

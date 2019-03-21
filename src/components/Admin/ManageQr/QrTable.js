@@ -5,34 +5,25 @@ import { withRouter } from "react-router";
 import QrTableRow from './QrTableRow';
 import './PrintQr.css';
 import PrintQr from './PrintQr';
+import QrPdfExport from './QrPdfExport';
+import { PDFExport,  } from '@progress/kendo-react-pdf';
 
 class QrTable extends Component {
-    
+    pdfExportComponent;
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
 
-    // handleOpen(){
-    //     this.setState({hidePrint: false});
-    //     console.log(this.state, 'Open Print') 
-        
-    // }
-
-    // handleClose(){
-    //     this.setState({hidePrint: true});
-    //     console.log(this.state, 'Close Print')
-    // }
-
     exportPDFWithComponent=()=>{
-        this.handleChange();
         this.pdfExportComponent.save();
     }
 
     printQr=()=>{
         window.print();
     }
-
+      //exports to pdf Qr Code currently in the table
+    
     render() {
 
         const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
@@ -42,7 +33,7 @@ class QrTable extends Component {
         return (
         <div>
         <div>
-        <Button variant="contained" style={{backgroundcolor:"#647c36"}} className="exportPdfBtn" onClick={this.handleOpen} >Export QR to PDF</Button>
+        <Button variant="contained" style={{backgroundcolor:"#647c36"}} className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
         <Button variant="contained" color="primary"onClick={this.printQr} className="Button" >PRINT</Button>
         <br />
 
@@ -65,9 +56,13 @@ class QrTable extends Component {
              </Table>
          </Paper>
          </div>
-         <div className="printHidden" >
-         
-             <PrintQr />
+         <div className="printHidden"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
+            <PrintQr />
+         </div>
+         <div className="pdfExport"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
+         <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
+            <QrPdfExport />
+            </PDFExport>
          </div>
         </div>
         );

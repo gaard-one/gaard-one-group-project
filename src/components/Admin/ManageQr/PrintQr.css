@@ -31,6 +31,9 @@
     .footer {
         display:none !important;
     }
+    .pdfExport {
+        display: none !important;
+    }
 
     @page{
         size: 8.5in 11in portrait;
@@ -52,8 +55,27 @@
      }
 
 }
+.pdfExport{
+
+}
 .printHidden {
-    display: none;
+   
+    /* size: 8.5in 11in portrait;
+    padding: 5px; */
+    /* width: 50px; */
+    /* display: inline-block; */
+
+}
+
+.qrPrint{
+    size: 8.5in 11in portrait;
+    /* display: inline-block; */
+    padding-left: 0.24in !important;
+    padding-right: 0.24in !important;
+    padding-top: 0.221in !important;
+    padding-bottom: 0.221in !important;
+    margin: 0in !important;
+    font-size:5pt;
 }
 
 .labelName{

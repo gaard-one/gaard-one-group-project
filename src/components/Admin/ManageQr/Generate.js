@@ -81,7 +81,7 @@ render(){
         return(
             <div className="form-container">
             <FormControl
-                className="createQrForm"
+                className="form-control"
                 autoComplete={false}>
                 <h2>Create QR Code</h2>
                 <TextField

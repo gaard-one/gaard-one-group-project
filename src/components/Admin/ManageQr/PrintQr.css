@@ -13,7 +13,10 @@
     .exportPdfBtn {
         display: none !important;
     }
-    .createQrForm{
+    .printBtn{
+        display:none !important;
+    }
+    .form-container, .form-control {
         display: none !important;
     }
     .AdminTabNav{

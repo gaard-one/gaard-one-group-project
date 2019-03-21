@@ -117,12 +117,12 @@ class QrTable extends Component {
              </Table>
          </Paper>
          </div>
-         <div>
+         <div className="pdfExport" style={{ position: "absolute", left: "-1000px", top: 0 }}>
             <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize="A4">
                 <QrPdfExport />
             </PDFExport>
          </div>
-         <div>
+         <div className="printHidden" style={{ position: "absolute", left: "-3000px", top: 0 }}>
              <PrintQr />
          </div>
          </div>

@@ -51,9 +51,16 @@ function* updateProductType(action) {
         yield axios.put(`api/productType/${PTID}`, action.payload)
         const nextAction = { type: 'FETCH_PRODUCT_TYPE', };
         yield put(nextAction);
+        Swal.fire({
+            title: 'Product Has Been Updated',
+            type: 'success'
+        })
     } catch (error) {
-        console.log('Update product type request failed', error);
-    }
+        Swal.fire({
+            title: 'Unable To Update Product',
+            text: 'Please try again.',
+            type: 'error',
+        })    }
 };
 
 //deActivate product type

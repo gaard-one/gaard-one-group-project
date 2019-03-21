@@ -59,8 +59,9 @@ class AdminTabNav extends Component {
                         value={this.state.value}
                         onChange={this.handleChange}
                         indicatorColor="primary"
-                        textColor="primary"
+                        textColor="#647c36"
                         variant="fullWidth"
+                        backgroundColor="#647c36"
                     >
                         <Tab label="Manage QR" />
                         <Tab label="Manage Products" />

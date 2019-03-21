@@ -59,7 +59,7 @@ class ProductTableRow extends Component {
                     </Modal>
                 </TableCell>
                 <TableCell>
-                    <Button onClick={this.handleDeActivate}>De-Activate</Button>
+                    <Button onClick={this.handleDeActivate}>Archive</Button>
                 </TableCell>
             </TableRow>
         )

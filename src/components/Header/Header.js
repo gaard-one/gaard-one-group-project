@@ -5,10 +5,8 @@ import './Header.css';
 class Header extends Component {
     render() {
         return (
-  <div className="header-main"
-  >
-  <br/>
-    {/* <img src="/images/logo.svg" alt="gaard one"/> */}
+  <div className="header-main">
+    <img className="cover-image" src="/images/Facebook-Cover-Photo.png" alt="gaard one"/>
     <br/>
     <br/>
   </div>

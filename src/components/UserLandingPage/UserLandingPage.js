@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import UserTabNav from './UserTabNav';
 import './UserLanding.css';
 import Header from '../Header/Header';
-// / import UserHomePage from './../UserLandingPage/UserHomePage';
 import SocialMedia from './../SocialMedia/SocialMedia';
 import QRScanner from './../UserInterface/qRScanner';
 import BaseMap from '../Map/BaseMap';
@@ -15,17 +13,18 @@ class UserLandingPage extends Component {
 
 
   componentDidMount = () => {
+    let urlParts = this.props.location.pathname.split('/')
+    console.log(urlParts)
+    let productId = urlParts[ urlParts.length -1 ]
     this.props.dispatch({
       type: 'FETCH_PLOT',
-      // this.props.location.pathname.substring(6) takes the url after #/
-      // and grabs the rest of it ignoring the first 6 characters
-      // effectively grabbing everything after /home/
-      payload: this.props.location.pathname.substring(6)
+      payload: productId
     });
   }
 
 
   render() {
+
 
     let totalArea = this.props.squares.length;
     return (
@@ -39,6 +38,7 @@ class UserLandingPage extends Component {
         <BaseMap />
         <br/>
         <Legend />
+
         <SocialMedia />
         </div>
         </div>

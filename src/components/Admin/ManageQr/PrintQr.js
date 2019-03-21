@@ -8,7 +8,7 @@ import './PrintQr.css';
 /*
 ***  Change the base URL to the domain name used
 */
-const BASE_URL = 'https://polar-eyrie-86048.herokuapp.com/#/home/';
+const BASE_URL = 'gaard.herokuapp.com/#/1/';
 /*
 ***
 */
@@ -38,7 +38,7 @@ class PrintQr extends Component {
                 <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
                         {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <div class="qrPrint">
-                            <QRCode value={`${BASE_URL}${qrProduct.id}`}  size={55} className="labelQr"/>
+                            <QRCode value={`${BASE_URL}${qrProduct.id}`}  size={75} className="labelQr"/>
                                <p className="labelName">{qrProduct.product_name}</p> 
                             </div> ))} 
                 </PDFExport>

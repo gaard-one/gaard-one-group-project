@@ -39,7 +39,7 @@ class qRScanner extends Component {
                 result: productId
             })
             this.closeIt();
-            this.props.history.push(`/1/${productId}`);
+            // this.props.history.push(`/1/${productId}`);
         }
         console.log('oh gosh!')
         // this.props.history.push(`home/${this.state.result}`);

@@ -7,10 +7,10 @@ class HeaderAdmin extends Component {
     render() {
         return (
   <div className="header-main">
+    <br/>
     <img className="cover-image" src="/images/logo.svg" alt="gaard one"/>
     <br/>
     <LogOutButton className="log-in" />
-    <br/>
   </div>
 );
 }

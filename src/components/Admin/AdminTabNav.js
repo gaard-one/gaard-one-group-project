@@ -53,6 +53,7 @@ class AdminTabNav extends Component {
         const { classes, theme } = this.props;
 
         return (
+            <div className="nav-div-main">
             <div className={classes.root}>
                 <AppBar position="static" color="default">
                     <Tabs
@@ -83,18 +84,18 @@ class AdminTabNav extends Component {
                         <Generate />
                         <QrTable />
                     </TabContainer>
-
+                    
                     {/* Manage Products */}
                     <TabContainer dir={theme.direction}>
                         <ProductForm />
                         <ProductTable />
                     </TabContainer>
-                    
                     {/* Manage Employee */}
                     <TabContainer dir={theme.direction}>
                         <EmployeeManagement />
                     </TabContainer>
                 </SwipeableViews>
+            </div>
             </div>
         );
     }

@@ -8,9 +8,9 @@ class EmployeeTableItem extends Component {
 
     permissionLevel = () => {
         if(this.props.employee.admin){
-            return <td>Admin</td>
+            return <TableCell>Admin</TableCell>
         }else if(this.props.employee.employee){
-            return <td>Employee</td>
+            return <TableCell>Employee</TableCell>
         }
     }
 

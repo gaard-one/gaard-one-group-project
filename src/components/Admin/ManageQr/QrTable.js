@@ -37,24 +37,24 @@ class QrTable extends Component {
         window.print();
     }
     
-    render() {
+   
 
-        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
-            return product.printed === false;
-        })
+        // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+        //     return product.printed === false;
+        // })
     
 
     tableViewChange = (event) => {
         console.log('in tableviewchange', this.state)
-        if (event.target.value == '1') {
+        if (event.target.value === '1') {
             this.setState({
                 value: event.target.value
             })
-        } else if (event.target.value == '2') {
+        } else if (event.target.value === '2') {
             this.setState({
                 value: event.target.value
             })
-        } else if (event.target.value == '3') {
+        } else if (event.target.value === '3') {
             this.setState({
                 value: event.target.value
             })
@@ -63,16 +63,16 @@ class QrTable extends Component {
 
     showTable = () => {
         let qrRows = this.props.reduxStore.product;
-        if (this.state.value == '1') {
+        if (this.state.value === '1') {
             return qrRows.map((qrProduct, i) => (
                 <QrTableRow key={i} qrproduct={qrProduct} />
             ));
-        } else if (this.state.value == '2') {
+        } else if (this.state.value === '2') {
             const printedProducts = qrRows.filter((product) => product.printed);
             return printedProducts.map((qrProduct, i)=>(
                 <QrTableRow key={i} qrproduct={qrProduct} />
             ))
-        } else if (this.state.value == '3') {
+        } else if (this.state.value === '3') {
             const printedProducts = qrRows.filter((product) => !product.printed);
             return printedProducts.map((qrProduct, i) => (
                 <QrTableRow key={i} qrproduct={qrProduct} />
@@ -84,10 +84,12 @@ class QrTable extends Component {
       
         return (
          
-        <div>
             <div>
-                <Button variant="contained" color="primary" style={{backgroundcolor:"#647c36"}} className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
-                <Button variant="contained" color="primary" onClick={this.printQr} className="printBtn" >PRINT</Button>
+            <div>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small'onClick={this.printQr} className="printBtn" >PRINT</Button>
+            
+               
             <br />
 
             <Paper className="qrTable">
@@ -105,7 +107,6 @@ class QrTable extends Component {
                         <TableCell>Product</TableCell>
                         <TableCell>Square Feet</TableCell>
                         <TableCell>QR Printed</TableCell>
-                        <TableCell>Qr Code</TableCell>
                      </TableRow>
                  </TableHead>
                  <TableBody>
@@ -115,6 +116,15 @@ class QrTable extends Component {
                  </TableBody>
              </Table>
          </Paper>
+         </div>
+         <div>
+            <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize="A4">
+                <QrPdfExport />
+            </PDFExport>
+         </div>
+         <div>
+             <PrintQr />
+         </div>
          </div>
         );
     }

@@ -50,7 +50,7 @@ class ProductTable extends Component {
                                 <TableCell>Price</TableCell>
                                 <TableCell>Description</TableCell>
                                 <TableCell>Edit</TableCell>
-                                <TableCell>De-Activate</TableCell>
+                                <TableCell>Archive</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

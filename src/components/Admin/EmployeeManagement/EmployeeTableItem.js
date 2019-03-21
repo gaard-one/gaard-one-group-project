@@ -42,7 +42,7 @@ class EmployeeTableItem extends Component {
         return (
             <TableRow>
                 <TableCell>{this.props.employee.username}</TableCell>
-                {this.permissionLevel()}
+                <TableCell>{this.permissionLevel()}</TableCell>
                 <TableCell>
                     <Button onClick={this.handleRemoveAdmin}>Remove Admin Permissions</Button>
                 </TableCell>

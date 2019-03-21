@@ -1,5 +1,6 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+const Swal = require('sweetalert2');
 
 function* productTypeSaga() {
     yield takeEvery('FETCH_PRODUCT_TYPE', fetchProductType)
@@ -17,8 +18,17 @@ function* createProductType(action) {
         yield axios.post('/api/productType/newproduct', action.payload);
         const newAction = { type: 'FETCH_PRODUCT_TYPE' };
         yield put(newAction);
+        Swal.fire({
+            title: 'New Product Added!',
+            type: 'success',
+        })
     } catch (error) {
-        console.log('Create product type request failed', error);
+        Swal.fire({
+            title: 'Unable To Add New Product',
+            text: 'Please try again.',
+            type: 'error',
+        })
+        // alert('Create product type request failed', error);
     }
 };
 
@@ -29,7 +39,7 @@ function* fetchProductType() {
         const nextAction = { type: 'SET_PRODUCT_TYPE', payload: responseFromServer.data };
         yield put(nextAction);
     } catch (error) {
-        console.log('Fetch product type request failed', error);
+        alert('Fetch product type request failed', error);
     }
 };
 

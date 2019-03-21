@@ -31,19 +31,26 @@ class ProductForm extends Component {
         }
     }
 
-    handleResetForm = () => {
-        this.setState({
-            product_name: '',
-            cost: '',
-            description: '',
-        });
-    }
+    // handleResetForm = () => {
+    //     this.setState({
+    //         product_name: '',
+    //         cost: '',
+    //         description: '',
+    //     });
+    // }
     
+    handleSubmitAndSwal = () => {
+        this.handleSubmit();
+    }
+
+    // handleSweetAlert = () => {
+    //     if(this.props.products.length === )
+    // }
+
 
     handleSubmit = () => {
         const action = { type: 'ADD_PRODUCT_TYPE', payload: this.state}
         this.props.dispatch(action);
-        this.handleResetForm();
     }
 
     handleProductName = (event) => {
@@ -68,6 +75,9 @@ class ProductForm extends Component {
     }
 
     render() {
+
+
+
         return (
             <div>
                 <FormControl margin="normal" className="form-control">
@@ -87,7 +97,7 @@ class ProductForm extends Component {
                     <Button 
                         variant="contained"
                         color="primary"
-                        onClick={this.handleSubmit}>
+                        onClick={this.handleSubmitAndSwal}>
                     Add New Product
                         </Button>
     
@@ -97,4 +107,9 @@ class ProductForm extends Component {
         )
     }
 }
-export default connect()(withStyles(styles)(ProductForm));
+
+const mapStatetoProps = (state) => ({
+    products: state.productType,
+})
+
+export default connect(mapStatetoProps)(withStyles(styles)(ProductForm));

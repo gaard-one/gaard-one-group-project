@@ -34,7 +34,7 @@ class EmployeeForm extends Component{
                     value={this.state.name||''} placeholder='User Name' name='name'/> 
 
 
-                <Button type='submit' value='Submit'>Submit</Button>
+                <Button onClick={this.handleSubmit} value='Submit'>Submit</Button>
             </FormControl>
         );
     }

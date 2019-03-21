@@ -89,7 +89,6 @@ router.put('/deactivate/:id', rejectUnauthenticated, (req, res) => {
     }
 });
 
-
 /**
  * REACTIVATE router template
  */

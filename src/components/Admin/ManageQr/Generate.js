@@ -61,7 +61,6 @@ class Generate extends Component {
         })
     }//end
 
-
     // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate = (event) => {
         event.preventDefault();
@@ -75,11 +74,10 @@ class Generate extends Component {
             quantity: '',
         });
     }//end
-    
-render(){
 
+render(){
         //filter out inactive products
-        const activeProducts = this.props.products.filter( (product) => product.active);
+        const activeProducts = this.props.products.filter((product) => product.active);
 
         return(
             <FormControl
@@ -127,7 +125,6 @@ render(){
 }
 // maps redux to products
 const mapReduxStoreToProps = reduxStore => ({
-    ...reduxStore,
     products: reduxStore.productType,
 });
 

@@ -54,7 +54,7 @@ class AdminTabNav extends Component {
 
         return (
             <div className={classes.root}>
-                <AppBar position="static" color="default">
+                <AppBar position="static" color="default" className="AdminTabNav">
                     <Tabs
                         value={this.state.value}
                         onChange={this.handleChange}

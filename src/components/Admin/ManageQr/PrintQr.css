@@ -1,18 +1,39 @@
 
 @media print {
    
+    .printHidden {
+        display: contents !important;
+    }
     .Button{
         display: none !important;
     }
-
-    .labelPageTemplate{
-        /* display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex-basis: 100%; */
-        /* align-content: center !important; */
+    .qrTable {
+        display: none !important;
     }
-    
+    .exportPdfBtn {
+        display: none !important;
+    }
+    .createQrForm{
+        display: none !important;
+    }
+    .AdminTabNav{
+        display: none !important;
+    }
+    .allocatedUnitSq {
+        display: none !important;
+    }
+    .adminPage {
+        display: none !important;
+    }
+    .log-in {
+        display: none !important;
+    }
+    .footer {
+        display:none !important;
+    }
+    .pdfExport {
+        display: none !important;
+    }
 
     @page{
         size: 8.5in 11in portrait;
@@ -33,6 +54,28 @@
         font-size:5pt;
      }
 
+}
+.pdfExport{
+
+}
+.printHidden {
+   
+    /* size: 8.5in 11in portrait;
+    padding: 5px; */
+    /* width: 50px; */
+    /* display: inline-block; */
+
+}
+
+.qrPrint{
+    size: 8.5in 11in portrait;
+    /* display: inline-block; */
+    padding-left: 0.24in !important;
+    padding-right: 0.24in !important;
+    padding-top: 0.221in !important;
+    padding-bottom: 0.221in !important;
+    margin: 0in !important;
+    font-size:5pt;
 }
 
 .labelName{

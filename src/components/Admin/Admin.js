@@ -7,7 +7,7 @@ class Admin extends Component {
   render() {
     return (
       <div>
-        <p>
+        <p className="adminPage">
           Admin Page
         </p>
         <AdminTabNav />

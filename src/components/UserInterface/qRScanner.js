@@ -75,6 +75,7 @@ class qRScanner extends Component {
                         onError={this.handleError}
                         onScan={this.handleScan}
                         style={{ width: '100%' }}
+                        resolution={1200}
                     />
                     <Button variant="contained"
                      color="secondary"

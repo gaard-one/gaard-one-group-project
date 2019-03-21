@@ -25,6 +25,9 @@ class EmpoyeeManagement extends Component {
                         <TableRow>
                             <TableCell>Name</TableCell>
                             <TableCell>Permission Level</TableCell>
+                            <TableCell> </TableCell>
+                            <TableCell> </TableCell>
+                            <TableCell> </TableCell>
                         </TableRow>
                 </TableHead>
                 <TableBody>

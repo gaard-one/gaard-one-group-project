@@ -28,13 +28,17 @@ class UserLandingPage extends Component {
   render() {
 
     let totalArea = this.props.squares.length;
-
+    // let outPut;
+    //     if (this.props.reduxStore.unitSq === false) {
+    //         outPut = (<p>Welcom to the Garrd One land protection page</p>)
+    //     } else if (this.props.reduxStore.unitSq === true) {
+    //         outPut = (<div><h3>Thank You!!!</h3><h4>Your purchase preserved {totalArea} square feet</h4></div>)
+    //         }
     return (
       <div>
         <Header />
         <div className="ui-home-addons">
-          <h3>Thank You!!!</h3>
-          <h4>Your purchase preserved {totalArea} square feet</h4> 
+        {/* {outPut} */}
         <QRScanner />
         <BaseMap />
         <br/>

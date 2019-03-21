@@ -81,6 +81,7 @@ class QrTable extends Component {
     }
 
     render() {
+
       
         return (
          
@@ -93,6 +94,7 @@ class QrTable extends Component {
             <br />
 
             <Paper className="qrTable">
+
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
              
              <Table>
@@ -129,5 +131,6 @@ class QrTable extends Component {
         );
     }
 }
+
 const mapReduxStoreToProps = reduxStore => ({ reduxStore });
 export default withRouter(connect(mapReduxStoreToProps)(QrTable));

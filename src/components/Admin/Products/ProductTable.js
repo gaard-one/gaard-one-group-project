@@ -11,19 +11,19 @@ import Paper from '@material-ui/core/Paper';
 
 
 
-
+//Product table for active and archived items
 class ProductTable extends Component {
 
     componentDidMount() {
         this.getProductTypeItems();
         this.fetchDeactivatedItems();
     }
-    
+    //Grabs products
     getProductTypeItems = () => {
         const action = { type: 'FETCH_PRODUCT_TYPE' };
         this.props.dispatch(action);
     }
-
+    //Grabs all archived products
     fetchDeactivatedItems = () => {
         const action = { type: 'FETCH_DEACTIVATED_PRODUCT_TYPE' };
         this.props.dispatch(action);
@@ -54,7 +54,7 @@ class ProductTable extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            
+                            {/* This loops through the active items to map */}
                                 {activeProducts.map((productTypeItem, i) => {
                                     return (
                                         <ProductTableRow productTypeItem={productTypeItem} key={i} />
@@ -66,6 +66,7 @@ class ProductTable extends Component {
                 </Paper>
                 <br></br>
                 <br></br>
+                {/* This is the archived items */}
                 <h2>Archived Products</h2>
                 <Paper>
                     {/* This is needed for id */}

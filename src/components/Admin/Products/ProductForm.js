@@ -98,6 +98,8 @@ class ProductForm extends Component {
                     <Button 
                         variant="contained"
                         color="primary"
+                        size='small'
+                        style={{ margin: '20px' }}
                         onClick={this.handleSubmitAndSwal}>
                     Add New Product
                         </Button>

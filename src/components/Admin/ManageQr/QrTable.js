@@ -117,7 +117,7 @@ class QrTable extends Component {
             //     </Table>
             // </Paper>
         <div>
-        <Button variant="contained" color={('#647c36')} className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
         <br />
 
          <Paper>
@@ -135,7 +135,6 @@ class QrTable extends Component {
                         <TableCell>Product</TableCell>
                         <TableCell>Square Feet</TableCell>
                         <TableCell>QR Printed</TableCell>
-                        <TableCell>Qr Code</TableCell>
                      </TableRow>
                  </TableHead>
                  <TableBody>

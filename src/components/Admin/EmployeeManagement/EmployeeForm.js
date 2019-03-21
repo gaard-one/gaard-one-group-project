@@ -27,6 +27,7 @@ class EmployeeForm extends Component{
     }
 
     render(){
+
         return(
             <div className="form-container">
             <FormControl onSubmit={this.handleSubmit} className={'form-control'}>
@@ -35,7 +36,13 @@ class EmployeeForm extends Component{
                     value={this.state.name||''} placeholder='User Name' name='name'/> 
 
 
-                <Button onClick={this.handleSubmit} value='Submit'>Submit</Button>
+                    <Button onClick={this.handleSubmit}
+                            value='Submit'
+                            color='primary'
+                            variant='contained'
+                            size='small'
+                            style={{ margin: '20px' }} >
+                            Submit</Button>
             </FormControl>
             </div>
         );

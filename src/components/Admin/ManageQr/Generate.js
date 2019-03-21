@@ -116,6 +116,8 @@ render(){
                 />
                 <Button variant="contained" 
                  color="primary"
+                style={{ margin: '20px' }}
+                size='small'
                  onClick={this.submitGenerate}>
                     Submit
                 </Button>

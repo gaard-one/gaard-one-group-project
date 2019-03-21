@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
-
+const Swal = require('sweetalert2');
 
 /**
  * GET route template
@@ -24,7 +24,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
  */
 router.post('/newproduct', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
+    if(req.user.admin){
         const queryText = `INSERT INTO "product_type" ("product_name", "cost", "description")
                         VALUES ( $1, $2, $3 );`;
         const product = req.body;
@@ -35,10 +35,9 @@ router.post('/newproduct', rejectUnauthenticated, (req, res) => {
             console.log('Something went wrong in POST new product', error);
             res.sendStatus(500);
         });
-    }else{
-        res.sendStatus(403);
     }
 });
+
 
 /**
  * UPDATE router template
@@ -68,7 +67,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 /** 
  * DEACTIVATE router template
  */
-router.put('/deActivate/:id', rejectUnauthenticated, (req, res) => {
+router.put('/deactivate/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
     if(req.isAuthenticated() && req.user.admin){
         console.log('In router deactivate PT', req.params.id);
@@ -92,7 +91,7 @@ router.put('/deActivate/:id', rejectUnauthenticated, (req, res) => {
 /**
  * REACTIVATE router template
  */
-router.put('/reActivate/:id', rejectUnauthenticated, (req, res) => {
+router.put('/reactivate/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
     if (req.isAuthenticated() && req.user.admin) {
         console.log('In router reactivate PT', req.params.id);
@@ -115,7 +114,7 @@ router.put('/reActivate/:id', rejectUnauthenticated, (req, res) => {
 /**
  * GET deactivated items router template
  */
-router.get('/deActivate/', rejectUnauthenticated, (req, res) => {
+router.get('/deactivate/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "product_type"
                        WHERE "active" = false;`;
     pool.query(queryText)

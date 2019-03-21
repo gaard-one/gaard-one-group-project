@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 //  Build out of qr scanner for in app accessibility -Tiana
 class qRScanner extends Component {
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_PLOT' });
+        //this.props.dispatch({ type: 'FETCH_PLOT' });
         
       }
     constructor (props){
@@ -31,7 +31,9 @@ class qRScanner extends Component {
 
     handleScan = data => {
         if (data) {
+            console.log('data', data);
             let urlParts = data.split('/')
+            console.log(urlParts)
             let productId = urlParts[ urlParts.length -1 ]
             this.setState({
                 result: productId
@@ -39,7 +41,7 @@ class qRScanner extends Component {
             this.closeIt();
             // this.props.history.push(`/home`, {id: data})
         }
-        console.log('oh gosh')
+        console.log('oh gosh!')
         // this.props.history.push(`home/${this.state.result}`);
         //  this.props.history.push(`home/${this.state.result}`);
     }

@@ -15,12 +15,12 @@ class UserLandingPage extends Component {
 
 
   componentDidMount = () => {
+    let urlParts = this.props.location.pathname.split('/')
+    console.log(urlParts)
+    let productId = urlParts[ urlParts.length -1 ]
     this.props.dispatch({
       type: 'FETCH_PLOT',
-      // this.props.location.pathname.substring(6) takes the url after #/
-      // and grabs the rest of it ignoring the first 6 characters
-      // effectively grabbing everything after /home/
-      payload: this.props.location.pathname.substring(6)
+      payload: productId
     });
   }
 

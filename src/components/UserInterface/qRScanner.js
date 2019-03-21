@@ -62,7 +62,7 @@ class qRScanner extends Component {
     render() {
         return (
             <div className="ui-main-div">
-            {JSON.stringify(this.state)}
+            {/* {JSON.stringify(this.state)} */}
             <br/>
                 {/* <Card className="ui-card"> */}
                 <br />

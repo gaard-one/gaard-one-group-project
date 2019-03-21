@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './../App/App.css'; // Css for this page is on app.css
+import './../UserLandingPage/UserLanding.css';
 import Card from '@material-ui/core/Card';
 
 // Share icons can be updated or changed if needed.

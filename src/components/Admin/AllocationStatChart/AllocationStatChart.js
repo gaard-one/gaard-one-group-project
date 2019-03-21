@@ -14,7 +14,7 @@ class AllocationStatChart extends Component {
         this.props.dispatch(action)
     }
     render() {
-        console.log('in redux', this.props.reduxStore);
+        // console.log('in redux', this.props.reduxStore);
         const productName = this.props.reduxStore.productType.map((product) => {
             return product.product_name;
         });

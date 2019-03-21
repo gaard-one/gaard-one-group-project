@@ -20,19 +20,23 @@ class PrintQr extends Component {
         this.props.dispatch({type:'FETCH_PRODUCT'});
         
     }
-
+    //exports to pdf Qr Code currently in the table
     exportPDFWithComponent = () => {
         this.pdfExportComponent.save();
         // this.props.history.push('/admin')
     }
-    
+    // prints the Qr Codes currently in the table
+    // printQr=()=>{
+    //     window.print();
+    // }
+
     render() {
         
         return (
             
             <div class="labelPageTemplate"> 
-                <Button variant="contained" color="primary"onClick={this.exportPDFWithComponent} className="Button" >Export PDF</Button>
-                <Button variant="contained" color="primary"onClick={() => window.print()} className="Button" >PRINT</Button>
+                {/* <Button variant="contained" color="primary"onClick={this.exportPDFWithComponent} className="Button" >Export PDF</Button> */}
+              
                
                 <div >
                 <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 

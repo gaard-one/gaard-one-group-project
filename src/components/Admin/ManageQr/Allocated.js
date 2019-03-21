@@ -13,7 +13,7 @@ class Allocated extends Component {
 
         return (
             <div>
-                <p>
+                <p className="allocatedUnitSq">
                     {this.props.unitSq.allocatedSquares.length} has been allocated out of {parseInt(this.props.unitSq.squareTotal)} square ft,
                     or { ((this.props.unitSq.allocatedSquares.length/parseInt(this.props.unitSq.squareTotal))*100).toFixed(2) }%
                 </p>

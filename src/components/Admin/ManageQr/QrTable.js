@@ -22,7 +22,6 @@ class QrTable extends Component {
     printQr=()=>{
         window.print();
     }
-      //exports to pdf Qr Code currently in the table
     
     render() {
 
@@ -32,38 +31,38 @@ class QrTable extends Component {
 
         return (
         <div>
-        <div>
-        <Button variant="contained" style={{backgroundcolor:"#647c36"}} className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
-        <Button variant="contained" color="primary"onClick={this.printQr} className="Button" >PRINT</Button>
-        <br />
+            <div>
+                <Button variant="contained" color="primary" style={{backgroundcolor:"#647c36"}} className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
+                <Button variant="contained" color="primary" onClick={this.printQr} className="printBtn" >PRINT</Button>
+            <br />
 
-         <Paper className="qrTable">
+            <Paper className="qrTable">
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
              
-             <Table>
-                 <TableHead>
-                     <TableRow>
-                        <TableCell>Product</TableCell>
-                        <TableCell>Square Feet</TableCell>
-                        <TableCell>QR Printed</TableCell>
-                        <TableCell>Qr Code</TableCell>
-                     </TableRow>
-                 </TableHead>
-                 <TableBody>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Product</TableCell>
+                            <TableCell>Square Feet</TableCell>
+                            <TableCell>QR Printed</TableCell>
+                            <TableCell>Qr Code</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {this.props.reduxStore.product.map((qrProduct,i)=>(
                         <QrTableRow key={i} qrproduct={qrProduct} />))}
-                 </TableBody>
-             </Table>
-         </Paper>
-         </div>
-         <div className="printHidden"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
-            <PrintQr />
-         </div>
-         <div className="pdfExport"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
-         <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
-            <QrPdfExport />
-            </PDFExport>
-         </div>
+                    </TableBody>
+                </Table>
+            </Paper>
+            </div>
+            <div className="printHidden" style={{ position: "absolute", left: "-1000px", top: 0,  }}>
+                <PrintQr />
+            </div>
+            <div className="pdfExport" style={{ position: "absolute", left: "-5000px", top: 0,  }}>
+                <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
+                    <QrPdfExport />
+                </PDFExport>
+            </div>
         </div>
         );
     }

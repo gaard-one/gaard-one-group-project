@@ -6,7 +6,7 @@ import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import PrintQr from './PrintQr';
+import './PrintQr.css';
 
 // componenet form to generate Qr codes for products -tj
 const styles = theme => ({
@@ -115,6 +115,7 @@ render(){
                 />
                 <Button variant="contained" 
                  color="primary"
+                 className="FormSubmitBtn"
                  onClick={this.submitGenerate}>
                     Submit
                 </Button>

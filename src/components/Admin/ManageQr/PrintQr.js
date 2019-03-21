@@ -29,7 +29,7 @@ class PrintQr extends Component {
                 
                         {this.props.reduxStore.product.map((qrProduct,i)=>(
                             <div class="qrPrint" key={i}>
-                            <QRCode value={`${BASE_URL}${qrProduct.id}`}  size={55} className="labelQr"/>
+                            <QRCode value={`${BASE_URL}${qrProduct.id}`}  size={55} level="m" />
                                <p className="labelName">{qrProduct.product_name}</p> 
                             </div> ))} 
          

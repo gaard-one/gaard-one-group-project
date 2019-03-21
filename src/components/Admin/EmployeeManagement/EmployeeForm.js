@@ -28,14 +28,16 @@ class EmployeeForm extends Component{
 
     render(){
         return(
-            <FormControl onSubmit={this.handleSubmit} className={'employeeForm'}>
-            <h4>Give a user employee permissions here</h4>
+            <div className="form-container">
+            <FormControl onSubmit={this.handleSubmit} className={'form-control'}>
+            <h4>Give a User Employee Permissions</h4>
                 <TextField onChange={this.handleChange} type='text' 
                     value={this.state.name||''} placeholder='User Name' name='name'/> 
 
 
                 <Button onClick={this.handleSubmit} value='Submit'>Submit</Button>
             </FormControl>
+            </div>
         );
     }
 }

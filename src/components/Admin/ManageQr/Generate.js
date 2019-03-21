@@ -80,10 +80,11 @@ render(){
         const activeProducts = this.props.products.filter((product) => product.active);
 
         return(
+            <div className="form-container">
             <FormControl
                 className="form-control"
                 autoComplete={false}>
-                Create QR Code
+                <h2>Create QR Code</h2>
                 <TextField
                     id="select-product"
                     select
@@ -119,6 +120,7 @@ render(){
                     Submit
                 </Button>
             </FormControl>
+            </div>
         );
 
     }

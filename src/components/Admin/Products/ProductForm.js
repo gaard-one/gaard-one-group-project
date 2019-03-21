@@ -79,7 +79,8 @@ class ProductForm extends Component {
 
 
         return (
-            <div>
+            <div className="form-container">
+            <h2>Add New Product</h2>
                 <FormControl margin="normal" className="form-control">
                     <TextField
                         required

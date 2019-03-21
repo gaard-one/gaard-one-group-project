@@ -7,9 +7,6 @@ class Admin extends Component {
   render() {
     return (
       <div>
-        <p>
-          Admin Page
-        </p>
         <AdminTabNav />
 
         <LogOutButton className="log-in" />

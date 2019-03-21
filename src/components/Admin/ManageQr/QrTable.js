@@ -32,15 +32,15 @@ class QrTable extends Component {
 
     tableViewChange = (event) => {
         console.log('in tableviewchange', this.state)
-        if (event.target.value == '1') {
+        if (event.target.value === '1') {
             this.setState({
                 value: event.target.value
             })
-        } else if (event.target.value == '2') {
+        } else if (event.target.value === '2') {
             this.setState({
                 value: event.target.value
             })
-        } else if (event.target.value == '3') {
+        } else if (event.target.value === '3') {
             this.setState({
                 value: event.target.value
             })
@@ -49,16 +49,16 @@ class QrTable extends Component {
 
     showTable = () => {
         let qrRows = this.props.reduxStore.product;
-        if (this.state.value == '1') {
+        if (this.state.value === '1') {
             return qrRows.map((qrProduct, i) => (
                 <QrTableRow key={i} qrproduct={qrProduct} />
             ));
-        } else if (this.state.value == '2') {
+        } else if (this.state.value === '2') {
             const printedProducts = qrRows.filter((product) => product.printed);
             return printedProducts.map((qrProduct, i)=>(
                 <QrTableRow key={i} qrproduct={qrProduct} />
             ))
-        } else if (this.state.value == '3') {
+        } else if (this.state.value === '3') {
             const printedProducts = qrRows.filter((product) => !product.printed);
             return printedProducts.map((qrProduct, i) => (
                 <QrTableRow key={i} qrproduct={qrProduct} />

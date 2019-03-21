@@ -24,7 +24,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
  */
 router.post('/newproduct', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
-    if(req.user.admin){
+    if (req.isAuthenticated() && req.user.admin){
         const queryText = `INSERT INTO "product_type" ("product_name", "cost", "description")
                         VALUES ( $1, $2, $3 );`;
         const product = req.body;
@@ -35,6 +35,8 @@ router.post('/newproduct', rejectUnauthenticated, (req, res) => {
             console.log('Something went wrong in POST new product', error);
             res.sendStatus(500);
         });
+    } else {
+        res.sendStatus(403);
     }
 });
 

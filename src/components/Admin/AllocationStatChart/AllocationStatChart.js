@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Bar,  } from 'react-chartjs-2';
+import { Bar, } from 'react-chartjs-2';
 
 
 class AllocationStatChart extends Component {
-<<<<<<< HEAD
     constructor(props) {
         super(props)
 
     }
-=======
-   
-
->>>>>>> 0791fff6b6b86aada5953047608702bfc221d68d
     componentDidMount() {
         this.getProductTypeName();
     }
@@ -20,6 +15,13 @@ class AllocationStatChart extends Component {
         let action = { type: 'FETCH_PRODUCT_TYPE' }
         this.props.dispatch(action)
     }
+    // addData(chart, label, data) {
+    //     const productName = this.props.reduxStore.productType.map((product) => {
+    //         return product.product_name;
+    //     });
+    //     chart.data.labels.push(productName);
+    //     chart.data.datasets.forEach
+    // }
     render() {
         console.log('in redux', this.props.reduxStore);
         const productName = this.props.reduxStore.productType.map((product) => {
@@ -30,40 +32,53 @@ class AllocationStatChart extends Component {
         // once filtered, we have an array with only tshirts objects now
         // we use reduce() to add the cost property of all tshirts and start the total at 0 
         const totalTshirt = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 4;
+            return product.product_type_id === 1;
         })
             .reduce((accumulator, tshirt) => {
                 return accumulator + tshirt.cost;
             }, 0);
 
         const totalHat = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 3;
+            return product.product_type_id === 2;
         })
             .reduce((accumulator, hat) => {
                 return accumulator + hat.cost;
             }, 0);
 
         const totalBackpack = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 2;
+            return product.product_type_id === 3;
         })
             .reduce((accumulator, backpack) => {
                 return accumulator + backpack.cost;
             }, 0);
-        const totalBattery = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 1;
-        })
-            .reduce((accumulator, battery) => {
-                return accumulator + battery.cost;
-            }, 0);
+        const totalBattery = this.props.reduxStore.product.filter(product => product.product_type_id === 4)
+            .reduce((accumulator, battery) => accumulator + battery.cost, 0);
+
+        // const totalTest = this.props.reduxStore.product.filter((product) => {
+        //     return product.product_type_id === 5;
+        // })
+        //     .reduce((accumulator, battery) => {
+        //         return accumulator + battery.cost;
+        //     }, 0);
         const data = {
             labels: productName,
             datasets: [{
-                data: [
-                    totalTshirt,
-                    totalHat,
-                    totalBackpack,
-                    totalBattery,
-                ],
+                data:
+                    [this.props.reduxStore.product.map(product => {
+                     return product
+                    }).filter((product)=>{
+                        return product.cost
+                    }).reduce((accumulator, total) => {
+                        return accumulator + total.cost;
+                    }, 0)]
+                    // [
+                    //     totalTshirt,
+                    //     totalHat,
+                    //     totalBackpack,
+                    //     totalBattery,
+                    //     // totalTest
+                    // ]
+                ,
                 backgroundColor:
                     '#336600',
                 // 'red',
@@ -80,6 +95,7 @@ class AllocationStatChart extends Component {
         return (
             <div>
                 <div>
+                    {/* {JSON.stringify(this.props.reduxStore.product)} */}
                     <Bar
                         data={data}
                         width={300}

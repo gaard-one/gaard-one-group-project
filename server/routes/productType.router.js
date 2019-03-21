@@ -35,6 +35,8 @@ router.post('/newproduct', rejectUnauthenticated, (req, res) => {
             console.log('Something went wrong in POST new product', error);
             res.sendStatus(500);
         });
+    }else{
+        res.sendStatus(403);
     }
 });
 

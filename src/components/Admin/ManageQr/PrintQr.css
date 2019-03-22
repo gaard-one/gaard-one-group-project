@@ -29,6 +29,9 @@
 .labelName{
     padding: 0in !important;
     margin: 0in !important;
+    overflow-wrap: break-word !important;
+    white-space: nowrap !important;
+    width: .5in !important
 }
 
 .labelQr{

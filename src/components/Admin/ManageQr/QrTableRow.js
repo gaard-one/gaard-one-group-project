@@ -35,7 +35,7 @@ class QrTableRow extends Component {
 
     render() {
         // console.log('in qrproduct', this.props.qrproduct)
-        const printedQr = this.state.printed;
+        //--// const printedQr = this.state.printed;
         // let showRow;
         // // if (printedQr === false){
         // showRow = <TableRow><TableCell><button onClick={() => { this.archiveQr(this.props.qrproduct) }}>Archive</button></TableCell>

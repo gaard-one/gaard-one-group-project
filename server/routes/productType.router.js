@@ -24,7 +24,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
  */
 router.post('/newproduct', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
-    if (req.isAuthenticated() && req.user.admin){
+    if (req.isAuthenticated() && (req.user.admin || req.user.employee) ){
         const queryText = `INSERT INTO "product_type" ("product_name", "cost", "description")
                         VALUES ( $1, $2, $3 );`;
         const product = req.body;
@@ -46,7 +46,7 @@ router.post('/newproduct', rejectUnauthenticated, (req, res) => {
  */
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
+    if(req.isAuthenticated() && (req.user.admin || req.user.employee)  ){
         const product = req.body;
         const queryText = `UPDATE "product_type"
                         SET "product_name" = '${product.product_name}',
@@ -71,7 +71,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
  */
 router.put('/deactivate/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
+    if(req.isAuthenticated() && (req.user.admin || req.user.employee) ){
         console.log('In router deactivate PT', req.params.id);
         
         const queryText = `UPDATE "product_type" 
@@ -94,7 +94,7 @@ router.put('/deactivate/:id', rejectUnauthenticated, (req, res) => {
  */
 router.put('/reactivate/:id', rejectUnauthenticated, (req, res) => {
     //User must be authenticated and have admin rights
-    if (req.isAuthenticated() && req.user.admin) {
+    if (req.isAuthenticated() && (req.user.admin || req.user.employee) ) {
         console.log('In router reactivate PT', req.params.id);
 
         const queryText = `UPDATE "product_type" 

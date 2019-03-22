@@ -3,16 +3,7 @@
    
     .Button{
         display: none !important;
-    }
-
-    .labelPageTemplate{
-        /* display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex-basis: 100%; */
-        /* align-content: center !important; */
-    }
-    
+    }    
 
     @page{
         size: 8.5in 11in portrait;

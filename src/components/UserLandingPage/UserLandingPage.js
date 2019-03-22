@@ -22,17 +22,25 @@ class UserLandingPage extends Component {
     });
   }
 
+  thankYou = () => {
+    let totalArea = this.props.squares.length;
+    if(totalArea > 0){
+      return(
+        <div>
+          <h3>Thank You!!!</h3>
+          <h4>Your purchase preserved {totalArea} square feet</h4>
+        </div>
+      )}
+  }
+
 
   render() {
 
-
-    let totalArea = this.props.squares.length;
     return (
       <div>
         <Header />
         <div className="ui-home-addons">
-        <h3>Thank You!!!</h3>
-        <h4>Your purchase preserved {totalArea} square feet</h4>
+        {this.thankYou()}
         
         <QRScanner />
         <BaseMap />

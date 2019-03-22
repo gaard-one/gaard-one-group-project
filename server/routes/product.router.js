@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 // PUT route for product printed
 router.put('/printed/:id', (req, res)=>{
     //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
+    if(req.isAuthenticated() && (req.user.admin || req.user.employee) ){
         console.log('in put route req.body', req.body);
         // const product = req.body;
         const queryText = `UPDATE "product" SET "printed" = true WHERE "id" = $1;`;
@@ -27,7 +27,7 @@ router.put('/printed/:id', (req, res)=>{
 // PUT route for product claimed
 router.put('/claimed/:id', (req, res)=>{
     //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
+    if(req.isAuthenticated() && (req.user.admin || req.user.employee) ){
         console.log('in put route req.body', req.body);
         const queryText = `UPDATE "product" SET "claimed" = true WHERE "id" =$1;`;
         pool.query(queryText, [req.params.id])
@@ -69,7 +69,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 //Takes in body with .quantity and .productTypeId and productTypeCost
 router.post('/', (req, res) => {
     //User must be authenticated and have admin rights
-    if(req.isAuthenticated() && req.user.admin){
+    if(req.isAuthenticated() && (req.user.admin || req.user.employee) ){
         (async () => {//wraps around everything we want to 'await'
 
             console.log('req.body is ', req.body);

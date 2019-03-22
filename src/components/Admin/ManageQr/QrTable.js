@@ -67,55 +67,10 @@ class QrTable extends Component {
     }
 
     render() {
-        // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
-        //     return product.printed === false;
 
-        // let qrRows = this.props.reduxStore.product;
-        // if (this.state.value == '1') {
-        //     return qrRows;
-        // } else if (this.state.value == '2') {
-        //     qrRows = this.props.reduxStore.product.filter((product) => {
-        //         return product.printed === true;
-        //     })
-        // } else if (this.state.value == '3') {
-        //     qrRows = this.props.reduxStore.product.filter((product) => {
-        //         return product.printed === false;
-        //     })
-        // } else {
-        //     return qrRows;
-        // }
-        // })
-        // const qrRowsPrinted = this.props.reduxStore.product.filter((product) => {
-        //     return product.printed === true;
-        // })
 
         return (
-            // <Paper>
-            //     {/* {JSON.stringify(this.state)}; */}
 
-            //     <Table>
-            //         <TableHead>
-            //             <TableRow>
-            //                 <TableCell><select onChange={this.tableViewChange} value={this.state.value}>
-            //                     {/* <option value='1'>Select Table View</option> */}
-            //                     <option value='1'>Show all QR codes</option>
-            //                     <option value='2'>Show printed QR codes</option>
-            //                     <option value='3'>Show unprinted QR codes</option>
-            //                 </select></TableCell>
-            //                 <TableCell>Product</TableCell>
-            //                 <TableCell>Square Feet</TableCell>
-            //                 <TableCell>QR Printed</TableCell>
-            //                 <TableCell><button onClick={this.exportPDFWithComponent}>Export QR to PDF</button></TableCell>
-            //             </TableRow>
-            //         </TableHead>
-
-            //         <TableBody>
-            //             {this.showTable()}
-
-            //         </TableBody>
-
-            //     </Table>
-            // </Paper>
         <div>
                 <Button variant="contained" style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
         <br />
@@ -148,5 +103,6 @@ class QrTable extends Component {
         );
     }
 }
+
 const mapReduxStoreToProps = reduxStore => ({ reduxStore });
 export default withRouter(connect(mapReduxStoreToProps)(QrTable));

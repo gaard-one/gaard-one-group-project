@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, forwardRef, useRef, } from 'react';
 import { connect } from 'react-redux';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper, Button} from '@material-ui/core';
 import { withRouter } from "react-router";
 import QrTableRow from './QrTableRow';
 import './PrintQr.css';
+import PrintQr from './PrintQr';
+import QrPdfExport from './QrPdfExport';
+import { PDFExport,  } from '@progress/kendo-react-pdf';
 
 
 
@@ -26,9 +29,20 @@ class QrTable extends Component {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
 
-    confirmPrint = () => {
-        this.props.history.push('/PrintQr');
+    exportPDFWithComponent=()=>{
+        this.pdfExportComponent.save();
     }
+
+    printQr=()=>{
+        window.print();
+    }
+    
+   
+
+        // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+        //     return product.printed === false;
+        // })
+    
 
     tableViewChange = (event) => {
         console.log('in tableviewchange', this.state)
@@ -68,14 +82,19 @@ class QrTable extends Component {
 
     render() {
 
-
+      
         return (
+         
+            <div>
+            <div>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small'onClick={this.printQr} className="printBtn" >PRINT</Button>
+            
+               
+            <br />
 
-        <div>
-                <Button variant="contained" style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
-        <br />
+            <Paper className="qrTable">
 
-         <Paper>
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
              
              <Table>
@@ -99,6 +118,15 @@ class QrTable extends Component {
                  </TableBody>
              </Table>
          </Paper>
+         </div>
+         <div className="pdfExport" style={{ position: "absolute", left: "-1000px", top: 0 }}>
+            <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize="A4">
+                <QrPdfExport />
+            </PDFExport>
+         </div>
+         <div className="printHidden" style={{ position: "absolute", left: "-3000px", top: 0 }}>
+             <PrintQr />
+         </div>
          </div>
         );
     }

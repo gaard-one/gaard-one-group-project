@@ -6,6 +6,7 @@ import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import './PrintQr.css';
 
 // componenet form to generate Qr codes for products -tj
 const styles = theme => ({
@@ -43,16 +44,14 @@ class Generate extends Component {
             productType: event.target.value,
 
         })
-        console.log(event.target.value, 'ewwewewee');
-        console.log(this.state, '!!!!!');
+    
         
     }//end
 
     // handles the change of the quantity
     changeQuantity = (event) => {
 
-        console.log('quantity', event.target.value);
-        console.log(event.target.value);
+    
       
         const inputquanity = parseInt(event.target.value);
         this.setState({
@@ -64,7 +63,7 @@ class Generate extends Component {
     // submits the data to the productSaga to generate unique plots based on admin inputs
     submitGenerate = (event) => {
         event.preventDefault();
-        console.log('submit', this.state);
+        // console.log('submit', this.state);
         const action = ({
             type: 'ADD_PRODUCT', payload: this.state
         });

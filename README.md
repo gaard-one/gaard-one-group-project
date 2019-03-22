@@ -33,7 +33,9 @@ From Git Hub repository `https://github.com/gaard-one/gaard-one-group-project`
 * Create database using the information in `database.sql`
 
 #Domain Name
-* update the const BASE_URL in /src/components/Admin/ManageQr/PrintQr.js 
+* update the const BASE_URL in 
+   - /src/components/Admin/ManageQr/PrintQr.js 
+   - /src/components/Admin/ManageQr/QrPdfExport.js
  - to your URL  
     or
  - localhost:/3000/home/

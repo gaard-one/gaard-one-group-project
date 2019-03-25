@@ -1,5 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+const Swal = require('sweetalert2');
+
 
 function* productSaga() {
     yield takeLatest('FETCH_PRODUCT', fetchProduct)
@@ -15,10 +17,19 @@ function* addProduct(action) {
         yield axios.post('/api/product', action.payload);
         const newAction = { type: 'FETCH_PRODUCT' };
         yield put(newAction);
-
+        Swal.fire({
+            title: 'QR Code Created',
+            text: 'Product has been attached to QR code!',
+            type: 'success'
+        })
         //updates total allocated on DOM
         yield put({type: 'FETCH_ALLOCATED_SQUARES'});
     } catch (error) {
+        Swal.fire({
+            title: 'QR Code Creation Failed',
+            text: 'Something went wrong with creating QR code. Please make sure quantity is below 50.',
+            type: 'error'
+        })
         console.log('error in addProduct POST saga');
     }
 }

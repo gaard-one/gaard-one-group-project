@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Bar,  } from 'react-chartjs-2';
+import { Bar, } from 'react-chartjs-2';
 
 
 class AllocationStatChart extends Component {
-   
+    constructor(props) {
+        super(props)
 
+    }
     componentDidMount() {
         this.getProductTypeName();
     }
@@ -13,70 +15,55 @@ class AllocationStatChart extends Component {
         let action = { type: 'FETCH_PRODUCT_TYPE' }
         this.props.dispatch(action)
     }
+
     render() {
         // console.log('in redux', this.props.reduxStore);
         const productName = this.props.reduxStore.productType.map((product) => {
             return product.product_name;
         });
 
-        // we are filtering through the reduxStore and returning only the products which matches the product_type_id
-        // once filtered, we have an array with only tshirts objects now
-        // we use reduce() to add the cost property of all tshirts and start the total at 0 
-        const totalTshirt = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 4;
-        })
-            .reduce((accumulator, tshirt) => {
-                return accumulator + tshirt.cost;
-            }, 0);
+        //Create an array to hold our total costs
+        const totalScores = [];
 
-        const totalHat = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 3;
-        })
-            .reduce((accumulator, hat) => {
-                return accumulator + hat.cost;
-            }, 0);
+        //just to shorten typing for legibility
+        const products = this.props.reduxStore.product;
 
-        const totalBackpack = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 2;
-        })
-            .reduce((accumulator, backpack) => {
-                return accumulator + backpack.cost;
-            }, 0);
-        const totalBattery = this.props.reduxStore.product.filter((product) => {
-            return product.product_type_id === 1;
-        })
-            .reduce((accumulator, battery) => {
-                return accumulator + battery.cost;
-            }, 0);
+        //loop over all product types
+        for (let type of this.props.reduxStore.productType) {
+            //push the cost into total scores
+            totalScores.push(products
+                //only use one type of product
+                .filter(function (product) {
+                    return product.product_type_id == type.id;
+                })
+                //only interested in the cost
+                .map(function (product) {
+                    return product.cost;
+                })
+                //get the sum of all products of that type
+                .reduce(function (accumulator, totalCost) {
+                    return accumulator + totalCost;
+                    //0 is initial value
+                }, 0)
+            )
+        }
+       
         const data = {
             labels: productName,
             datasets: [{
-                data: [
-                    totalTshirt,
-                    totalHat,
-                    totalBackpack,
-                    totalBattery,
-                ],
-                backgroundColor: 
+                data: totalScores,
+                backgroundColor:
                     '#336600',
-                    // 'red',
-                    // 'blue',
-                    // 'orange',
-                
+
                 borderWidth: 2,
                 borderColor: '#777',
                 hoverBorderWidth: 4,
                 hoverBorderColor: '#000',
                 label: 'Land Allocated', // for legend
-                
             }],
-            
         };
         return (
             <div>
-                <p>
-                    Chart Below
-                </p>
                 <div>
                     <Bar
                         data={data}
@@ -108,7 +95,7 @@ class AllocationStatChart extends Component {
                                         fontSize: 18,
                                     }
                                 }]
-                        }
+                            }
                         }}
                     />
                 </div>

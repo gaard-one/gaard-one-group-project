@@ -11,6 +11,7 @@ import { PDFExport,  } from '@progress/kendo-react-pdf';
 
 
 class QrTable extends Component {
+   
     pdfExportComponent;
 
     componentDidMount() {
@@ -19,15 +20,15 @@ class QrTable extends Component {
 
     tableViewChange = (event) => {
         console.log('in tableviewchange', this.state)
-        if (event.target.value == '1') {
+        if (event.target.value === '1') {
             this.setState({
                 value: event.target.value
             })
-        } else if (event.target.value == '2') {
+        } else if (event.target.value === '2') {
             this.setState({
                 value: event.target.value
             })
-        } else if (event.target.value == '3') {
+        } else if (event.target.value === '3') {
             this.setState({
                 value: event.target.value
             })
@@ -36,16 +37,16 @@ class QrTable extends Component {
 
     showTable = () => {
         let qrRows = this.props.reduxStore.product;
-        if (this.state.value == '1') {
+        if (this.state.value === '1') {
             return qrRows.map((qrProduct, i) => (
                 <QrTableRow key={i} qrproduct={qrProduct} />
             ));
-        } else if (this.state.value == '2') {
+        } else if (this.state.value === '2') {
             const printedProducts = qrRows.filter((product) => product.printed);
             return printedProducts.map((qrProduct, i)=>(
                 <QrTableRow key={i} qrproduct={qrProduct} />
             ))
-        } else if (this.state.value == '3') {
+        } else if (this.state.value === '3') {
             const printedProducts = qrRows.filter((product) => !product.printed);
             return printedProducts.map((qrProduct, i) => (
                 <QrTableRow key={i} qrproduct={qrProduct} />
@@ -54,30 +55,12 @@ class QrTable extends Component {
     }
 
     render() {
-       
-    //exports to pdf Qr Code currently in the table
-    exportPDFWithComponent=()=>{
-        this.pdfExportComponent.save();
-    }//end
 
-    //launches  print 
-    printQr=()=>{
-        window.print();
-    }//end
-    
-    
-    render()
-
-        const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
-            return product.printed === false;
-        })
 
         return (
-           
         <div>
         <div>
-        <Button variant="contained" style={{backgroundcolor:"#647c36"}} className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
-        <Button variant="contained" color="primary"onClick={this.printQr} className="Button" >PRINT</Button>
+                <Button variant="contained" style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
         <br />
 
          <Paper className="qrTable">
@@ -88,14 +71,13 @@ class QrTable extends Component {
                      <TableRow>
                          <TableCell><select onChange={this.tableViewChange} value={this.state.value}>
                                 {/* <option value='1'>Select Table View</option> */}
-                                <option value='1'>Show all QR codes</option>
-                                <option value='2'>Show printed QR codes</option>
-                                <option value='3'>Show unprinted QR codes</option>
+                                    <option value='1'>Show all QR codes</option>
+                                    <option value='2'>Show printed QR codes</option>
+                                    <option value='3'>Show unprinted QR codes</option>
                             </select></TableCell>
                         <TableCell>Product</TableCell>
                         <TableCell>Square Feet</TableCell>
                         <TableCell>QR Printed</TableCell>
-                        <TableCell>Qr Code</TableCell>
                      </TableRow>
                  </TableHead>
                  <TableBody>
@@ -118,7 +100,6 @@ class QrTable extends Component {
         );
     }
 }
-
 
 const mapReduxStoreToProps = reduxStore => ({ reduxStore });
 export default withRouter(connect(mapReduxStoreToProps)(QrTable));

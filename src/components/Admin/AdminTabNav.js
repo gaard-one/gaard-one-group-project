@@ -53,18 +53,19 @@ class AdminTabNav extends Component {
         const { classes, theme } = this.props;
 
         return (
+            <div className="nav-div-main">
             <div className={classes.root}>
                 <AppBar position="static" color="default" className="AdminTabNav">
                     <Tabs
                         value={this.state.value}
                         onChange={this.handleChange}
                         indicatorColor="primary"
-                        textColor="primary"
                         variant="fullWidth"
                     >
+                        <Tab label="Allocation Stats" />
                         <Tab label="Manage QR" />
                         <Tab label="Manage Products" />
-                        <Tab label="Allocation Stats (stretch)" />
+                        <Tab label="Allocation Stats" />
                         <Tab label="Employee Management" />
                     </Tabs>
                 </AppBar>
@@ -73,24 +74,29 @@ class AdminTabNav extends Component {
                     index={this.state.value}
                     onChangeIndex={this.handleChangeIndex}
                 >
+                    {/* Home Page Stats */}
+                    <TabContainer dir={theme.direction}>
+                    <AllocationStatChart />
+                    </TabContainer>
+
+                    {/* Manage QR */}
                     <TabContainer dir={theme.direction}>
                         <Allocated />
                         <Generate />
                         <QrTable />
-                       
-
                     </TabContainer>
+                    
+                    {/* Manage Products */}
                     <TabContainer dir={theme.direction}>
                         <ProductForm />
                         <ProductTable />
                     </TabContainer>
-                    <TabContainer dir={theme.direction}>
-                    <AllocationStatChart />
-                    </TabContainer>
+                    {/* Manage Employee */}
                     <TabContainer dir={theme.direction}>
                         <EmployeeManagement />
                     </TabContainer>
                 </SwipeableViews>
+            </div>
             </div>
         );
     }

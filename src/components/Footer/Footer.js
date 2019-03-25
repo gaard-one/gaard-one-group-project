@@ -9,7 +9,7 @@ import './Footer.css'
 const Footer = () => (
   <footer className="footer">
     {/* <img src="/images/gaardoneBirds.png" alt="gaard one"/> */}
-    &copy; Prime Digital Academy
+    &copy;TeamGaardOne
   </footer>
 );
 

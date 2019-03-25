@@ -13,7 +13,6 @@ class BaseMap extends React.Component {
                 //centers map on belwin land
                 center: [-92.819, 44.9365], 
                 scale: 4000,
-                basemap: 'satellite'
             }
         };
     }
@@ -36,7 +35,7 @@ class BaseMap extends React.Component {
                 <Map
                     dataFlow="oneWay"
                     viewProperties={this.state.viewProperties}
-                    mapProperties={{ basemap: 'satellite' }}
+                    mapProperties={{ basemap: 'hybrid' }}
                     // onLoad={this.handleMapLoad}
                     // onDrag={(e) => { e.stopPropagation() }}
                     // onMouseWheel={(e) => { e.stopPropagation() }}

@@ -1,5 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+const Swal = require('sweetalert2');
+
 
 function* employeeSaga() {
     yield takeEvery('FETCH_EMPLOYEES', fetchEmployees)
@@ -16,6 +18,10 @@ function* addAdmin(action) {
         yield axios.put('/api/user/setAdmin', action.payload);
         const newAction = { type: 'FETCH_EMPLOYEES' };
         yield put(newAction);
+        Swal.fire({
+            title: 'New Administrator added!',
+            type: 'success'
+        });
     } catch (error) {
         console.log('Add admin rights request failed', error);
     }
@@ -38,6 +44,10 @@ function* removeAdmin(action) {
         yield axios.put(`api/user/removeAdmin`, action.payload)
         const nextAction = { type: 'FETCH_EMPLOYEES', };
         yield put(nextAction);
+        Swal.fire({
+            title: 'Administrative Rights removed!',
+            type: 'success'
+        });
     } catch (error) {
         console.log('remove admin rights request failed', error);
     }
@@ -49,6 +59,10 @@ function* removeEmployee(action) {
         yield axios.put(`api/user/removeEmployee`, action.payload);
         let nextAction = { type: 'FETCH_EMPLOYEES' };
         yield put(nextAction);
+        Swal.fire({
+            title: 'Employee Removed!',
+            type: 'success'
+        });
     } catch (error) {
         console.log('Remove all employee rights request failed', error);
     }
@@ -59,6 +73,10 @@ function* addEmployee(action) {
         yield axios.put(`api/user/addEmployee`, action.payload);
         let nextAction = { type: 'FETCH_EMPLOYEES' };
         yield put(nextAction);
+        Swal.fire({
+            title: 'New Employee Added!',
+            type: 'success'
+        })
     } catch (error) {
         console.log('add employee rights request failed', error);
     }

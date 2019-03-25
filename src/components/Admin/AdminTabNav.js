@@ -65,7 +65,6 @@ class AdminTabNav extends Component {
                         <Tab label="Allocation Stats" />
                         <Tab label="Manage QR" />
                         <Tab label="Manage Products" />
-                        <Tab label="Allocation Stats" />
                         <Tab label="Employee Management" />
                     </Tabs>
                 </AppBar>

@@ -3,6 +3,7 @@ import { FormControl, TextField } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import './ProductEditModal.css';
 
 
 const styles = theme => ({
@@ -96,10 +97,11 @@ class ProductForm extends Component {
                         rows={4}
                         onChange={this.handleDescription}></TextField>
                     <Button 
+                        className="formSubmitBtn"
                         variant="contained"
                         color="primary"
                         size='small'
-                        style={{ margin: '20px' }}
+                        style={{ margin: '20px' , backgroundColor: "#647c36"}}
                         onClick={this.handleSubmitAndSwal}>
                     Add New Product
                         </Button>

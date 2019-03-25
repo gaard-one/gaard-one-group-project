@@ -113,8 +113,10 @@ render(){
                     InputProps={{ inputProps: { min: 0, max: 40000 } }}
                     value={this.state.quantity}
                 />
-                <Button variant="contained" 
-                 color="primary"
+                <Button 
+                className="FormSubmitBtn"
+                variant="contained" 
+                color="primary"
                 style={{ margin: '20px' }}
                 size='small'
                  onClick={this.submitGenerate}>

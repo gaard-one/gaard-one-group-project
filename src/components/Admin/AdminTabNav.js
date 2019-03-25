@@ -75,7 +75,8 @@ class AdminTabNav extends Component {
                 >
                     {/* Home Page Stats */}
                     <TabContainer dir={theme.direction}>
-                    <AllocationStatChart />
+                        <Allocated />
+                        <AllocationStatChart />
                     </TabContainer>
 
                     {/* Manage QR */}
@@ -90,6 +91,7 @@ class AdminTabNav extends Component {
                         <ProductForm />
                         <ProductTable />
                     </TabContainer>
+
                     {/* Manage Employee */}
                     <TabContainer dir={theme.direction}>
                         <EmployeeManagement />

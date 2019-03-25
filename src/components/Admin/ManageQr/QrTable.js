@@ -21,10 +21,8 @@ class QrTable extends Component {
             value: '1',
             // qrRows: this.props.reduxStore
         }
-
-
     }
-
+   
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
@@ -37,8 +35,6 @@ class QrTable extends Component {
         window.print();
     }
     
-   
-
         // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
         //     return product.printed === false;
         // })
@@ -100,11 +96,11 @@ class QrTable extends Component {
              <Table>
                  <TableHead>
                      <TableRow>
-                         <TableCell><select onChange={this.tableViewChange} value={this.state.value}>
+                         <TableCell><select onChange={this.tableViewChange} value={this.state.value} className="PrintSelect" >
                                 {/* <option value='1'>Select Table View</option> */}
-                                <option value='1'>Show all QR codes</option>
-                                <option value='2'>Show printed QR codes</option>
-                                <option value='3'>Show unprinted QR codes</option>
+                                    <option value='1'>Show all QR codes</option>
+                                    <option value='2'>Show printed QR codes</option>
+                                    <option value='3'>Show unprinted QR codes</option>
                             </select></TableCell>
                         <TableCell>Product</TableCell>
                         <TableCell>Square Feet</TableCell>

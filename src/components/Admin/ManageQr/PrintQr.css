@@ -37,6 +37,9 @@
     .pdfExport {
         display: none !important;
     }
+    .header-main{
+        display:none !important;
+    }
 
     @page{
         size: 8.5in 11in portrait;
@@ -84,9 +87,16 @@
     background-color:  #647c36 !important;
     margin: 5px !important;  
 }
+.allocatedUnitSq{
+    text-align: center;
+}
 .printBtn {
     background-color:  #647c36 !important;
 }
 .FormSubmitBtn {
     background-color:  #647c36 !important;
+}
+.PrintSelect{
+    font-size: 1.4em;
+
 }

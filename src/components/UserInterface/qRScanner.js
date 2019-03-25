@@ -71,6 +71,7 @@ class qRScanner extends Component {
                 {this.state.show ?
                 <div>
                     <QrReader
+                        
                         delay={300} 
                         onError={this.handleError}
                         onScan={this.handleScan}
@@ -78,6 +79,7 @@ class qRScanner extends Component {
                         resolution={1200}
                     />
                     <Button variant="contained"
+                    className="ScanBtn"
                      color="secondary"
                      onClick={this.closeIt}> Close QR Reader </Button>
                      <div className="ui-qr-return">
@@ -91,8 +93,9 @@ class qRScanner extends Component {
                     </div>
                     :
                     <Button variant="contained"
-                     color="secondary"
-                     onClick={this.scanIt}
+                        className="ScanCloseBtn"
+                        color="secondary"
+                        onClick={this.scanIt}
                      >
                     Scan Qr Code
                     </Button>

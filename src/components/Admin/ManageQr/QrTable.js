@@ -83,8 +83,20 @@ class QrTable extends Component {
          
             <div>
             <div>
-                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
-                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small'onClick={this.printQr} className="printBtn" >PRINT</Button>
+                <Button 
+                    variant="contained" 
+                    color="primary"
+                    style={{ margin: '20px' }} 
+                    size='small' 
+                    className="exportPdfBtn" 
+                    onClick={this.exportPDFWithComponent} >Export to PDF</Button>
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    style={{ margin: '20px' }} 
+                    size='small'
+                    onClick={this.printQr} 
+                    className="printBtn" >PRINT</Button>
             
                
             <br />

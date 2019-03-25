@@ -11,6 +11,12 @@ import { PDFExport,  } from '@progress/kendo-react-pdf';
 
 
 class QrTable extends Component {
+    constructor(){
+        super()
+        this.state={
+            
+        }
+    }
    
     pdfExportComponent;
 
@@ -94,7 +100,7 @@ class QrTable extends Component {
          <div className="pdfExport"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
          <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
             <QrPdfExport />
-            </PDFExport>
+        </PDFExport>
          </div>
         </div>
         );

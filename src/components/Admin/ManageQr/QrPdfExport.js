@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 /*
 ***  Change the base URL to the domain name used
 */
-const BASE_URL = 'https://polar-eyrie-86048.herokuapp.com/#/home/';
+const BASE_URL = 'gaard.herokuapp.com/#/1/';
 /*
 ***
 */

@@ -6,7 +6,7 @@ import { TextField, FormControl } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import PrintQr from './PrintQr';
+import './PrintQr.css';
 
 // componenet form to generate Qr codes for products -tj
 const styles = theme => ({
@@ -81,7 +81,7 @@ render(){
         return(
             <div className="form-container">
             <FormControl
-                className="createQrForm"
+                className="form-control"
                 autoComplete={false}>
                 <h2>Create QR Code</h2>
                 <TextField
@@ -113,8 +113,10 @@ render(){
                     InputProps={{ inputProps: { min: 0, max: 40000 } }}
                     value={this.state.quantity}
                 />
-                <Button variant="contained" 
-                 color="primary"
+                <Button 
+                className="FormSubmitBtn"
+                variant="contained" 
+                color="primary"
                 style={{ margin: '20px' }}
                 size='small'
                  onClick={this.submitGenerate}>

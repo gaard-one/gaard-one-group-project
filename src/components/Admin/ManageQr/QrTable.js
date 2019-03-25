@@ -11,18 +11,34 @@ import { PDFExport,  } from '@progress/kendo-react-pdf';
 
 
 class QrTable extends Component {
-    constructor(){
-        super()
-        this.state={
-            
+    pdfExportComponent;
+    constructor(props) {
+        super(props);
+        // const qrRowsUnprinted = this.props.reduxStore.product.map((product) => {
+        //     return product;
+        // })
+        this.state = {
+            value: '1',
+            // qrRows: this.props.reduxStore
         }
     }
    
-    pdfExportComponent;
-
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_PRODUCT' });
     }
+
+    exportPDFWithComponent=()=>{
+        this.pdfExportComponent.save();
+    }
+
+    printQr=()=>{
+        window.print();
+    }
+    
+        // const qrRowsUnprinted = this.props.reduxStore.product.filter((product)=>{
+        //     return product.printed === false;
+        // })
+    
 
     tableViewChange = (event) => {
         console.log('in tableviewchange', this.state)
@@ -62,20 +78,25 @@ class QrTable extends Component {
 
     render() {
 
-
+      
         return (
-        <div>
-        <div>
-                <Button variant="contained" style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.confirmPrint} >Export QR to PDF</Button>
-        <br />
+         
+            <div>
+            <div>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small' className="exportPdfBtn" onClick={this.exportPDFWithComponent} >Export to PDF</Button>
+                <Button variant="contained" color={('#647c36')} style={{ margin: '20px' }} size='small'onClick={this.printQr} className="printBtn" >PRINT</Button>
+            
+               
+            <br />
 
-         <Paper className="qrTable">
+            <Paper className="qrTable">
+
              {/* {JSON.stringify(this.props.reduxStore.product)}; */}
              
              <Table>
                  <TableHead>
                      <TableRow>
-                         <TableCell><select onChange={this.tableViewChange} value={this.state.value}>
+                         <TableCell><select onChange={this.tableViewChange} value={this.state.value} className="PrintSelect" >
                                 {/* <option value='1'>Select Table View</option> */}
                                     <option value='1'>Show all QR codes</option>
                                     <option value='2'>Show printed QR codes</option>
@@ -94,15 +115,15 @@ class QrTable extends Component {
              </Table>
          </Paper>
          </div>
-         <div className="printHidden"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
-            <PrintQr />
+         <div className="pdfExport" style={{ position: "absolute", left: "-1000px", top: 0 }}>
+            <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize="A4">
+                <QrPdfExport />
+            </PDFExport>
          </div>
-         <div className="pdfExport"  style={{ position: "absolute", left: "-1000px", top: 0,  }}>
-         <PDFExport ref={(component) => this.pdfExportComponent = component} paperSize={'Letter'} > 
-            <QrPdfExport />
-        </PDFExport>
+         <div className="printHidden" style={{ position: "absolute", left: "-3000px", top: 0 }}>
+             <PrintQr />
          </div>
-        </div>
+         </div>
         );
     }
 }

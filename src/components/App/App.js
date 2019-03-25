@@ -56,11 +56,11 @@ class App extends Component {
               path="/home"
               component={UserLandingPage}
             />
-            <Route
+            {/* <Route
               exact //!Commented out for ability to add params into url
               path="/home/:id"
               component={UserLandingPage}
-            />
+            /> */}
 
             <Route
               exact //!Commented out for ability to add params into url

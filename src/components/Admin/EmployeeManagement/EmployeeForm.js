@@ -37,6 +37,7 @@ class EmployeeForm extends Component{
 
 
                     <Button onClick={this.handleSubmit}
+                            className="FormSubmitBtn"
                             value='Submit'
                             color='primary'
                             variant='contained'

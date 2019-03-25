@@ -20,7 +20,7 @@ function* addAdmin(action) {
         yield put(newAction);
         Swal.fire({
             title: 'New Administrator added!',
-            type: 'sucess'
+            type: 'success'
         });
     } catch (error) {
         console.log('Add admin rights request failed', error);

@@ -34,17 +34,9 @@ class QrTableRow extends Component {
     }
 
     render() {
-        // console.log('in qrproduct', this.props.qrproduct)
-        //--// const printedQr = this.state.printed;
-        // let showRow;
-        // // if (printedQr === false){
-        // showRow = <TableRow><TableCell><button onClick={() => { this.archiveQr(this.props.qrproduct) }}>Archive</button></TableCell>
-        //     <TableCell>{this.props.qrproduct.product_name}</TableCell>
-        //     <TableCell>{this.props.qrproduct.cost}</TableCell>
-        //     <TableCell> {'' + this.props.qrproduct.printed}</TableCell>
-        //     <TableCell><QRCode value={`localhost:3000/#/home/${this.props.qrproduct.id}`} /></TableCell></TableRow>
-        // // }
-        // // {JSON.stringify(this.state.product.id)}
+      
+        const printedQr = this.state.printed;
+     
         return (
             <TableRow>
                 <TableCell><button onClick={() => { this.archiveQr(this.props.qrproduct) }}>Archive</button></TableCell>

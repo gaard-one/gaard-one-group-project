@@ -39,6 +39,9 @@ class UserLandingPage extends Component {
     return (
       <div>
         <Header />
+        <div className="welcome-main">
+        <h2>Welcome to Gaard One</h2>
+        </div>
         <div className="ui-home-addons">
         {this.thankYou()}
         

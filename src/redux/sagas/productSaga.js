@@ -43,6 +43,7 @@ function* fetchProduct() {
         console.log('error in fetchProduct GET saga', error);
     }
 }
+
 //update printed 
 function* updateProductPrinted(action) {
     let productPrinted = action.payload.product_id;

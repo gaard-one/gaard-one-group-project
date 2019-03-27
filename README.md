@@ -15,7 +15,7 @@ Before you get started, make sure you have the following software installed on y
 * [Nodemon](https://nodemon.io/)
 * Download the zip file and unpack
 
-#Database 
+#Database
 
 Create a new database called 'gaard_one'
 

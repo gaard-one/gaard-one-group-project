@@ -6,7 +6,7 @@ The goal of this project is to allow customers to directly see the impact their 
  
 
 
-#Getting Started
+# Getting Started
 Before you get started, make sure you have the following software installed on your computer:
 
 * An IDE [VSCode is recommended](https://code.visualstudio.com/)
@@ -15,7 +15,7 @@ Before you get started, make sure you have the following software installed on y
 * [Nodemon](https://nodemon.io/)
 * Download the zip file and unpack
 
-#Database 
+# Database 
 
 Create a new database called 'gaard_one'
 
@@ -88,16 +88,6 @@ result:= 6335.439*arc_val;
 END;$BODY$
   LANGUAGE plpgsql IMMUTABLE
   COST 100;
-  
---Dummy data for product_types info
-INSERT INTO "product_type" ("product_name", "cost", "description")
-VALUES 
-('One-Charge',75,'Power Bank + Jumper Cables'),
-('The All4One',149,'35L Backpack with Detachable Stool and Solar Panel'),
-('The Bright One',49,'Winter Hat + Headband LED Light Set'),
-('WearOne',20,'Short Sleeve T-Shirt' ),
-('Gift Card',10,'Gift Card'),
-('Gift Card + The Bright One',74,'Gift Card + Winter Hat + Headband LED Light Set');
 ```
 * In [PostMan](https://www.getpostman.com/) or another API develelopment software 
 send a `GET` request to `http://localhost:5000/api/unitSq/fishnet` to setup the `"unit_square"` table
@@ -105,7 +95,7 @@ send a `GET` request to `http://localhost:5000/api/unitSq/fishnet` to setup the 
 
 If you would like to name the database something else you will need to change `gaard_one` to the name of your new database in `server/modules/pool.js`
 
-#Domain Name
+# Domain Name
 * update the const `BASE_URL` in 
    - /src/components/Admin/ManageQr/PrintQr.js 
    - /src/components/Admin/ManageQr/QrPdfExport.js
@@ -115,7 +105,7 @@ If you would like to name the database something else you will need to change `g
 
  
  
-#Development Setup
+# Development Setup
 In the terminal 
 
 * Run `npm install`
@@ -124,7 +114,7 @@ In the terminal
 * Run `npm run client`
 * Navigate to `localhost:3000`
 
-#Lay of the Land
+# Lay of the Land
 
 * `scr/` contains the React application
 * `public/` contains static assets for the client-side
@@ -132,7 +122,7 @@ In the terminal
 * `server/` contains the Express App
 
 
-#Authors
+# Authors
 
 * [Tiana Johnson](https://github.com/TianaJohnson)
 * [Peng Xue Vang](https://github.com/TianaJohnson)

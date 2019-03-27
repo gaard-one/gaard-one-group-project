@@ -21,7 +21,7 @@ class Legend extends React.Component {
                 <legend>Legend</legend>
                 Saved by You: <div className="purchase"/><br/><br/>
                 Our Goal: <div className="belwinBorder"/><br/><br/>
-                Saved in 'year': <div className="savedByYear"/><br/>
+                Saved in 2018: <div className="savedByYear"/><br/>
                 {this.renderLocation()}
             </fieldset>
         );

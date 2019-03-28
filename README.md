@@ -92,12 +92,16 @@ END;$BODY$
   COST 100;
 ```
 # Important
+
+* After when you register on the `https://localhost:5000/api/admin` page, you must also go into the gaard_one database, under the person table, and give yourself admin and employee privileges. This is a must before you do anything else that requires anything on the admin page.
+
 * In [PostMan](https://www.getpostman.com/) another API develelopment software,
 or in your browser window on an account with admin privileges
-send a `GET` request to `http://localhost:5000/api/unitSq/fishnet` to setup the `"unit_square"` table
+send a `GET` request to `http://localhost:5000/api/unitSq/fishnet` to setup the `"unit_square"` table.
 
 
 If you would like to name the database something else you will need to change `gaard_one` to the name of your new database in `server/modules/pool.js`
+
 
 # Domain Name
 * update the const `BASE_URL` in 

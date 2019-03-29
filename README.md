@@ -133,7 +133,7 @@ In the terminal
 # Authors
 
 * [Tiana Johnson](https://github.com/TianaJohnson)
-* [Peng Xue Vang](https://github.com/TianaJohnson)
+* [Peng Xue Vang](https://github.com/pxvang33)
 * [Cody Troop](https://github.com/RAGSOOK)
 * [Julie Zembik](https://github.com/juliezembik)
 * [Nicholas Heilman](https://github.com/NicholasHeilman)
